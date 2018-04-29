@@ -8,7 +8,7 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 ## TL;DR
-Setting the locale is not enough most of the time, some countries use more than one langages. Also, different countries use different date notations. This package is here to help you with that!
+Setting the locale is not enough most of the time, some countries use more than one langages. Also, different countries use different date notation formats. This package is here to help you with that!
 In a nutshell:
 
 * You can set all supported lang/country of your choice in the settings.
