@@ -3,8 +3,8 @@
 namespace InvolvedGroup\LaravelLangCountry\Middleware;
 
 use App;
-use Closure;
 use Date;
+use Closure;
 
 class LangCountrySession
 {
@@ -18,7 +18,7 @@ class LangCountrySession
      */
     public function handle($request, Closure $next)
     {
-        if (!session()->has('lang_country')) {
+        if (! session()->has('lang_country')) {
             \LangCountry::setAllSessions($request->server('HTTP_ACCEPT_LANGUAGE'));
         }
 

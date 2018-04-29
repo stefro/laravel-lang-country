@@ -1,6 +1,7 @@
-<?php namespace InvolvedGroup\LaravelLangCountry\Controllers;
+<?php
 
-use Illuminate\Support\Facades\Auth;
+namespace InvolvedGroup\LaravelLangCountry\Controllers;
+
 use Illuminate\Routing\Controller;
 
 class LangCountrySwitchController extends Controller
@@ -8,7 +9,7 @@ class LangCountrySwitchController extends Controller
     public function switch($lang_country)
     {
         // If a lang_country does not match any of the allowed, go back without doing anything.
-        if (!in_array($lang_country, config('lang-country.allowed'))) {
+        if (! in_array($lang_country, config('lang-country.allowed'))) {
             return redirect()->back();
         }
 

@@ -1,7 +1,8 @@
-<?php namespace InvolvedGroup\LaravelLangCountry;
+<?php
+
+namespace InvolvedGroup\LaravelLangCountry;
 
 use Illuminate\Support\ServiceProvider;
-use LangCountry;
 
 class LaravelLangCountryServiceProvider extends ServiceProvider
 {
@@ -24,7 +25,6 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
             ->middleware(config('lang-country.lang_switcher_middleware'))
             ->get('/change_lang_country/{lang_country}', 'InvolvedGroup\LaravelLangCountry\Controllers\LangCountrySwitchController@switch')
             ->name('lang_country.switch');
-
     }
 
     /**
@@ -35,5 +35,4 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
     public function register()
     {
     }
-
 }

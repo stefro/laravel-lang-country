@@ -2,8 +2,6 @@
 
 namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
 
-use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
 
 class MiddlewareTest extends TestCase
@@ -22,7 +20,6 @@ class MiddlewareTest extends TestCase
         ]);
     }
 
-
     /** @test */
     public function sessions_will_be_set_on_first_visit_with_fallback()
     {
@@ -37,12 +34,11 @@ class MiddlewareTest extends TestCase
     /** @test */
     public function sessions_will_be_set_on_first_visit_according_to_browser()
     {
-        $this->get('test_route',['HTTP_ACCEPT_LANGUAGE' => 'nl-BE'])
+        $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'nl-BE'])
             ->assertStatus(200);
 
         $this->assertEquals('nl-BE', session('lang_country'));
         $this->assertEquals('nl', session('locale'));
         $this->assertEquals('nl', session('locale_for_date'));
     }
-
 }

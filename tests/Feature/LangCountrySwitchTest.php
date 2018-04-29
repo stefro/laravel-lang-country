@@ -2,9 +2,7 @@
 
 namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
 
-use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
 
 class LangCountrySwitchTest extends TestCase
@@ -34,7 +32,6 @@ class LangCountrySwitchTest extends TestCase
         User::reguard();
     }
 
-
     /** @test */
     public function switch_for_non_logged_in_user()
     {
@@ -46,7 +43,7 @@ class LangCountrySwitchTest extends TestCase
         $this->assertEquals('en', session('locale_for_date'));
 
         // visit switch route
-        $this->get(route('lang_country.switch',['lang_country' => 'nl-BE']))
+        $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']))
             ->assertRedirect(route('test_route'));
         $this->assertEquals('nl-BE', session('lang_country'));
         $this->assertEquals('nl', session('locale'));
@@ -64,12 +61,12 @@ class LangCountrySwitchTest extends TestCase
         $this->assertEquals('en', session('locale_for_date'));
 
         // visit switch route
-        $this->get(route('lang_country.switch',['lang_country' => 'nl-BE']))
+        $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']))
             ->assertRedirect(route('test_route'));
         $this->assertEquals('nl-BE', session('lang_country'));
         $this->assertEquals('nl', session('locale'));
         $this->assertEquals('nl', session('locale_for_date'));
 
-        $this->assertEquals('nl-BE',$this->user->lang_country);
+        $this->assertEquals('nl-BE', $this->user->lang_country);
     }
 }

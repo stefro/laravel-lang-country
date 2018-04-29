@@ -1,4 +1,6 @@
-<?php namespace InvolvedGroup\LaravelLangCountry;
+<?php
+
+namespace InvolvedGroup\LaravelLangCountry;
 
 use Illuminate\Support\Facades\Facade;
 

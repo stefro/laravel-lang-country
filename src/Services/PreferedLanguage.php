@@ -4,7 +4,6 @@ namespace InvolvedGroup\LaravelLangCountry\Services;
 
 use Jenssegers\Date\Date;
 
-
 /**
  * Class PreferedLanguage.
  */
@@ -21,7 +20,7 @@ class PreferedLanguage
     protected $allowed;
 
     /**
-     * HTTP_ACCEPT_LANGUAGE string
+     * HTTP_ACCEPT_LANGUAGE string.
      * @var
      */
     protected $prefered_languages;
@@ -32,19 +31,19 @@ class PreferedLanguage
     protected $fallback;
 
     /**
-     * calculated lang_country result
+     * calculated lang_country result.
      * @var string
      */
     public $lang_country;
 
     /**
-     * Calculated locale result
+     * Calculated locale result.
      * @var string
      */
     public $locale;
 
     /**
-     * Calculated locale for Jenssegers\Date package
+     * Calculated locale for Jenssegers\Date package.
      * @var string
      */
     public $locale_for_date;
@@ -62,7 +61,7 @@ class PreferedLanguage
         $this->lang_country = $this->getLangCountry();
         $this->locale = $this->getLocale();
         $this->locale_for_date = $this->getLocaleForDate();
-     }
+    }
 
     /**
      * It will return a list of prefered languages of the browser in order of preference.
@@ -80,8 +79,8 @@ class PreferedLanguage
 
         // (create an associative array 'language' => 'preference')
         $lang2pref = [];
-        for ($i = 0; $i < count($langs); ++$i) {
-            $lang2pref[$langs[$i]] = (float)(!empty($ranks[$i]) ? $ranks[$i] : 1);
+        for ($i = 0; $i < count($langs); $i++) {
+            $lang2pref[$langs[$i]] = (float) (! empty($ranks[$i]) ? $ranks[$i] : 1);
         }
 
         // (comparison function for uksort)
@@ -106,7 +105,7 @@ class PreferedLanguage
     }
 
     /**
-     * It will find the first best match for lang_country according to the allowed list (from config file)
+     * It will find the first best match for lang_country according to the allowed list (from config file).
      *
      * @return \Illuminate\Config\Repository|int|mixed|string|static
      */
@@ -140,7 +139,6 @@ class PreferedLanguage
         }
 
         return $prefered;
-
     }
 
     /**
@@ -180,12 +178,12 @@ class PreferedLanguage
      */
     private function getLocale()
     {
-        $path = resource_path('/lang/') . $this->lang_country . '.json';
+        $path = resource_path('/lang/').$this->lang_country.'.json';
 
-        if(file_exists($path)){
+        if (file_exists($path)) {
             return $this->lang_country;
         } else {
-            return substr($this->lang_country,0,2);
+            return substr($this->lang_country, 0, 2);
         }
     }
 
@@ -193,16 +191,15 @@ class PreferedLanguage
      * Check if Jenssegers\Date package supports this 4 char language code.
      * If not, just return the first two chars (represents the language).
      * Jenssegers\Date will default to its own fallback when this is also not available.
-     *
      */
     private function getLocaleForDate()
     {
         Date::setLocale($this->lang_country);
 
-        if(str_replace('_','-',Date::getLocale()) === $this->lang_country){
+        if (str_replace('_', '-', Date::getLocale()) === $this->lang_country) {
             return $this->lang_country;
         } else {
-            return substr($this->lang_country,0,2);
+            return substr($this->lang_country, 0, 2);
         }
     }
 }

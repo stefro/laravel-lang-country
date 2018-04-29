@@ -1,4 +1,6 @@
-<?php namespace InvolvedGroup\LaravelLangCountry\Tests\Support\Controllers;
+<?php
+
+namespace InvolvedGroup\LaravelLangCountry\Tests\Support\Controllers;
 
 use Illuminate\Routing\Controller;
 

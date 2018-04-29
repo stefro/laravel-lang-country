@@ -1,4 +1,5 @@
 <?php
+
 return [
 
     'fallback' => 'en-GB',
@@ -12,5 +13,5 @@ return [
         'en-AU',
     ],
 
-    'lang_switcher_middleware' => ['web']
+    'lang_switcher_middleware' => ['web'],
 ];
