@@ -11,7 +11,7 @@
 Setting the locale is not enough most of the time, some countries use more than one langages. Also, different countries use different date notation formats. This package is here to help you with that!
 In a nutshell:
 
-* You can set all supported lang/country of your choice in the settings.
+* You can set all supported lang_country of your choice in the settings.
 * It will make smart fallbacks.
 * It will help you set the right locale for the awesome [Date](https://github.com/jenssegers/date) package.
 * You can now show dates not only translated, but also in the right format! (example: jan 1th 2018; 1 jan 2018. Both the same date, both translated, but every country has a different order).
@@ -72,6 +72,79 @@ public function authenticated(Request $request, $user)
 ```
 
 **Thats all!**
+
+## What will it do?
+For each user or guest it will create a four character `lang_country` code. For guests it will try to make a perfect match based on the browser settings. For users, it will load last used `lang_country`, because we will store it in the DB.
+
+**There will ALWAYS be set three sessions:**
+
+- `lang_country` (example: `nl-BE`)
+- `locale` (examples: `nl`, `es-CO`)
+- `locale_for_date` (example: `nl`)
+
+When a user will log in to your app, it will load the last `lang_country` and set the sessions accordingly.
+
+## How to switch lang_country
+There is a named route you can use that takes the new lang_coungtry as a parameter: 
+
+``` php
+route('lang_country.switch', ['lang_country' => 'nl-BE'])
+```
+It will first check if the requested `lang_country` is in your `allowed` list of your config file. When so, it will change all the sessions accordingly. When it detects there is a logged in User, it will also set the `lang_country` to the database.
+
+It's really easy to create a language selector! You can use `LangCountry::langSelectorHelper()`.
+This will output for example:
+
+``` php
+Array
+(
+    [available] => Array
+        (
+            [0] => Array
+                (
+                    [lang] => nl
+                    [country] => NL
+                    [name] => Nederlands
+                    [lang_country] => nl-NL
+                )
+
+            [1] => Array
+                (
+                    [lang] => nl
+                    [country] => BE
+                    [name] => België - Vlaams
+                    [lang_country] => nl-BE
+                )
+
+            [2] => Array
+                (
+                    [lang] => en
+                    [country] => GB
+                    [name] => English
+                    [lang_country] => en-GB
+                )
+
+            [3] => Array
+                (
+                    [lang] => en
+                    [country] => CA
+                    [name] => Canada - English
+                    [lang_country] => en-CA
+                )
+
+        )
+
+    [current] => Array
+        (
+            [lang] => en
+            [country] => US
+            [name] => English
+            [lang_country] => en-US
+        )
+
+)
+```
+
 
 ## Usage
 
