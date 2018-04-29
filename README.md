@@ -240,17 +240,17 @@ If you discover any security related issues, please email stef.rouschop@involved
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/InvolvedGroup/LaravelLangCountry.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/involved-group/laravel-lang-country.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/InvolvedGroup/LaravelLangCountry/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/InvolvedGroup/LaravelLangCountry.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/InvolvedGroup/LaravelLangCountry.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/InvolvedGroup/LaravelLangCountry.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/InvolvedGroup/laravel-lang-country/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/InvolvedGroup/laravel-lang-country.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/InvolvedGroup/laravel-lang-country.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/involved-group/laravel-lang-country.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/InvolvedGroup/LaravelLangCountry
-[link-travis]: https://travis-ci.org/InvolvedGroup/LaravelLangCountry
-[link-scrutinizer]: https://scrutinizer-ci.com/g/InvolvedGroup/LaravelLangCountry/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/InvolvedGroup/LaravelLangCountry
-[link-downloads]: https://packagist.org/packages/InvolvedGroup/LaravelLangCountry
+[link-packagist]: https://packagist.org/packages/involved-group/laravel-lang-country
+[link-travis]: https://travis-ci.org/InvolvedGroup/laravel-lang-country
+[link-scrutinizer]: https://scrutinizer-ci.com/g/InvolvedGroup/laravel-lang-country/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/InvolvedGroup/laravel-lang-country
+[link-downloads]: https://packagist.org/packages/involved-group/laravel-lang-country
 [link-author]: https://github.com/stefro
 [link-contributors]: ../../contributors
