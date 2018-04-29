@@ -16,6 +16,7 @@ In a nutshell:
 * It will help you set the right locale for the awesome [Date](https://github.com/jenssegers/date) package.
 * You can now show dates not only translated, but also in the right format! (example: jan 1th 2018; 1 jan 2018. Both the same date, both translated, but every country has a different order).
 * It will help you to show the right flag in your language switcher (because you now also have a country value, not only a language value).
+* We'll assume you're using Translation Strings As Keys ([Using Translation Strings As Keys](https://laravel.com/docs/5.6/localization#using-translation-strings-as-keys))
 
 
 ## Install
@@ -81,83 +82,115 @@ public function authenticated(Request $request, $user)
 use InvolvedGroup\LaravelLangCountry\LangCountry
 
 LangCountry::lang();
-\\ This will return the right language. This can be a two char representation 
-\\ (example: "nl", dutch) or a four char representation (example: es_CO; Spanish-colombian)
+/* 
+ * The path where to store temporary files while performing image conversions.
+ * If set to null, storage_path('medialibrary/temp') will be used.
+ * This will return the right language. This can be a two char representation 
+ * (example: "nl", dutch) or a four char representation (example: es_CO; Spanish-colombian)
+ */ 
 
 LangCountry::country();
-\\ This will return the two character code representation of the country.
-\\ Example: "NL" when lang_country = "nl-NL"
-\\ Example: "BE" when lang_country = "nl-BE"
+/*
+ * This will return the two character code representation of the country.
+ * Example: "NL" when lang_country = "nl-NL"
+ * Example: "BE" when lang_country = "nl-BE"
+ */
 
 LangCountry::name();
-\\ This will return the name of the language TRANSLATED IN THE LANGUAGE IN QUESTION.
-\\ You can use this for nice country-selectors in your app.
-\\ Example: "English" when lang_country = "en-US"
-\\ Example: 'België - Vlaams' when lang_country = "nl-BE"
+/*
+ * This will return the name of the language TRANSLATED IN THE LANGUAGE IN QUESTION.
+ * You can use this for nice country-selectors in your app.
+ * Example: "English" when lang_country = "en-US"
+ * Example: 'België - Vlaams' when lang_country = "nl-BE"
+ */
 
 LangCountry::dateNumbersFormat();
-\\ Returns string representation of the dateformat with only numbers.
-\\ Example: "m/d/Y" when lang_country = "en-US"
-\\ Example: "d/m/Y" when lang_country = "nl-NL"
+/*
+ * Returns string representation of the dateformat with only numbers.
+ * Example: "m/d/Y" when lang_country = "en-US"
+ * Example: "d/m/Y" when lang_country = "nl-NL"
+ */
 
 LangCountry::dateNumbers($blog->post->created_at);
-\\ You should provide the date as a Carbon instance;
-\\ It will return the date as a string in the format for this country.
-\\ Example: "04/24/2018" when lang_country = "en-US"
-\\ Example: "24/04/2018" when lang_country = "nl-NL"
+/*
+ * You should provide the date as a Carbon instance;
+ * It will return the date as a string in the format for this country.
+ * Example: "04/24/2018" when lang_country = "en-US"
+ * Example: "24/04/2018" when lang_country = "nl-NL"
+ */
 
 LangCountry::dateNumbersFullCapitalsFormat();
-\\ Returns string representation of the dateformat with only capitals, some javascript dateselectors use this.
-\\ Example: "MM/DD/YYYY" when lang_country = "en-US"
-\\ Example: "DD-MM-YYYY" when lang_country = "nl-NL"
+/*
+ * Returns string representation of the dateformat with only capitals, some javascript dateselectors use this.
+ * Example: "MM/DD/YYYY" when lang_country = "en-US"
+ * Example: "DD-MM-YYYY" when lang_country = "nl-NL"
+ */
      
 LangCountry::dateWordsWithoutDayFormat();
-\\ Returns string representation of the dateformat with words but without the day.
-\\ Example: "F jS Y" when lang_country = "en-US"
-\\ Example: "j F Y" when lang_country = "nl-NL"
+/*
+ * Returns string representation of the dateformat with words but without the day.
+ * Example: "F jS Y" when lang_country = "en-US"
+ * Example: "j F Y" when lang_country = "nl-NL"
+ */
 
 LangCountry::dateWordsWithoutDay($blog->post->created_at);
-\\ You should provide the date as a Carbon instance;
-\\ It will return the date in words but without the day.
-\\ Example: "April 24th 2018" when lang_country = "en-US"
-\\ Example: "24 april 2018" when lang_country = "nl-NL"
+/*
+ * You should provide the date as a Carbon instance;
+ * It will return the date in words but without the day.
+ * Example: "April 24th 2018" when lang_country = "en-US"
+ * Example: "24 april 2018" when lang_country = "nl-NL"
+ */
 
 LangCountry::dateWordsWithDayFormat();
-\\ String representation of the dateformat with words including the day.
-\\ Example: "l F jS Y" when lang_country = "en-US"
-\\ Example: "l j F Y" when lang_country = "nl-NL"
+/*
+ * String representation of the dateformat with words including the day.
+ * Example: "l F jS Y" when lang_country = "en-US"
+ * Example: "l j F Y" when lang_country = "nl-NL"
+ */
 
 LangCountry::dateWordsWithDay($blog->post->created_at);
-\\ You should provide the date as a Carbon instance;
-\\ It will return the date in words including the day.
-\\ Example: "Tuesday April 24th 2018" when lang_country = "en-US"
-\\ Example: "dinsdag 24 april 2018" when lang_country = "nl-NL"
+/*
+ * You should provide the date as a Carbon instance;
+ * It will return the date in words including the day.
+ * Example: "Tuesday April 24th 2018" when lang_country = "en-US"
+ * Example: "dinsdag 24 april 2018" when lang_country = "nl-NL"
+ */
 
 LangCountry::dateBirthdayFormat();
-\\ String representation of the dateformat for a birthday.
-\\ Example: "F jS" when lang_country = "en-US"
-\\ Example: "j F" when lang_country = "nl-NL"
- 
+/*
+ * String representation of the dateformat for a birthday.
+ * Example: "F jS" when lang_country = "en-US"
+ * Example: "j F" when lang_country = "nl-NL"
+ */
+
 LangCountry::dateBirthday($user->birthday);
-\\ You should provide the date as a Carbon instance;
-\\ It will return the a birthday date.
-\\ Example: "April 24th" when lang_country = "en-US"
-\\ Example: "24 april" when lang_country = "nl-NL"
+/*
+ * You should provide the date as a Carbon instance;
+ * It will return the a birthday date.
+ * Example: "April 24th" when lang_country = "en-US"
+ * Example: "24 april" when lang_country = "nl-NL"
+ */
 
 LangCountry::timeFormat();
-\\ Returns string representation of the timeformat.
-\\ Example: "h:i a" when lang_country = "en-US"
-\\ Example: "H:i" when lang_country = "nl-NL"
+/*
+ * Returns string representation of the timeformat.
+ * Example: "h:i a" when lang_country = "en-US"
+ * Example: "H:i" when lang_country = "nl-NL"
+ */
 
 LangCountry::time($whatever->time);
-\\ You should provide the time as a Carbon instance;
-\\ It will return the formatted time.
-\\ Example: "1:00 pm" when lang_country = "en-US"
-\\ Example: "13:00" when lang_country = "nl-NL"
+/*
+ * You should provide the time as a Carbon instance;
+ * It will return the formatted time.
+ * Example: "1:00 pm" when lang_country = "en-US"
+ * Example: "13:00" when lang_country = "nl-NL"
+ */
 
 LangCountry::langSelectorHelper();
-\\ It will return a collection with the current language, country and name
-\\ and also the other available language, country and name.
+/*
+ * It will return a collection with the current language, country and name
+ * and also the other available language, country and name.
+ */
 ```
 
 ## What does the middleware do?
