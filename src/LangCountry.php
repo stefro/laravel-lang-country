@@ -235,6 +235,10 @@ class LangCountry
      */
     private function getDataFromFile($lang_country)
     {
+        if($lang_country === null){
+            return[];
+        }
+
         $resource = __DIR__.'/LangCountryData/'.$lang_country.'.json';
 
         return json_decode(file_get_contents($resource));
