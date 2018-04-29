@@ -1,0 +1,11 @@
+{
+  "country": "CA",
+  "lang": "fr",
+  "name": "Canada - Français",
+  "date_numbers": "d/m/Y",
+  "date_numbers_full_capitals": "DD/MM/YYYY",
+  "date_words_without_day": "j F Y",
+  "date_words_with_day": "l j F Y",
+  "date_birthday": "j F",
+  "time_format": "h:i a"
+}

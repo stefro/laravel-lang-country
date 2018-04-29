@@ -1,0 +1,11 @@
+{
+  "country": "BE",
+  "lang": "nl",
+  "name": "België - Vlaams",
+  "date_numbers": "d/m/Y",
+  "date_numbers_full_capitals": "DD/MM/YYYY",
+  "date_words_without_day": "j F Y",
+  "date_words_with_day": "l j F Y",
+  "date_birthday": "j F",
+  "time_format": "H:i"
+}
