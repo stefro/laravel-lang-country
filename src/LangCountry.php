@@ -1,13 +1,15 @@
-<?php namespace InvolvedGroup\LaravelLangCountry;
+<?php
+
+namespace InvolvedGroup\LaravelLangCountry;
 
 use Carbon\Carbon;
-use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
 use Jenssegers\Date\Date;
+use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
 
 class LangCountry
 {
     /**
-     * The lang_country from the session, or the fallback
+     * The lang_country from the session, or the fallback.
      *
      * @var string
      */
@@ -17,7 +19,6 @@ class LangCountry
      * @array
      */
     protected $data;
-
 
     /**
      * LangCountry constructor.
@@ -30,7 +31,7 @@ class LangCountry
 
     /**
      * It will return the right language. This can be a two char representation (ex. "nl", dutch)
-     * or a four char representation (ex. es_CO; Spanish-colombian)
+     * or a four char representation (ex. es_CO; Spanish-colombian).
      *
      * @return string
      */
@@ -62,7 +63,7 @@ class LangCountry
 
     /**
      * String representation of the dateformat with only numbers.
-     * Ex: "Y-m-d"
+     * Ex: "Y-m-d".
      *
      * @return string
      */
@@ -74,7 +75,7 @@ class LangCountry
     /**
      * String representation of the date with only numbers from the Carbon instance provided.
      * It will be translated through \Date
-     * Ex: "2018-04-24"
+     * Ex: "2018-04-24".
      *
      * @param Carbon $carbon
      * @return string
@@ -86,7 +87,7 @@ class LangCountry
 
     /**
      * String representation of the dateformat with only capitals, some javascript dateselectors use this.
-     * Ex: "DD-MM-YYYY"
+     * Ex: "DD-MM-YYYY".
      *
      * @return string
      */
@@ -95,10 +96,9 @@ class LangCountry
         return $this->data->date_numbers_full_capitals;
     }
 
-
     /**
      * String representation of the dateformat with words but without the day.
-     * Ex: "F jS Y"
+     * Ex: "F jS Y".
      *
      * @return string
      */
@@ -110,7 +110,7 @@ class LangCountry
     /**
      * String representation of the date in words but without the day.
      * It will be translated through \Date
-     * Ex: "April 24th 2018"
+     * Ex: "April 24th 2018".
      *
      * @param Carbon $carbon
      * @return string
@@ -122,7 +122,7 @@ class LangCountry
 
     /**
      * String representation of the dateformat with words but without the day.
-     * Ex: "l F jS Y"
+     * Ex: "l F jS Y".
      *
      * @return string
      */
@@ -134,7 +134,7 @@ class LangCountry
     /**
      * String representation of the date with words but without the day.
      * It will be translated through \Date
-     * Ex: "Tuesday April 24th 2018"
+     * Ex: "Tuesday April 24th 2018".
      *
      * @param Carbon $carbon
      * @return string
@@ -146,7 +146,7 @@ class LangCountry
 
     /**
      * String representation of the dateformat for a birthday.
-     * Ex: "F jS"
+     * Ex: "F jS".
      *
      * @return string
      */
@@ -158,7 +158,7 @@ class LangCountry
     /**
      * String representation of a birthday date.
      * It will be translated through \Date
-     * Ex: "April 24th"
+     * Ex: "April 24th".
      *
      * @param Carbon $carbon
      * @return string
@@ -170,7 +170,7 @@ class LangCountry
 
     /**
      * String representation of the timeformat.
-     * Ex: "h:i a"
+     * Ex: "h:i a".
      *
      * @return string
      */
@@ -182,7 +182,7 @@ class LangCountry
     /**
      * String representation of time.
      * It will be translated through \Date
-     * Ex: "12:00 pm"
+     * Ex: "12:00 pm".
      *
      * @param Carbon $carbon
      * @return string
@@ -199,20 +199,22 @@ class LangCountry
     public function langSelectorHelper()
     {
         return collect(config('lang-country.allowed'))
-            ->map(function($item){
+            ->map(function ($item) {
                 $file = $this->getDataFromFile($item);
+
                 return [
                     'lang' => $file->lang,
                     'country' => $file->country,
                     'name' => $file->name,
-                    'lang_country' => $item
+                    'lang_country' => $item,
                 ];
-            })->reduce(function($carry, $item){
-                if($item['lang_country'] != session('lang_country')){
+            })->reduce(function ($carry, $item) {
+                if ($item['lang_country'] != session('lang_country')) {
                     $carry['available'][] = $item;
                 } else {
                     $carry['current'] = $item;
                 }
+
                 return $carry;
             });
     }
@@ -233,7 +235,8 @@ class LangCountry
      */
     private function getDataFromFile($lang_country)
     {
-        $resource = __DIR__ . '/LangCountryData/' . $lang_country . '.json';
+        $resource = __DIR__.'/LangCountryData/'.$lang_country.'.json';
+
         return json_decode(file_get_contents($resource));
     }
 }

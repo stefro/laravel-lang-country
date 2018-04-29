@@ -4,10 +4,8 @@ namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
 
 use App;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
-use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
 use Jenssegers\Date\Date;
+use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
 
 class LangCountryTest extends TestCase
 {
@@ -79,8 +77,8 @@ class LangCountryTest extends TestCase
                     'country' => 'US',
                     'name' => 'English',
                     'lang_country' => 'en-US',
-                ]
-            ]
+                ],
+            ],
         ];
         $this->assertEquals($expected, \LangCountry::langSelectorHelper());
     }
@@ -135,8 +133,8 @@ class LangCountryTest extends TestCase
                     'country' => 'GB',
                     'name' => 'English',
                     'lang_country' => 'en-GB',
-                ]
-            ]
+                ],
+            ],
         ];
         $this->assertEquals($expected, \LangCountry::langSelectorHelper());
     }

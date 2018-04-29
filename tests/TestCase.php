@@ -17,7 +17,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \InvolvedGroup\LaravelLangCountry\LaravelLangCountryServiceProvider::class
+            \InvolvedGroup\LaravelLangCountry\LaravelLangCountryServiceProvider::class,
         ];
     }
 
@@ -46,13 +46,13 @@ abstract class TestCase extends Orchestra
             'prefix'   => '',
         ]);
         $app['config']->set('app.key', 'base64:f9kzW7cVoE96+f+00BKmlvFujZGy5Pf5GHG6/51mbns=');
-        $app['config']->set('lang-country.lang_switcher_middleware', ['web','lang_country']);
+        $app['config']->set('lang-country.lang_switcher_middleware', ['web', 'lang_country']);
 
-        $app['config']->set('app.debug',true);
+        $app['config']->set('app.debug', true);
 
         // Set the test routes
         $app['router']
-            ->middleware(['web','lang_country'])
+            ->middleware(['web', 'lang_country'])
             ->get('test_route', 'InvolvedGroup\LaravelLangCountry\Tests\Support\Controllers\TestRoutesController@testRoute')
             ->name('test_route');
     }

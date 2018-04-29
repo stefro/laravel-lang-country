@@ -2,9 +2,8 @@
 
 namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
 use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
+use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
 
 class LocaleForDateTest extends TestCase
 {
@@ -13,8 +12,8 @@ class LocaleForDateTest extends TestCase
         parent::setUp();
 
         // Set config variables
-        $this->app[ 'config' ]->set('lang-country.fallback', 'en-GB');
-        $this->app[ 'config' ]->set('lang-country.allowed', [
+        $this->app['config']->set('lang-country.fallback', 'en-GB');
+        $this->app['config']->set('lang-country.allowed', [
             'nl-NL',
             'nl-BE',
             'en-GB',
@@ -32,7 +31,7 @@ class LocaleForDateTest extends TestCase
      */
     public function four_char_json_available_in_date_package()
     {
-        $lang = new PreferedLanguage("zh-CN,en");
+        $lang = new PreferedLanguage('zh-CN,en');
 
         $this->assertEquals('zh-CN', $lang->locale_for_date);
     }
@@ -43,7 +42,7 @@ class LocaleForDateTest extends TestCase
      */
     public function no_four_char_json_available_in_date_package_fallback_to_just_lang()
     {
-        $lang = new PreferedLanguage("nl-NL");
+        $lang = new PreferedLanguage('nl-NL');
 
         $this->assertEquals('nl', $lang->locale_for_date);
     }
@@ -54,7 +53,7 @@ class LocaleForDateTest extends TestCase
      */
     public function no_match_fallback_to_date_package_fallback()
     {
-        $lang = new PreferedLanguage("xx-XX");
+        $lang = new PreferedLanguage('xx-XX');
 
         $this->assertEquals('en', $lang->locale_for_date);
     }
