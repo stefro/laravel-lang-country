@@ -235,7 +235,7 @@ class LangCountry
      */
     private function getDataFromFile($lang_country)
     {
-        if($lang_country === null){
+        if ($lang_country === null) {
             return[];
         }
 
