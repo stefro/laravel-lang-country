@@ -23,7 +23,7 @@ class MiddlewareTest extends TestCase
     /** @test */
     public function sessions_will_be_set_on_first_visit_with_fallback()
     {
-        $this->get('test_route')
+        $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
             ->assertStatus(200);
 
         $this->assertEquals('en-GB', session('lang_country'));

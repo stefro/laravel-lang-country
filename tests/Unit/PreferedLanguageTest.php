@@ -93,4 +93,15 @@ class PreferedLanguageTest extends TestCase
 
         $this->assertEquals('en-GB', $lang->lang_country);
     }
+
+    /**
+     * @group prefered_lang_test
+     * @test
+     */
+    public function country_in_lowecase()
+    {
+        $lang = new PreferedLanguage('nl-nl,nl-be,gr');
+
+        $this->assertEquals('nl-NL', $lang->lang_country);
+    }
 }

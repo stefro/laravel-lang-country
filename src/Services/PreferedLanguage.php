@@ -75,6 +75,16 @@ class PreferedLanguage
             $lang_parse);
 
         $langs = $lang_parse[1];
+
+        // Make sure the country chars (when available) are uppercase.
+        $langs = collect($langs)->map(function($lang){
+            if(5 == strlen($lang)){
+                $lang = explode('-',$lang);
+                $lang = implode('-',[$lang[0],strtoupper($lang[1])]);
+            }
+            return $lang;
+        })->toArray();
+
         $ranks = $lang_parse[4];
 
         // (create an associative array 'language' => 'preference')
@@ -82,6 +92,7 @@ class PreferedLanguage
         for ($i = 0; $i < count($langs); $i++) {
             $lang2pref[$langs[$i]] = (float) (! empty($ranks[$i]) ? $ranks[$i] : 1);
         }
+
 
         // (comparison function for uksort)
         $cmpLangs = function ($a, $b) use ($lang2pref) {
