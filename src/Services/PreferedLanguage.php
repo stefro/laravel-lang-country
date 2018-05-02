@@ -75,6 +75,17 @@ class PreferedLanguage
             $lang_parse);
 
         $langs = $lang_parse[1];
+
+        // Make sure the country chars (when available) are uppercase.
+        $langs = collect($langs)->map(function ($lang) {
+            if (5 == strlen($lang)) {
+                $lang = explode('-', $lang);
+                $lang = implode('-', [$lang[0], strtoupper($lang[1])]);
+            }
+
+            return $lang;
+        })->toArray();
+
         $ranks = $lang_parse[4];
 
         // (create an associative array 'language' => 'preference')

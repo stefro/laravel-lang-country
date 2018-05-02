@@ -36,7 +36,7 @@ class LangCountrySwitchTest extends TestCase
     public function switch_for_non_logged_in_user()
     {
         // make first visit and verify fallback values are set
-        $this->get('test_route')
+        $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
             ->assertStatus(200);
         $this->assertEquals('en-GB', session('lang_country'));
         $this->assertEquals('en', session('locale'));
@@ -54,7 +54,7 @@ class LangCountrySwitchTest extends TestCase
     public function switch_for_logged_in_user_without_lang_country_setting()
     {
         // make first visit and verify fallback values are set
-        $this->actingAs($this->user)->get('test_route')
+        $this->actingAs($this->user)->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
             ->assertStatus(200);
         $this->assertEquals('en-GB', session('lang_country'));
         $this->assertEquals('en', session('locale'));
