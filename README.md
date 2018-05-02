@@ -147,7 +147,7 @@ Array
 With this array you're able to create a simple language/country switcher like this in your own frontend framework of choice:
 
 <p align="center">
-  <img width="250" src="https://involvedgroup.github.io/laravel-lang-country/lang_switcher.png">
+  <img width="350" src="https://involvedgroup.github.io/laravel-lang-country/lang_switcher.png">
 </p>
 
 ## Usage
@@ -301,6 +301,10 @@ Some good resources:
 * [http://www.lingoes.net/en/translator/langcode.htm](http://www.lingoes.net/en/translator/langcode.htm)
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
+
+## ToDo
+
+* Make it possible for developers to override the package .json files locally 
 
 ## Security
 
