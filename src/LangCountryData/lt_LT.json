@@ -1,0 +1,12 @@
+
+{
+  "country": "LT",
+  "lang": "lt",
+  "name": "Lithuanian",
+  "date_numbers": "Y-m-d",
+  "date_numbers_full_capitals": "YYYY-MM-DD",
+  "date_words_without_day": "Y\m. F d\d.",
+  "date_words_with_day": "Y\m. F d\d., l",
+  "date_birthday": "F j",
+  "time_format": "H:i"
+}
