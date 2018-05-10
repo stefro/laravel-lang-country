@@ -105,6 +105,7 @@ Array
                     [country] => NL
                     [name] => Nederlands
                     [lang_country] => nl-NL
+                    [emoji_flag] => 🇳🇱
                 )
 
             [1] => Array
@@ -113,6 +114,7 @@ Array
                     [country] => BE
                     [name] => België - Vlaams
                     [lang_country] => nl-BE
+                    [emoji_flag] => 🇧🇪
                 )
 
             [2] => Array
@@ -121,6 +123,7 @@ Array
                     [country] => GB
                     [name] => English
                     [lang_country] => en-GB
+                    [emoji_flag] => 🇬🇧
                 )
 
             [3] => Array
@@ -129,6 +132,7 @@ Array
                     [country] => CA
                     [name] => Canada - English
                     [lang_country] => en-CA
+                    [emoji_flag] => 🇨🇦
                 )
 
         )
@@ -139,6 +143,7 @@ Array
             [country] => US
             [name] => English
             [lang_country] => en-US
+            [emoji_flag] => 🇺🇸
         )
 
 )
