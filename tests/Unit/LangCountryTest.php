@@ -51,6 +51,7 @@ class LangCountryTest extends TestCase
         $this->assertEquals('10 maart', \LangCountry::dateBirthday($this->test_date));
         $this->assertEquals('H:i', \LangCountry::timeFormat());
         $this->assertEquals('13:05', \LangCountry::time($this->test_date));
+        $this->assertEquals('🇳🇱', \LangCountry::emojiFlag());
 
         $expected = [
             'current' => [
@@ -58,6 +59,7 @@ class LangCountryTest extends TestCase
                 'country' => 'NL',
                 'name' => 'Nederlands',
                 'lang_country' => 'nl-NL',
+                'emoji_flag' => '🇳🇱',
             ],
             'available' => [
                 [
@@ -65,18 +67,21 @@ class LangCountryTest extends TestCase
                     'country' => 'BE',
                     'name' => 'België - Vlaams',
                     'lang_country' => 'nl-BE',
+                    'emoji_flag' => '🇧🇪',
                 ],
                 [
                     'lang' => 'en',
                     'country' => 'GB',
                     'name' => 'English',
                     'lang_country' => 'en-GB',
+                    'emoji_flag' => '🇬🇧',
                 ],
                 [
                     'lang' => 'en',
                     'country' => 'US',
                     'name' => 'English',
                     'lang_country' => 'en-US',
+                    'emoji_flag' => '🇺🇸',
                 ],
             ],
         ];
@@ -107,6 +112,7 @@ class LangCountryTest extends TestCase
         $this->assertEquals('March 10th', \LangCountry::dateBirthday($this->test_date));
         $this->assertEquals('h:i a', \LangCountry::timeFormat());
         $this->assertEquals('01:05 pm', \LangCountry::time($this->test_date));
+        $this->assertEquals('🇺🇸', \LangCountry::emojiFlag());
 
         $expected = [
             'current' => [
@@ -114,6 +120,7 @@ class LangCountryTest extends TestCase
                 'country' => 'US',
                 'name' => 'English',
                 'lang_country' => 'en-US',
+                'emoji_flag' => '🇺🇸',
             ],
             'available' => [
                 [
@@ -121,18 +128,21 @@ class LangCountryTest extends TestCase
                     'country' => 'NL',
                     'name' => 'Nederlands',
                     'lang_country' => 'nl-NL',
+                    'emoji_flag' => '🇳🇱',
                 ],
                 [
                     'lang' => 'nl',
                     'country' => 'BE',
                     'name' => 'België - Vlaams',
                     'lang_country' => 'nl-BE',
+                    'emoji_flag' => '🇧🇪',
                 ],
                 [
                     'lang' => 'en',
                     'country' => 'GB',
                     'name' => 'English',
                     'lang_country' => 'en-GB',
+                    'emoji_flag' => '🇬🇧',
                 ],
             ],
         ];

@@ -84,7 +84,7 @@ For each user or guest it will create a four character `lang_country` code. For 
 When a user will log in to your app, it will load the last `lang_country` and set the sessions accordingly.
 
 ## How to switch lang_country
-There is a named route you can use that takes the new lang_coungtry as a parameter: 
+There is a named route you can use that takes the new lang_coungtry as a parameter:
 
 ``` php
 route('lang_country.switch', ['lang_country' => 'nl-BE'])
@@ -158,12 +158,12 @@ With this array you're able to create a simple language/country switcher like th
 use InvolvedGroup\LaravelLangCountry\LangCountry
 
 LangCountry::lang();
-/* 
+/*
  * The path where to store temporary files while performing image conversions.
  * If set to null, storage_path('medialibrary/temp') will be used.
- * This will return the right language. This can be a two char representation 
+ * This will return the right language. This can be a two char representation
  * (example: "nl", dutch) or a four char representation (example: es_CO; Spanish-colombian)
- */ 
+ */
 
 LangCountry::country();
 /*
@@ -201,7 +201,7 @@ LangCountry::dateNumbersFullCapitalsFormat();
  * Example: "MM/DD/YYYY" when lang_country = "en-US"
  * Example: "DD-MM-YYYY" when lang_country = "nl-NL"
  */
-     
+
 LangCountry::dateWordsWithoutDayFormat();
 /*
  * Returns string representation of the dateformat with words but without the day.
@@ -272,14 +272,14 @@ LangCountry::langSelectorHelper();
 ## What does the middleware do?
 The middleware is optional. Of course you can create your own middleware with a different approach. But this is what our “out of the box” middleware does:
 
-* It will check the users browser language preferences. Then it will try to make the most perfect match to the `allowed` lang_country’s in your settings file. 
-* When no perfect match (language AND country) it will try to make a match on language only. 
+* It will check the users browser language preferences. Then it will try to make the most perfect match to the `allowed` lang_country’s in your settings file.
+* When no perfect match (language AND country) it will try to make a match on language only.
 * When still no match, it will return to your fallback setting.
 * It will ALWAYS store a `lang_country` session.
 * When a lang_country is already set, it will not run any unnecessary scripts.
-* Based on the `lang_country` it will check your `resources/lang/` folder for an exact match in your json translation files (example es_CO). If an exact match is found it will set the Laravel Locale to this value. This way you’re able to create different translation files for each country if you need it. 
-* When no exact match, it will set the Laravel Locale to the language only. 
-* It will set the locale for the [Date](https://github.com/jenssegers/date) package. 
+* Based on the `lang_country` it will check your `resources/lang/` folder for an exact match in your json translation files (example es_CO). If an exact match is found it will set the Laravel Locale to this value. This way you’re able to create different translation files for each country if you need it.
+* When no exact match, it will set the Laravel Locale to the language only.
+* It will set the locale for the [Date](https://github.com/jenssegers/date) package.
 
 ## Change log
 
@@ -298,6 +298,7 @@ Some good resources:
 * [http://www.localeplanet.com/icu/index.html](http://www.localeplanet.com/icu/index.html)
 * [https://gist.github.com/mlconnor/1887156](https://gist.github.com/mlconnor/1887156)
 * [http://www.lingoes.net/en/translator/langcode.htm](http://www.lingoes.net/en/translator/langcode.htm)
+* [https://emojipedia.org/flags/](https://emojipedia.org/flags/)
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
 

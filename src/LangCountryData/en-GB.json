@@ -7,5 +7,6 @@
   "date_words_without_day": "F jS Y",
   "date_words_with_day": "l F jS Y",
   "date_birthday": "F jS",
-  "time_format": "h:i a"
+  "time_format": "h:i a",
+  "emoji_flag": "🇬🇧"
 }

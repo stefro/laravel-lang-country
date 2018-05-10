@@ -193,6 +193,17 @@ class LangCountry
     }
 
     /**
+     * Emoji representation of language country flag.
+     * Ex: "🇱🇹".
+     *
+     * @return string
+     */
+    public function emojiFlag()
+    {
+        return $this->data->emoji_flag;
+    }
+
+    /**
      * It will return a collection with the current language, country and name
      * and also the other available language, country and name.
      */
@@ -207,6 +218,7 @@ class LangCountry
                     'country' => $file->country,
                     'name' => $file->name,
                     'lang_country' => $item,
+                    'emoji_flag' => $file->emoji_flag,
                 ];
             })->reduce(function ($carry, $item) {
                 if ($item['lang_country'] != session('lang_country')) {
