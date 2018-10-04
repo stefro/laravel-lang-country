@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "illuminate/support": "~5.5.0|~5.6.0",
+        "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
         "jenssegers/date": "^3.3"
     },
     "require-dev": {
