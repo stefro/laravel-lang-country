@@ -286,6 +286,11 @@ The middleware is optional. Of course you can create your own middleware with a 
 * When no exact match, it will set the Laravel Locale to the language only.
 * It will set the locale for the [Date](https://github.com/jenssegers/date) package.
 
+## Override lang-country properties
+
+Don't like the default settings for a lang-country? Create a `lang-country-overrides` directory in your laravel 'resources/lang' directory.
+Place a new .json file (example: nl-NL.json) in this directory with your preferred properties. This file will override the package .json file.
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
@@ -309,7 +314,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT
 
 ## ToDo
 
-* Make it possible for developers to override the package .json files locally.
 * Caching to reduce file lookups.
 
 ## Security
