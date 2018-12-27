@@ -251,7 +251,11 @@ class LangCountry
             return[];
         }
 
-        $resource = __DIR__.'/LangCountryData/'.$lang_country.'.json';
+        if(file_exists(resource_path('lang/lang-country-overrides/'.$lang_country.'.json'))){
+            $resource = resource_path('lang/lang-country-overrides/'.$lang_country.'.json');
+        } else {
+            $resource = __DIR__.'/LangCountryData/'.$lang_country.'.json';
+        }
 
         return json_decode(file_get_contents($resource));
     }

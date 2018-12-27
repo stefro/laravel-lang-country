@@ -148,4 +148,26 @@ class LangCountryTest extends TestCase
         ];
         $this->assertEquals($expected, \LangCountry::langSelectorHelper());
     }
+
+    /** @test */
+    public function it_uses_the_override_when_available()
+    {
+        session(['lang_country' => 'nl-NL']);
+        App::setLocale('nl');
+        Date::setLocale('nl');
+
+        $file = __DIR__.'/../Support/Files/lang-country-overrides/nl-NL.json';
+
+        mkdir(resource_path('lang/lang-country-overrides/'));
+        $dest = resource_path('lang/lang-country-overrides/').'nl-NL.json';
+        copy($file, $dest);
+
+        $this->assertEquals('nl', \LangCountry::lang());
+        $this->assertEquals('NL', \LangCountry::country());
+        $this->assertEquals('Nederlands override!', \LangCountry::name());
+
+        // Remove test files from testbench
+        unlink(resource_path('lang/lang-country-overrides/').'nl-NL.json');
+        rmdir(resource_path('lang/lang-country-overrides/'));
+    }
 }
