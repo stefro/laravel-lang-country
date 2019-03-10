@@ -7,7 +7,7 @@ use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
 
 class LocaleForDateTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

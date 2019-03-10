@@ -1,4 +1,7 @@
-/vendor
+build
 composer.lock
-.DS_Store
-/.idea
+docs
+vendor
+coverage
+.DS_store
+.idea/

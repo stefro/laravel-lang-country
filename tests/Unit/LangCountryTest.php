@@ -11,7 +11,7 @@ class LangCountryTest extends TestCase
 {
     protected $test_date;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

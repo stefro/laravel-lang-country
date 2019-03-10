@@ -6,7 +6,7 @@ use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
 
 class MiddlewareTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
