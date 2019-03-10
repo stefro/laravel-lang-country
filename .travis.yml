@@ -1,22 +1,21 @@
-sudo: required
-
 language: php
 
 php:
   - 7.1
   - 7.2
+  - 7.3
 
-before_install:
-  - sudo apt-get update
+env:
+  matrix:
+    - COMPOSER_FLAGS="--prefer-lowest"
+    - COMPOSER_FLAGS=""
+
+before_script:
   - travis_retry composer self-update
-
-install:
-  - travis_retry composer update --prefer-source
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
-  - phpunit
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
-branches:
-  only:
-    - master
-    - dev
+after_script:
+  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover

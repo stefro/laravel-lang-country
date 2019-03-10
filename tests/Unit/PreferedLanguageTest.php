@@ -7,7 +7,7 @@ use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
 
 class PreferedLanguageTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

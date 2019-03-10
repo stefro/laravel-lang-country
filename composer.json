@@ -18,13 +18,14 @@
     ],
     "require": {
         "php": "^7.1",
-        "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
-        "jenssegers/date": "^3.3"
+        "illuminate/support": "~5.5.0|5.6.0|~5.7.0|~5.8.0",
+        "jenssegers/date": "^3.4"
     },
     "require-dev": {
+        "mockery/mockery": "dev-master@dev",
         "phpunit/phpunit" : "^7.0",
         "squizlabs/php_codesniffer": "^2.3",
-        "orchestra/testbench": "~3.5.0|~3.6.0"
+        "orchestra/testbench": "3.8.*"
     },
     "autoload": {
         "psr-4": {
