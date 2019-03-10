@@ -43,7 +43,7 @@ class LangCountrySwitchTest extends TestCase
         $this->assertEquals('en', session('locale_for_date'));
 
         // visit switch route
-        $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']),['HTTP_REFERER' => 'test_route'])
+        $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
             ->assertRedirect(route('test_route'));
         $this->assertEquals('nl-BE', session('lang_country'));
         $this->assertEquals('nl', session('locale'));
@@ -61,7 +61,7 @@ class LangCountrySwitchTest extends TestCase
         $this->assertEquals('en', session('locale_for_date'));
 
         // visit switch route
-        $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']),['HTTP_REFERER' => 'test_route'])
+        $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
             ->assertRedirect(route('test_route'));
         $this->assertEquals('nl-BE', session('lang_country'));
         $this->assertEquals('nl', session('locale'));
