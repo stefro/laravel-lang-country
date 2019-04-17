@@ -164,8 +164,6 @@ use InvolvedGroup\LaravelLangCountry\LangCountry
 
 LangCountry::lang();
 /*
- * The path where to store temporary files while performing image conversions.
- * If set to null, storage_path('medialibrary/temp') will be used.
  * This will return the right language. This can be a two char representation
  * (example: "nl", dutch) or a four char representation (example: es_CO; Spanish-colombian)
  */
