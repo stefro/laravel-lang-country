@@ -226,14 +226,14 @@ class LangCountry
     public function langSelectorHelper()
     {
         return $this->allLanguages()->reduce(function ($carry, $item) {
-                if ($item['lang_country'] != session('lang_country')) {
-                    $carry['available'][] = $item;
-                } else {
-                    $carry['current'] = $item;
-                }
+            if ($item['lang_country'] != session('lang_country')) {
+                $carry['available'][] = $item;
+            } else {
+                $carry['current'] = $item;
+            }
 
-                return $carry;
-            });
+            return $carry;
+        });
     }
 
     public function setAllSessions($prefered_lang)
