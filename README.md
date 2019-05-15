@@ -265,9 +265,14 @@ LangCountry::time($whatever->time);
  * Example: "13:00" when lang_country = "nl-NL"
  */
 
+LangCountry::allLanguages();
+/*
+ * It will return a collection with all the available languages with all propperties of that language.
+ */
+ 
 LangCountry::langSelectorHelper();
 /*
- * It will return a collection with the current language, country and name
+ * It will return an array with the current language, country and name
  * and also the other available language, country and name.
  */
 ```

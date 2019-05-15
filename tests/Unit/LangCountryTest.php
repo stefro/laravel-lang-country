@@ -149,6 +149,45 @@ class LangCountryTest extends TestCase
         $this->assertEquals($expected, \LangCountry::langSelectorHelper());
     }
 
+    /**
+     * @group lang_country_test
+     * @test
+     */
+    public function it_returns_all_the_availeble_languages()
+    {
+        $expected = [
+            [
+                'lang' => 'nl',
+                'country' => 'NL',
+                'name' => 'Nederlands',
+                'lang_country' => 'nl-NL',
+                'emoji_flag' => '🇳🇱',
+            ],
+            [
+                'lang' => 'nl',
+                'country' => 'BE',
+                'name' => 'België - Vlaams',
+                'lang_country' => 'nl-BE',
+                'emoji_flag' => '🇧🇪',
+            ],
+            [
+                'lang' => 'en',
+                'country' => 'GB',
+                'name' => 'English',
+                'lang_country' => 'en-GB',
+                'emoji_flag' => '🇬🇧',
+            ],
+            [
+                'lang' => 'en',
+                'country' => 'US',
+                'name' => 'English',
+                'lang_country' => 'en-US',
+                'emoji_flag' => '🇺🇸',
+            ],
+        ];
+        $this->assertEquals(collect($expected), \LangCountry::allLanguages());
+    }
+
     /** @test */
     public function it_uses_the_override_when_available()
     {

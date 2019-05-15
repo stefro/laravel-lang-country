@@ -203,11 +203,7 @@ class LangCountry
         return $this->data->emoji_flag;
     }
 
-    /**
-     * It will return a collection with the current language, country and name
-     * and also the other available language, country and name.
-     */
-    public function langSelectorHelper()
+    public function allLanguages()
     {
         return collect(config('lang-country.allowed'))
             ->map(function ($item) {
@@ -220,7 +216,16 @@ class LangCountry
                     'lang_country' => $item,
                     'emoji_flag' => $file->emoji_flag,
                 ];
-            })->reduce(function ($carry, $item) {
+            });
+    }
+
+    /**
+     * It will return a collection with the current language, country and name
+     * and also the other available language, country and name.
+     */
+    public function langSelectorHelper()
+    {
+        return $this->allLanguages()->reduce(function ($carry, $item) {
                 if ($item['lang_country'] != session('lang_country')) {
                     $carry['available'][] = $item;
                 } else {
