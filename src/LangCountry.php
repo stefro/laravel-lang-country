@@ -91,7 +91,7 @@ class LangCountry
      */
     public function dateNumbers(Carbon $carbon, $override = false)
     {
-        if($override != false){
+        if ($override != false) {
             $this->overrideSession($override);
         }
 
@@ -130,7 +130,7 @@ class LangCountry
      */
     public function dateWordsWithoutDay(Carbon $carbon, $override = false)
     {
-        if($override != false){
+        if ($override != false) {
             $this->overrideSession($override);
         }
 
@@ -158,7 +158,7 @@ class LangCountry
      */
     public function dateWordsWithDay(Carbon $carbon, $override = false)
     {
-        if($override != false){
+        if ($override != false) {
             $this->overrideSession($override);
         }
 
@@ -186,7 +186,7 @@ class LangCountry
      */
     public function dateBirthday(Carbon $carbon, $override = false)
     {
-        if($override != false){
+        if ($override != false) {
             $this->overrideSession($override);
         }
 
@@ -214,7 +214,7 @@ class LangCountry
      */
     public function time(Carbon $carbon, $override = false)
     {
-        if($override != false){
+        if ($override != false) {
             $this->overrideSession($override);
         }
 
