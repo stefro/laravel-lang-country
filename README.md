@@ -196,6 +196,9 @@ LangCountry::dateNumbers($blog->post->created_at);
  * It will return the date as a string in the format for this country.
  * Example: "04/24/2018" when lang_country = "en-US"
  * Example: "24/04/2018" when lang_country = "nl-NL"
+ *
+ * You can pass a second argument to override the lang_country. This is helpfull for sending localized emails, when the 
+ * sessions is not the same as the locale for the receiver.
  */
 
 LangCountry::dateNumbersFullCapitalsFormat();
@@ -218,6 +221,9 @@ LangCountry::dateWordsWithoutDay($blog->post->created_at);
  * It will return the date in words but without the day.
  * Example: "April 24th 2018" when lang_country = "en-US"
  * Example: "24 april 2018" when lang_country = "nl-NL"
+  *
+  * You can pass a second argument to override the lang_country. This is helpfull for sending localized emails, when the 
+  * sessions is not the same as the locale for the receiver.
  */
 
 LangCountry::dateWordsWithDayFormat();
@@ -233,6 +239,9 @@ LangCountry::dateWordsWithDay($blog->post->created_at);
  * It will return the date in words including the day.
  * Example: "Tuesday April 24th 2018" when lang_country = "en-US"
  * Example: "dinsdag 24 april 2018" when lang_country = "nl-NL"
+  *
+  * You can pass a second argument to override the lang_country. This is helpfull for sending localized emails, when the 
+  * sessions is not the same as the locale for the receiver.
  */
 
 LangCountry::dateBirthdayFormat();
@@ -248,6 +257,9 @@ LangCountry::dateBirthday($user->birthday);
  * It will return the a birthday date.
  * Example: "April 24th" when lang_country = "en-US"
  * Example: "24 april" when lang_country = "nl-NL"
+  *
+  * You can pass a second argument to override the lang_country. This is helpfull for sending localized emails, when the 
+  * sessions is not the same as the locale for the receiver.
  */
 
 LangCountry::timeFormat();
@@ -263,6 +275,9 @@ LangCountry::time($whatever->time);
  * It will return the formatted time.
  * Example: "1:00 pm" when lang_country = "en-US"
  * Example: "13:00" when lang_country = "nl-NL"
+  *
+  * You can pass a second argument to override the lang_country. This is helpfull for sending localized emails, when the 
+  * sessions is not the same as the locale for the receiver.
  */
 
 LangCountry::allLanguages();

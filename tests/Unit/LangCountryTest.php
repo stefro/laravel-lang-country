@@ -153,6 +153,27 @@ class LangCountryTest extends TestCase
      * @group lang_country_test
      * @test
      */
+    public function it_returns_the_right_values_for_en_US_while_session_is_nl_NL_but_is_overruled()
+    {
+        session(['lang_country' => 'nl-NL']);
+        App::setLocale('nl');
+        Date::setLocale('nl');
+
+        $this->assertEquals('03/10/2018', \LangCountry::dateNumbers($this->test_date, 'en-US'));
+        Date::setLocale('nl');
+        $this->assertEquals('March 10th 2018', \LangCountry::dateWordsWithoutDay($this->test_date, 'en-US'));
+        Date::setLocale('nl');
+        $this->assertEquals('Saturday March 10th 2018', \LangCountry::dateWordsWithDay($this->test_date, 'en-US'));
+        Date::setLocale('nl');
+        $this->assertEquals('March 10th', \LangCountry::dateBirthday($this->test_date, 'en-US'));
+        Date::setLocale('nl');
+        $this->assertEquals('01:05 pm', \LangCountry::time($this->test_date, 'en-US'));
+    }
+
+    /**
+     * @group lang_country_test
+     * @test
+     */
     public function it_returns_all_the_availeble_languages()
     {
         $expected = [

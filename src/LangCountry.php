@@ -29,6 +29,15 @@ class LangCountry
         $this->data = $this->getDataFromFile($this->lang_country);
     }
 
+    public function overrideSession($lang_country)
+    {
+        $this->lang_country = $lang_country;
+        $this->data = $this->getDataFromFile($lang_country);
+        Date::setLocale($this->data->lang);
+
+        return $this;
+    }
+
     /**
      * It will return the right language. This can be a two char representation (ex. "nl", dutch)
      * or a four char representation (ex. es_CO; Spanish-colombian).
@@ -80,8 +89,12 @@ class LangCountry
      * @param Carbon $carbon
      * @return string
      */
-    public function dateNumbers(Carbon $carbon)
+    public function dateNumbers(Carbon $carbon, $override = false)
     {
+        if($override != false){
+            $this->overrideSession($override);
+        }
+
         return Date::instance($carbon)->format($this->data->date_numbers);
     }
 
@@ -115,8 +128,12 @@ class LangCountry
      * @param Carbon $carbon
      * @return string
      */
-    public function dateWordsWithoutDay(Carbon $carbon)
+    public function dateWordsWithoutDay(Carbon $carbon, $override = false)
     {
+        if($override != false){
+            $this->overrideSession($override);
+        }
+
         return Date::instance($carbon)->format($this->data->date_words_without_day);
     }
 
@@ -139,8 +156,12 @@ class LangCountry
      * @param Carbon $carbon
      * @return string
      */
-    public function dateWordsWithDay(Carbon $carbon)
+    public function dateWordsWithDay(Carbon $carbon, $override = false)
     {
+        if($override != false){
+            $this->overrideSession($override);
+        }
+
         return Date::instance($carbon)->format($this->data->date_words_with_day);
     }
 
@@ -163,8 +184,12 @@ class LangCountry
      * @param Carbon $carbon
      * @return string
      */
-    public function dateBirthday(Carbon $carbon)
+    public function dateBirthday(Carbon $carbon, $override = false)
     {
+        if($override != false){
+            $this->overrideSession($override);
+        }
+
         return Date::instance($carbon)->format($this->data->date_birthday);
     }
 
@@ -187,8 +212,12 @@ class LangCountry
      * @param Carbon $carbon
      * @return string
      */
-    public function time(Carbon $carbon)
+    public function time(Carbon $carbon, $override = false)
     {
+        if($override != false){
+            $this->overrideSession($override);
+        }
+
         return Date::instance($carbon)->format($this->data->time_format);
     }
 
