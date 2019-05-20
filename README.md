@@ -166,6 +166,10 @@ LangCountry::lang();
 /*
  * This will return the right language. This can be a two char representation
  * (example: "nl", dutch) or a four char representation (example: es_CO; Spanish-colombian)
+ *
+ * You can pass a second argument to override the lang_country. This is helpfull for sending localized emails, when the 
+ * session is not the same as the locale for the receiver.
+ * Example: Mail::to($request->user())->locale(\LangCountry::lang('en-US))->send(new OrderShipped($order));
  */
 
 LangCountry::country();

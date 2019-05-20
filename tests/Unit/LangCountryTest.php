@@ -230,4 +230,16 @@ class LangCountryTest extends TestCase
         unlink(resource_path('lang/lang-country-overrides/').'nl-NL.json');
         rmdir(resource_path('lang/lang-country-overrides/'));
     }
+
+    /**
+     * @test
+     */
+    public function get_the_language_for_an_overrided_lang_country_code()
+    {
+        session(['lang_country' => 'nl-NL']);
+        App::setLocale('nl');
+        Date::setLocale('nl');
+
+        $this->assertEquals('en', \LangCountry::lang('en-US'));
+    }
 }

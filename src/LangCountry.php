@@ -42,8 +42,12 @@ class LangCountry
      *
      * @return string
      */
-    public function lang()
+    public function lang($override = false)
     {
+        if ($override != false) {
+            $this->overrideSession($override);
+        }
+
         return $this->data->lang;
     }
 
