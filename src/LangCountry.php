@@ -34,8 +34,6 @@ class LangCountry
         $this->lang_country = $lang_country;
         $this->data = $this->getDataFromFile($lang_country);
         Date::setLocale($this->data->lang);
-
-        return $this;
     }
 
     /**
