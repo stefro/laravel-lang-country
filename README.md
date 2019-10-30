@@ -73,7 +73,7 @@ public function authenticated(Request $request, $user)
 **Thats all!**
 
 ## What will it do?
-For each user or guest it will create a four character `lang_country` code. For guests it will try to make a perfect match based on the browser settings. For users, it will load last used `lang_country`, because we will store it in the DB.
+For each user or guest it will create a four character `lang_country` code. For guests it will try to make a perfect match based on the browser settings. For users, it will load the last used `lang_country`, because we will store it in the DB.
 
 **There will ALWAYS be set three sessions:**
 
