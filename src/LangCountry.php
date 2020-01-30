@@ -31,6 +31,12 @@ class LangCountry
 
     public function overrideSession($lang_country)
     {
+        // In case the override is not a 4 char value
+        if (5 !== strlen($lang_country)) {
+            $lang = new PreferedLanguage($lang_country);
+            $lang_country = $lang->lang_country;
+        }
+
         $this->lang_country = $lang_country;
         $this->data = $this->getDataFromFile($lang_country);
         Date::setLocale($this->data->lang);
