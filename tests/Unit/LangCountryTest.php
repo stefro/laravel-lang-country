@@ -4,8 +4,8 @@ namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
 
 use App;
 use Carbon\Carbon;
-use Jenssegers\Date\Date;
 use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
+use Jenssegers\Date\Date;
 
 class LangCountryTest extends TestCase
 {
