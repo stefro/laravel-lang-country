@@ -3,8 +3,8 @@
 namespace InvolvedGroup\LaravelLangCountry;
 
 use Carbon\Carbon;
-use Jenssegers\Date\Date;
 use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
+use Jenssegers\Date\Date;
 
 class LangCountry
 {

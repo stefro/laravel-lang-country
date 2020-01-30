@@ -2,8 +2,8 @@
 
 namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
 
-use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
 use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
+use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
 
 class LocaleForDateTest extends TestCase
 {

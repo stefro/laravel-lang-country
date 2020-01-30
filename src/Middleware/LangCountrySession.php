@@ -3,8 +3,8 @@
 namespace InvolvedGroup\LaravelLangCountry\Middleware;
 
 use App;
-use Date;
 use Closure;
+use Date;
 
 class LangCountrySession
 {
