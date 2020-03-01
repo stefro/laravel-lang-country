@@ -28,7 +28,6 @@ class MiddlewareTest extends TestCase
 
         $this->assertEquals('en-GB', session('lang_country'));
         $this->assertEquals('en', session('locale'));
-        $this->assertEquals('en', session('locale_for_date'));
     }
 
     /** @test */
@@ -39,6 +38,5 @@ class MiddlewareTest extends TestCase
 
         $this->assertEquals('nl-BE', session('lang_country'));
         $this->assertEquals('nl', session('locale'));
-        $this->assertEquals('nl', session('locale_for_date'));
     }
 }

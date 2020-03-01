@@ -40,14 +40,12 @@ class LangCountrySwitchTest extends TestCase
             ->assertStatus(200);
         $this->assertEquals('en-GB', session('lang_country'));
         $this->assertEquals('en', session('locale'));
-        $this->assertEquals('en', session('locale_for_date'));
 
         // visit switch route
         $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
             ->assertRedirect(route('test_route'));
         $this->assertEquals('nl-BE', session('lang_country'));
         $this->assertEquals('nl', session('locale'));
-        $this->assertEquals('nl', session('locale_for_date'));
     }
 
     /** @test */
@@ -58,14 +56,12 @@ class LangCountrySwitchTest extends TestCase
             ->assertStatus(200);
         $this->assertEquals('en-GB', session('lang_country'));
         $this->assertEquals('en', session('locale'));
-        $this->assertEquals('en', session('locale_for_date'));
 
         // visit switch route
         $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
             ->assertRedirect(route('test_route'));
         $this->assertEquals('nl-BE', session('lang_country'));
         $this->assertEquals('nl', session('locale'));
-        $this->assertEquals('nl', session('locale_for_date'));
 
         $this->assertEquals('nl-BE', $this->user->lang_country);
     }

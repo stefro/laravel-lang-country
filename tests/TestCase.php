@@ -25,7 +25,6 @@ abstract class TestCase extends Orchestra
     {
         return [
             'LangCountry' => \InvolvedGroup\LaravelLangCountry\LangCountryFacade::class,
-            'Date' => \Jenssegers\Date\Date::class,
             'Auth' => \Illuminate\Support\Facades\Auth::class,
         ];
     }

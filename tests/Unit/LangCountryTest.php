@@ -5,7 +5,6 @@ namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
 use App;
 use Carbon\Carbon;
 use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
-use Jenssegers\Date\Date;
 
 class LangCountryTest extends TestCase
 {
@@ -35,7 +34,6 @@ class LangCountryTest extends TestCase
     {
         session(['lang_country' => 'nl-NL']);
         App::setLocale('nl');
-        Date::setLocale('nl');
 
         $this->assertEquals('nl', \LangCountry::lang());
         $this->assertEquals('NL', \LangCountry::country());
@@ -96,7 +94,6 @@ class LangCountryTest extends TestCase
     {
         session(['lang_country' => 'en-US']);
         App::setLocale('en');
-        Date::setLocale('en');
 
         $this->assertEquals('en', \LangCountry::lang());
         $this->assertEquals('US', \LangCountry::country());
@@ -157,16 +154,11 @@ class LangCountryTest extends TestCase
     {
         session(['lang_country' => 'nl-NL']);
         App::setLocale('nl');
-        Date::setLocale('nl');
 
         $this->assertEquals('03/10/2018', \LangCountry::dateNumbers($this->test_date, 'en-US'));
-        Date::setLocale('nl');
         $this->assertEquals('March 10th 2018', \LangCountry::dateWordsWithoutDay($this->test_date, 'en-US'));
-        Date::setLocale('nl');
         $this->assertEquals('Saturday March 10th 2018', \LangCountry::dateWordsWithDay($this->test_date, 'en-US'));
-        Date::setLocale('nl');
         $this->assertEquals('March 10th', \LangCountry::dateBirthday($this->test_date, 'en-US'));
-        Date::setLocale('nl');
         $this->assertEquals('01:05 pm', \LangCountry::time($this->test_date, 'en-US'));
     }
 
@@ -214,7 +206,6 @@ class LangCountryTest extends TestCase
     {
         session(['lang_country' => 'nl-NL']);
         App::setLocale('nl');
-        Date::setLocale('nl');
 
         $file = __DIR__.'/../Support/Files/lang-country-overrides/nl-NL.json';
 
@@ -238,7 +229,6 @@ class LangCountryTest extends TestCase
     {
         session(['lang_country' => 'nl-NL']);
         App::setLocale('nl');
-        Date::setLocale('nl');
 
         $this->assertEquals('en', \LangCountry::lang('en-US'));
     }

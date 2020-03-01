@@ -4,7 +4,6 @@ namespace InvolvedGroup\LaravelLangCountry\Middleware;
 
 use App;
 use Closure;
-use Date;
 
 class LangCountrySession
 {
@@ -24,7 +23,6 @@ class LangCountrySession
 
         // Set the right locale for the laravel App and also for Date (https://github.com/jenssegers/date)
         App::setLocale(session('locale'));
-        Date::setLocale(session('locale_for_date'));
 
         return $next($request);
     }

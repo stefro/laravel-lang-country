@@ -6,13 +6,16 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
+# Important!
+This package is Laravel 7+!
+For use with earlier versions please use version 1.
+
 ## TL;DR
-Setting the locale is not enough most of the time, some countries use more than one langages. Also, different countries use different date notation formats. This package is here to help you with that!
+Setting the locale is not enough most of the time, some countries use more than one languages. Also, different countries use different date notation formats. This package is here to help you with that!
 In a nutshell:
 
 * You can set all supported lang_country of your choice in the settings.
-* It will make smart fallbacks.
-* It will help you set the right locale for the awesome [Date](https://github.com/jenssegers/date) package.
+* It will make smart fallback.
 * You can now show dates not only translated, but also in the right format! (example: jan 1th 2018; 1 jan 2018. Both the same date, both translated, but every country has a different order).
 * It will help you to show the right flag in your language switcher (because you now also have a country value, not only a language value).
 * We'll assume you're using Translation Strings As Keys ([Using Translation Strings As Keys](https://laravel.com/docs/5.6/localization#using-translation-strings-as-keys))
@@ -75,16 +78,15 @@ public function authenticated(Request $request, $user)
 ## What will it do?
 For each user or guest it will create a four character `lang_country` code. For guests it will try to make a perfect match based on the browser settings. For users, it will load the last used `lang_country`, because we will store it in the DB.
 
-**There will ALWAYS be set three sessions:**
+**There will ALWAYS be set two sessions:**
 
 - `lang_country` (example: `nl-BE`)
 - `locale` (examples: `nl`, `es-CO`)
-- `locale_for_date` (example: `nl`)
 
 When a user will log in to your app, it will load the last `lang_country` and set the sessions accordingly.
 
 ## How to switch lang_country
-There is a named route you can use that takes the new lang_coungtry as a parameter:
+There is a named route you can use that takes the new lang_country as a parameter:
 
 ``` php
 route('lang_country.switch', ['lang_country' => 'nl-BE'])
@@ -306,7 +308,6 @@ The middleware is optional. Of course you can create your own middleware with a 
 * When a lang_country is already set, it will not run any unnecessary scripts.
 * Based on the `lang_country` it will check your `resources/lang/` folder for an exact match in your json translation files (example es_CO). If an exact match is found it will set the Laravel Locale to this value. This way you’re able to create different translation files for each country if you need it.
 * When no exact match, it will set the Laravel Locale to the language only.
-* It will set the locale for the [Date](https://github.com/jenssegers/date) package.
 
 ## Override lang-country properties
 
@@ -345,7 +346,6 @@ If you discover any security related issues, please email stef.rouschop@involved
 ## Credits
 
 - [Stef Rouschop](https://github.com/stefro)
-- [Jens Segers](https://github.com/jenssegers), For his awesome [Date](https://github.com/jenssegers/date) package.
 - Ronald Huijgen: Background vocals, choreography and funny business.
 - [All Contributors][link-contributors]
 

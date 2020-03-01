@@ -4,7 +4,6 @@ namespace InvolvedGroup\LaravelLangCountry;
 
 use Carbon\Carbon;
 use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
-use Jenssegers\Date\Date;
 
 class LangCountry
 {
@@ -39,7 +38,6 @@ class LangCountry
 
         $this->lang_country = $lang_country;
         $this->data = $this->getDataFromFile($lang_country);
-        Date::setLocale($this->data->lang);
     }
 
     /**
@@ -103,7 +101,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return Date::instance($carbon)->format($this->data->date_numbers);
+        return $carbon->locale($this->data->lang)->translatedFormat($this->data->date_numbers);
     }
 
     /**
@@ -142,7 +140,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return Date::instance($carbon)->format($this->data->date_words_without_day);
+        return $carbon->locale($this->data->lang)->translatedFormat($this->data->date_words_without_day);
     }
 
     /**
@@ -170,7 +168,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return Date::instance($carbon)->format($this->data->date_words_with_day);
+        return $carbon->locale($this->data->lang)->translatedFormat($this->data->date_words_with_day);
     }
 
     /**
@@ -198,7 +196,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return Date::instance($carbon)->format($this->data->date_birthday);
+        return $carbon->locale($this->data->lang)->translatedFormat($this->data->date_birthday);
     }
 
     /**
@@ -226,7 +224,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return Date::instance($carbon)->format($this->data->time_format);
+        return $carbon->locale($this->data->lang)->translatedFormat($this->data->time_format);
     }
 
     /**
@@ -278,7 +276,6 @@ class LangCountry
         $lang = new PreferedLanguage($prefered_lang);
         session(['lang_country' => $lang->lang_country]);
         session(['locale' => $lang->locale]);
-        session(['locale_for_date' => $lang->locale_for_date]);
     }
 
     /**

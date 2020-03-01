@@ -29,22 +29,11 @@ class LocaleForDateTest extends TestCase
      * @group locale_for_date_test
      * @test
      */
-    public function four_char_json_available_in_date_package()
-    {
-        $lang = new PreferedLanguage('zh-CN,en');
-
-        $this->assertEquals('zh-CN', $lang->locale_for_date);
-    }
-
-    /**
-     * @group locale_for_date_test
-     * @test
-     */
     public function no_four_char_json_available_in_date_package_fallback_to_just_lang()
     {
         $lang = new PreferedLanguage('nl-NL');
 
-        $this->assertEquals('nl', $lang->locale_for_date);
+        $this->assertEquals('nl', $lang->locale);
     }
 
     /**
@@ -55,6 +44,6 @@ class LocaleForDateTest extends TestCase
     {
         $lang = new PreferedLanguage('xx-XX');
 
-        $this->assertEquals('en', $lang->locale_for_date);
+        $this->assertEquals('en', $lang->locale);
     }
 }
