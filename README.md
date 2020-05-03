@@ -16,7 +16,7 @@ In a nutshell:
 
 * You can set all supported lang_country of your choice in the settings.
 * It will make smart fallback.
-* You can now show dates not only translated, but also in the right format! (example: jan 1th 2018; 1 jan 2018. Both the same date, both translated, but every country has a different order).
+* You can now show dates not only translated, but also in the right format! (example: jan 1st 2018; 1 jan 2018. Both the same date, both translated, but every country has a different order).
 * It will help you to show the right flag in your language switcher (because you now also have a country value, not only a language value).
 * We'll assume you're using Translation Strings As Keys ([Using Translation Strings As Keys](https://laravel.com/docs/5.6/localization#using-translation-strings-as-keys))
 
