@@ -1,18 +1,25 @@
 {
-    "name": "involved-group/laravel-lang-country",
+    "name": "jayenne/laravel-locale",
     "type": "library",
-    "description": "Setting the locale is not enough most of the time, some countries use more than one languages. Also, different countries use different date notation formats. This package is here to help you with that!",
+    "description": "Setting the locale is not enough most of the time, some countries use more than one languages. Also, different countries use different date notation formats, names, flags and currencies. This package is here to help you with that!",
     "keywords": [
         "InvolvedGroup",
         "LaravelLangCountry"
+        "CuriousPeople"
     ],
-    "homepage": "https://github.com/InvolvedGroup/LaravelLangCountry",
+    "homepage": "https://github.com/jayenne/laravel-lang-country",
     "license": "MIT",
     "authors": [
         {
             "name": "Stef Rouschop",
             "email": "stef.rouschop@involvedgroup.eu",
             "homepage": "https://github.com/stefro",
+            "role": "Developer"
+        },
+        {
+            "name": "Jayenne Montana",
+            "email": "jayenne@hotmail.com",
+            "homepage": "https://github.com/jayenne",
             "role": "Developer"
         }
     ],
