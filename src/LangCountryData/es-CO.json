@@ -1,5 +1,7 @@
 {
   "country": "CO",
+  "country_name": "Colombia",
+  "country_name_local": "Colombia",
   "lang": "es_CO",
   "name": "Colombia",
   "date_numbers": "d/m/Y",
@@ -8,5 +10,10 @@
   "date_words_with_day": "l j F Y",
   "date_birthday": "j F",
   "time_format": "H:i",
-  "emoji_flag": "🇨🇴"
+  "emoji_flag": "🇨🇴",
+  "currency_code": "COP",
+  "currency_symbol": "$",
+  "currency_symbol_local": "COP$",
+  "currency_name": "Peso",
+  "currency_name_local": "Peso"
 }

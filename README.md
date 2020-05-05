@@ -73,12 +73,12 @@ public function authenticated(Request $request, $user)
 }
 ```
 
-**Thats all!**
+**That's all folks!**
 
 ## What will it do?
 For each user or guest it will create a four character `lang_country` code. For guests it will try to make a perfect match based on the browser settings. For users, it will load the last used `lang_country`, because we will store it in the DB.
 
-**There will ALWAYS be set two sessions:**
+**There will ALWAYS be two sessions set:**
 
 - `lang_country` (example: `nl-BE`)
 - `locale` (examples: `nl`, `es-CO`)
@@ -103,49 +103,84 @@ Array
         (
             [0] => Array
                 (
-                    [lang] => nl
                     [country] => NL
+                    [country_name] => The Netherlands
+                    [country_name_local] => Nederlands
+                    [lang] => nl
                     [name] => Nederlands
                     [lang_country] => nl-NL
                     [emoji_flag] => 🇳🇱
+                    [currency_code] => EUR
+                    [currency_symbol] => €
+                    [currency_symbol_local] => €
+                    [currency_name] => Euro
+                    [currency_name_local] => Euro
                 )
 
             [1] => Array
                 (
-                    [lang] => nl
                     [country] => BE
+                    [country_name] => The Netherlands
+                    [country_name_local] => Nederlands
+                    [lang] => nl
                     [name] => België - Vlaams
                     [lang_country] => nl-BE
                     [emoji_flag] => 🇧🇪
+                    [currency_code] => EUR
+                    [currency_symbol] => €
+                    [currency_symbol_local] => €
+                    [currency_name] => Euro
+                    [currency_name_local] => Euro
                 )
 
             [2] => Array
                 (
-                    [lang] => en
                     [country] => GB
+                    [country_name] => United Kingdom
+                    [country_name_local] => United Kingdom
+                    [lang] => en
                     [name] => English
                     [lang_country] => en-GB
                     [emoji_flag] => 🇬🇧
+                    [currency_code] => GBP
+                    [currency_symbol] => £
+                    [currency_symbol_local] => £
+                    [currency_name] => Pound Stirling
+                    [currency_name_local] => Pound
                 )
 
             [3] => Array
-                (
-                    [lang] => en
+                ( 
                     [country] => CA
-                    [name] => Canada - English
+                    [country_name] => Canada
+                    [country_name_local] => Canada
+                    [lang] => en
+                    [name] => Canadian English
                     [lang_country] => en-CA
                     [emoji_flag] => 🇨🇦
+                    [currency_code] => CAD
+                    [currency_symbol] => $
+                    [currency_symbol_local] => CA$
+                    [currency_name] => Dollar
+                    [currency_name_local] => Canadian Dollar
                 )
 
         )
 
     [current] => Array
         (
-            [lang] => en
             [country] => US
-            [name] => English
+            [country_name] => United States of America
+            [country_name_local] => America
+            [lang] => en
+            [name] => Amreican English
             [lang_country] => en-US
             [emoji_flag] => 🇺🇸
+            [currency_code] => USD
+            [currency_symbol] => $
+            [currency_symbol_local] => US$
+            [currency_name] => Dollar
+            [currency_name_local] => US Dollar
         )
 
 )
@@ -164,6 +199,27 @@ With this array you're able to create a simple language/country switcher like th
 ``` php
 use InvolvedGroup\LaravelLangCountry\LangCountry
 
+LangCountry::country();
+/*
+ * This will return the two character ISO-3166 code representation of the country.
+ * Example: "NL" when lang_country = "nl-NL"
+ * Example: "BE" when lang_country = "nl-BE"
+ */
+
+LangCountry::countryName();
+/*
+ * This will return the primary name of the country.
+ * Example: "Netherlads" when lang_country = "nl-NL"
+ * Example: "Belgium" when lang_country = "nl-BE"
+ */
+
+LangCountry::countryNameLocal();
+/*
+ * This will return the name of the country in the language of this file .
+ * Example: "Nederland" when lang_country = "nl-NL"
+ * Example: "België" when lang_country = "nl-BE"
+ */
+
 LangCountry::lang();
 /*
  * This will return the right language. This can be a two char representation
@@ -173,14 +229,6 @@ LangCountry::lang();
  * session is not the same as the locale for the receiver.
  * Example: Mail::to($request->user())->locale(\LangCountry::lang('en-US))->send(new OrderShipped($order));
  */
-
-LangCountry::country();
-/*
- * This will return the two character code representation of the country.
- * Example: "NL" when lang_country = "nl-NL"
- * Example: "BE" when lang_country = "nl-BE"
- */
-
 LangCountry::name();
 /*
  * This will return the name of the language TRANSLATED IN THE LANGUAGE IN QUESTION.
@@ -295,6 +343,41 @@ LangCountry::langSelectorHelper();
 /*
  * It will return an array with the current language, country and name
  * and also the other available language, country and name.
+ */
+
+LangCountry::currencyCode();
+/*
+ * This will return the ISO-4217 of the country in this file .
+ * Example: "EUR" when lang_country = "nl-NL"
+ * Example: "COP" when lang_country = "es-CO"
+ */
+
+LangCountry::currencySymbol();
+/*
+ * This will return the symbol of the officially regognised (primary) currency of the country in this file .
+ * Example: "€" when lang_country = "nl-NL"
+ * Example: "$" when lang_country = "es-CO"
+ */
+
+LangCountry::currencySymbolLocal();
+/*
+ * This will return the `localized` symbol of the officially regognised (primary) currency of the country in this file .
+ * Example: "AU$" when lang_country = "en-AU"
+ * Example: "COP$" when lang_country = "es-CO"
+ */
+
+LangCountry::currencyName();
+/*
+ * This will return the `localized` name of the officially regognised (primary) currency of the country in this file .
+ * Example: "Dollar" when lang_country = "en-AU"
+ * Example: "Dollar" when lang_country = "en-Au"
+ */
+
+LangCountry::currencyNameLocal();
+/*
+ * This will return the `localized` name of the officially regognised (primary) currency of the country in this file .
+ * Example: "Australian Dollar" when lang_country = "en-AU"
+ * Example: "US Dollar" when lang_country = "en-US"
  */
 ```
 

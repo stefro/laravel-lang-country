@@ -66,6 +66,26 @@ class LangCountry
     }
 
     /**
+     * It will return the name of the country represented by the country code.
+     *
+     * @return string
+     */
+    public function countryName()
+    {
+        return $this->data->country_name;
+    }
+
+    /**
+     * It will return the two character code representation of the country.
+     *
+     * @return string
+     */
+    public function countryNameLocal()
+    {
+        return $this->data->country_name_local;
+    }
+
+    /**
      * It will return the name of the language TRANSLATED IN THE LANGUAGE IN QUESTION.
      * You can use this for nice country-selectors in your app.
      *
@@ -245,13 +265,70 @@ class LangCountry
                 $file = $this->getDataFromFile($item);
 
                 return [
-                    'lang' => $file->lang,
                     'country' => $file->country,
+                    'country_name' => $file->country_name,
+                    'country_name_local' => $file->country_name_local,
+                    'lang' => $file->lang,
                     'name' => $file->name,
                     'lang_country' => $item,
                     'emoji_flag' => $file->emoji_flag,
+                    'currency_code' => $file->currency_code,
+                    'currency_symbol' => $file->currency_symbol,
+                    'currency_symbol_local' => $file->currency_symbol_local,
+                    'currency_name' => $file->currency_name,
+                    'currency_name_local' => $file->currency_name_local
                 ];
             });
+    }
+
+    /**
+     * It will return the iso code of the country's currency.
+     *
+     * @return string
+     */
+    public function currencyCode()
+    {
+        return $this->data->currency_code;
+    }
+
+    /**
+     * It will return the iso symbol of the country's currency.
+     *
+     * @return string
+     */
+    public function currencySymbol()
+    {
+        return $this->data->currency_symbol;
+    }
+
+    /**
+     * It will return the iso symbol of the country's currency, prefixed with localization.
+     *
+     * @return string
+     */
+    public function currencySymbolLocal()
+    {
+        return $this->data->currency_symbol_local;
+    }
+    
+    /**
+     * It will return the name of the country's currency.
+     *
+     * @return string
+     */
+    public function currencyName()
+    {
+        return $this->data->currency_name;
+    }
+    
+    /**
+     * It will return the name of the country's currency as spoken locally by language code.
+     *
+     * @return string
+     */
+    public function currencyNameLocal()
+    {
+        return $this->data->currency_name_local;
     }
 
     /**
