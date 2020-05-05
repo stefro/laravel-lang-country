@@ -276,7 +276,7 @@ class LangCountry
                     'currency_symbol' => $file->currency_symbol,
                     'currency_symbol_local' => $file->currency_symbol_local,
                     'currency_name' => $file->currency_name,
-                    'currency_name_local' => $file->currency_name_local
+                    'currency_name_local' => $file->currency_name_local,
                 ];
             });
     }
@@ -310,7 +310,7 @@ class LangCountry
     {
         return $this->data->currency_symbol_local;
     }
-    
+
     /**
      * It will return the name of the country's currency.
      *
@@ -320,7 +320,7 @@ class LangCountry
     {
         return $this->data->currency_name;
     }
-    
+
     /**
      * It will return the name of the country's currency as spoken locally by language code.
      *
