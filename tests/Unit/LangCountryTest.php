@@ -67,11 +67,11 @@ class LangCountryTest extends TestCase
                 'name' => 'Nederlands',
                 'lang_country' => 'nl-NL',
                 'emoji_flag' => '🇳🇱',
-                "currency_code" => "EUR",
-                "currency_symbol" => "€",
-                "currency_symbol_local" => "€",
-                "currency_name" => "Euro",
-                "currency_name_local" => "Euro"
+                'currency_code' => 'EUR',
+                'currency_symbol' => '€',
+                'currency_symbol_local' => '€',
+                'currency_name' => 'Euro',
+                'currency_name_local' => 'Euro'
             ],
             'available' => [
                 [
@@ -82,11 +82,11 @@ class LangCountryTest extends TestCase
                     'name' => 'België - Vlaams',
                     'lang_country' => 'nl-BE',
                     'emoji_flag' => '🇧🇪',
-                    "currency_code" => "EUR",
-                    "currency_symbol" => "€",
-                    "currency_symbol_local" => "€",
-                    "currency_name" => "Euro",
-                    "currency_name_local" => "Euro"
+                    'currency_code' => 'EUR',
+                    'currency_symbol' => '€',
+                    'currency_symbol_local' => '€',
+                    'currency_name' => 'Euro',
+                    'currency_name_local' => 'Euro'
                 ],
                 [
                     'country' => 'GB',
@@ -96,11 +96,11 @@ class LangCountryTest extends TestCase
                     'name' => 'English',
                     'lang_country' => 'en-GB',
                     'emoji_flag' => '🇬🇧',
-                    "currency_code" => "GBP",
-                    "currency_symbol" => "£",
-                    "currency_symbol_local" => "£",
-                    "currency_name" => "Pound Stirling",
-                    "currency_name_local" => "Pound"
+                    'currency_code' => 'GBP',
+                    'currency_symbol' => '£',
+                    'currency_symbol_local' => '£',
+                    'currency_name' =>'Pound Stirling',
+                    'currency_name_local' => 'Pound'
                 ],
                 [
                     'country' => 'US',
@@ -110,11 +110,11 @@ class LangCountryTest extends TestCase
                     'name' => 'American English',
                     'lang_country' => 'en-US',
                     'emoji_flag' => '🇺🇸',
-                    "currency_code" => "USD",
-                    "currency_symbol" => "$",
-                    "currency_symbol_local" => "US$",
-                    "currency_name" => "Dollar",
-                    "currency_name_local" => "US Dollar"
+                    'currency_code' => 'USD',
+                    'currency_symbol' => '$',
+                    'currency_symbol_local' => 'US$',
+                    'currency_name' => 'Dollar',
+                    'currency_name_local' => 'US Dollar'
                 ],
             ],
         ];
@@ -162,11 +162,11 @@ class LangCountryTest extends TestCase
                 'name' => 'American English',
                 'lang_country' => 'en-US',
                 'emoji_flag' => '🇺🇸',
-                "currency_code" => "USD",
-                "currency_symbol" => "$",
-                "currency_symbol_local" => "US$",
-                "currency_name" => "Dollar",
-                "currency_name_local" => "US Dollar",
+                'currency_code' => 'USD',
+                'currency_symbol' => '$',
+                'currency_symbol_local' => 'US$',
+                'currency_name' => 'Dollar',
+                'currency_name_local' => 'US Dollar',
             ],
             'available' => [
                 [
@@ -177,11 +177,11 @@ class LangCountryTest extends TestCase
                     'name' => 'Nederlands',
                     'lang_country' => 'nl-NL',
                     'emoji_flag' => '🇳🇱',
-                    "currency_code" => "EUR",
-                    "currency_symbol" => "€",
-                    "currency_symbol_local" => "€",
-                    "currency_name" => "Euro",
-                    "currency_name_local" => "Euro",
+                    'currency_code' => 'EUR',
+                    'currency_symbol' => '€',
+                    'currency_symbol_local' => '€',
+                    'currency_name' => 'Euro',
+                    'currency_name_local' => 'Euro',
                 ],
                 [
                     'country' => 'BE',
@@ -191,11 +191,11 @@ class LangCountryTest extends TestCase
                     'name' => 'België - Vlaams',
                     'lang_country' => 'nl-BE',
                     'emoji_flag' => '🇧🇪',
-                    "currency_code" => "EUR",
-                    "currency_symbol" => "€",
-                    "currency_symbol_local" => "€",
-                    "currency_name" => "Euro",
-                    "currency_name_local" => "Euro",
+                    'currency_code' => 'EUR',
+                    'currency_symbol' => '€',
+                    'currency_symbol_local' => '€',
+                    'currency_name' => 'Euro',
+                    'currency_name_local' => 'Euro',
                 ],
                 [
                     'country' => 'GB',
@@ -205,11 +205,11 @@ class LangCountryTest extends TestCase
                     'name' => 'English',
                     'lang_country' => 'en-GB',
                     'emoji_flag' => '🇬🇧',
-                    "currency_code" => "GBP",
-                    "currency_symbol" => "£",
-                    "currency_symbol_local" => "£",
-                    "currency_name" => "Pound Stirling",
-                    "currency_name_local" => "Pound",
+                    'currency_code' => 'GBP',
+                    'currency_symbol' => '£',
+                    'currency_symbol_local' => '£',
+                    'currency_name' => 'Pound Stirling',
+                    'currency_name_local' => 'Pound',
                 ],
             ],
         ];
@@ -247,11 +247,11 @@ class LangCountryTest extends TestCase
                 'name' => 'Nederlands',
                 'lang_country' => 'nl-NL',
                 'emoji_flag' => '🇳🇱',
-                "currency_code" => "EUR",
-                "currency_symbol" => "€",
-                "currency_symbol_local" => "€",
-                "currency_name" => "Euro",
-                "currency_name_local" => "Euro"
+                'currency_code' => 'EUR',
+                'currency_symbol' => '€',
+                'currency_symbol_local' => '€',
+                'currency_name' => 'Euro',
+                'currency_name_local' => 'Euro'
             ],
             [
                 'country' => 'BE',
@@ -261,11 +261,11 @@ class LangCountryTest extends TestCase
                 'name' => 'België - Vlaams',
                 'lang_country' => 'nl-BE',
                 'emoji_flag' => '🇧🇪',
-                "currency_code" => "EUR",
-                "currency_symbol" => "€",
-                "currency_symbol_local" => "€",
-                "currency_name" => "Euro",
-                "currency_name_local" => "Euro"
+                'currency_code' => 'EUR',
+                'currency_symbol' => '€',
+                'currency_symbol_local' => '€',
+                'currency_name' => 'Euro',
+                'currency_name_local' => 'Euro'
             ],
             [
                 'country' => 'GB',
@@ -275,11 +275,11 @@ class LangCountryTest extends TestCase
                 'name' => 'English',
                 'lang_country' => 'en-GB',
                 'emoji_flag' => '🇬🇧',
-                "currency_code" => "GBP",
-                "currency_symbol" => "£",
-                "currency_symbol_local" => "£",
-                "currency_name" => "Pound Stirling",
-                "currency_name_local" => "Pound"
+                'currency_code' => 'GBP',
+                'currency_symbol' => '£',
+                'currency_symbol_local' => '£',
+                'currency_name' => 'Pound Stirling',
+                'currency_name_local' => 'Pound'
             ],
             [
                 'country' => 'US',
@@ -289,11 +289,11 @@ class LangCountryTest extends TestCase
                 'name' => 'American English',
                 'lang_country' => 'en-US',
                 'emoji_flag' => '🇺🇸',
-                "currency_code" => "USD",
-                "currency_symbol" => "$",
-                "currency_symbol_local" => "US$",
-                "currency_name" => "Dollar",
-                "currency_name_local" => "US Dollar"
+                'currency_code' => 'USD',
+                'currency_symbol' => '$',
+                'currency_symbol_local' => 'US$',
+                'currency_name' => 'Dollar',
+                'currency_name_local' => 'US Dollar'
             ],
         ];
         $this->assertEquals(collect($expected), \LangCountry::allLanguages());
@@ -307,14 +307,14 @@ class LangCountryTest extends TestCase
 
         $file = __DIR__.'/../Support/Files/lang-country-overrides/nl-NL.json';
         $dir = resource_path('lang/lang-country-overrides/');
-        
-        if (!is_dir($dir)){
+
+        if (!is_dir($dir)) {
             mkdir($dir);
         }
-        if (!is_file($dir)){
+        if (!is_file($dir)) {
             $dest = $dir.'nl-NL.json';
         }
-        
+
         copy($file, $dest);
 
         $this->assertEquals('nl', \LangCountry::lang());

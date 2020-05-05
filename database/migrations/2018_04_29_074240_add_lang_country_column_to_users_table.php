@@ -15,7 +15,7 @@ class AddLangCountryColumnToUsersTable extends Migration
     {
         if (! Schema::hasColumn('users', 'lang_country')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->string('lang_country',5)->after('email')->nullable();
+                $table->string('lang_country', 5)->after('email')->nullable();
             });
         }
     }
