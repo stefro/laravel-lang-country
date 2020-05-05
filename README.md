@@ -209,7 +209,7 @@ LangCountry::country();
 LangCountry::countryName();
 /*
  * This will return the primary name of the country.
- * Example: "Netherlads" when lang_country = "nl-NL"
+ * Example: "Netherlands" when lang_country = "nl-NL"
  * Example: "Belgium" when lang_country = "nl-BE"
  */
 
