@@ -308,10 +308,10 @@ class LangCountryTest extends TestCase
         $file = __DIR__.'/../Support/Files/lang-country-overrides/nl-NL.json';
         $dir = resource_path('lang/lang-country-overrides/');
 
-        if (!is_dir($dir)) {
+        if (! is_dir($dir)) {
             mkdir($dir);
         }
-        if (!is_file($dir)) {
+        if (! is_file($dir)) {
             $dest = $dir.'nl-NL.json';
         }
 
