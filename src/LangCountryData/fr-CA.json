@@ -1,5 +1,7 @@
 {
   "country": "CA",
+  "country_name": "Canada",
+  "country_name_local": "Canada",
   "lang": "fr",
   "name": "Canada - Français",
   "date_numbers": "d/m/Y",
@@ -8,5 +10,10 @@
   "date_words_with_day": "l j F Y",
   "date_birthday": "j F",
   "time_format": "h:i a",
-  "emoji_flag": "🇨🇦"
+  "emoji_flag": "🇨🇦",
+  "currency_code": "CAD",
+  "currency_symbol": "$",
+  "currency_symbol_local": "CA$",
+  "currency_name": "Canadian Dollar",
+  "currency_name_local": "Canadian Dollar"
 }

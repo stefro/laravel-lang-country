@@ -35,8 +35,10 @@ class LangCountryTest extends TestCase
         session(['lang_country' => 'nl-NL']);
         App::setLocale('nl');
 
-        $this->assertEquals('nl', \LangCountry::lang());
         $this->assertEquals('NL', \LangCountry::country());
+        $this->assertEquals('The Netherlands', \LangCountry::countryName());
+        $this->assertEquals('Nederland', \LangCountry::countryNameLocal());
+        $this->assertEquals('nl', \LangCountry::lang());
         $this->assertEquals('Nederlands', \LangCountry::name());
         $this->assertEquals('d-m-Y', \LangCountry::dateNumbersFormat());
         $this->assertEquals('10-03-2018', \LangCountry::dateNumbers($this->test_date));
@@ -50,36 +52,69 @@ class LangCountryTest extends TestCase
         $this->assertEquals('H:i', \LangCountry::timeFormat());
         $this->assertEquals('13:05', \LangCountry::time($this->test_date));
         $this->assertEquals('🇳🇱', \LangCountry::emojiFlag());
+        $this->assertEquals('EUR', \LangCountry::currencyCode());
+        $this->assertEquals('€', \LangCountry::currencySymbol());
+        $this->assertEquals('€', \LangCountry::currencySymbolLocal());
+        $this->assertEquals('Euro', \LangCountry::currencyName());
+        $this->assertEquals('Euro', \LangCountry::currencyNameLocal());
 
         $expected = [
             'current' => [
-                'lang' => 'nl',
                 'country' => 'NL',
+                'country_name' => 'The Netherlands',
+                'country_name_local' => 'Nederland',
+                'lang' => 'nl',
                 'name' => 'Nederlands',
                 'lang_country' => 'nl-NL',
                 'emoji_flag' => '🇳🇱',
+                'currency_code' => 'EUR',
+                'currency_symbol' => '€',
+                'currency_symbol_local' => '€',
+                'currency_name' => 'Euro',
+                'currency_name_local' => 'Euro',
             ],
             'available' => [
                 [
-                    'lang' => 'nl',
                     'country' => 'BE',
+                    'country_name' => 'Belgium',
+                    'country_name_local' => 'België',
+                    'lang' => 'nl',
                     'name' => 'België - Vlaams',
                     'lang_country' => 'nl-BE',
                     'emoji_flag' => '🇧🇪',
+                    'currency_code' => 'EUR',
+                    'currency_symbol' => '€',
+                    'currency_symbol_local' => '€',
+                    'currency_name' => 'Euro',
+                    'currency_name_local' => 'Euro',
                 ],
                 [
-                    'lang' => 'en',
                     'country' => 'GB',
+                    'country_name' => 'United Kingdom',
+                    'country_name_local' => 'United Kingdom',
+                    'lang' => 'en',
                     'name' => 'English',
                     'lang_country' => 'en-GB',
                     'emoji_flag' => '🇬🇧',
+                    'currency_code' => 'GBP',
+                    'currency_symbol' => '£',
+                    'currency_symbol_local' => '£',
+                    'currency_name' =>'Pound Stirling',
+                    'currency_name_local' => 'Pound',
                 ],
                 [
-                    'lang' => 'en',
                     'country' => 'US',
-                    'name' => 'English',
+                    'country_name' => 'United States of America',
+                    'country_name_local' => 'America',
+                    'lang' => 'en',
+                    'name' => 'American English',
                     'lang_country' => 'en-US',
                     'emoji_flag' => '🇺🇸',
+                    'currency_code' => 'USD',
+                    'currency_symbol' => '$',
+                    'currency_symbol_local' => 'US$',
+                    'currency_name' => 'Dollar',
+                    'currency_name_local' => 'US Dollar',
                 ],
             ],
         ];
@@ -95,9 +130,11 @@ class LangCountryTest extends TestCase
         session(['lang_country' => 'en-US']);
         App::setLocale('en');
 
-        $this->assertEquals('en', \LangCountry::lang());
         $this->assertEquals('US', \LangCountry::country());
-        $this->assertEquals('English', \LangCountry::name());
+        $this->assertEquals('United States of America', \LangCountry::countryName());
+        $this->assertEquals('America', \LangCountry::countryNameLocal());
+        $this->assertEquals('en', \LangCountry::lang());
+        $this->assertEquals('American English', \LangCountry::name());
         $this->assertEquals('m/d/Y', \LangCountry::dateNumbersFormat());
         $this->assertEquals('03/10/2018', \LangCountry::dateNumbers($this->test_date));
         $this->assertEquals('MM/DD/YYYY', \LangCountry::dateNumbersFullCapitalsFormat());
@@ -110,36 +147,69 @@ class LangCountryTest extends TestCase
         $this->assertEquals('h:i a', \LangCountry::timeFormat());
         $this->assertEquals('01:05 pm', \LangCountry::time($this->test_date));
         $this->assertEquals('🇺🇸', \LangCountry::emojiFlag());
+        $this->assertEquals('USD', \LangCountry::currencyCode());
+        $this->assertEquals('$', \LangCountry::currencySymbol());
+        $this->assertEquals('US$', \LangCountry::currencySymbolLocal());
+        $this->assertEquals('Dollar', \LangCountry::currencyName());
+        $this->assertEquals('US Dollar', \LangCountry::currencyNameLocal());
 
         $expected = [
             'current' => [
-                'lang' => 'en',
                 'country' => 'US',
-                'name' => 'English',
+                'country_name' => 'United States of America',
+                'country_name_local' => 'America',
+                'lang' => 'en',
+                'name' => 'American English',
                 'lang_country' => 'en-US',
                 'emoji_flag' => '🇺🇸',
+                'currency_code' => 'USD',
+                'currency_symbol' => '$',
+                'currency_symbol_local' => 'US$',
+                'currency_name' => 'Dollar',
+                'currency_name_local' => 'US Dollar',
             ],
             'available' => [
                 [
-                    'lang' => 'nl',
                     'country' => 'NL',
+                    'country_name' => 'The Netherlands',
+                    'country_name_local' => 'Nederland',
+                    'lang' => 'nl',
                     'name' => 'Nederlands',
                     'lang_country' => 'nl-NL',
                     'emoji_flag' => '🇳🇱',
+                    'currency_code' => 'EUR',
+                    'currency_symbol' => '€',
+                    'currency_symbol_local' => '€',
+                    'currency_name' => 'Euro',
+                    'currency_name_local' => 'Euro',
                 ],
                 [
-                    'lang' => 'nl',
                     'country' => 'BE',
+                    'country_name' => 'Belgium',
+                    'country_name_local' => 'België',
+                    'lang' => 'nl',
                     'name' => 'België - Vlaams',
                     'lang_country' => 'nl-BE',
                     'emoji_flag' => '🇧🇪',
+                    'currency_code' => 'EUR',
+                    'currency_symbol' => '€',
+                    'currency_symbol_local' => '€',
+                    'currency_name' => 'Euro',
+                    'currency_name_local' => 'Euro',
                 ],
                 [
-                    'lang' => 'en',
                     'country' => 'GB',
+                    'country_name' => 'United Kingdom',
+                    'country_name_local' => 'United Kingdom',
+                    'lang' => 'en',
                     'name' => 'English',
                     'lang_country' => 'en-GB',
                     'emoji_flag' => '🇬🇧',
+                    'currency_code' => 'GBP',
+                    'currency_symbol' => '£',
+                    'currency_symbol_local' => '£',
+                    'currency_name' => 'Pound Stirling',
+                    'currency_name_local' => 'Pound',
                 ],
             ],
         ];
@@ -170,32 +240,60 @@ class LangCountryTest extends TestCase
     {
         $expected = [
             [
-                'lang' => 'nl',
                 'country' => 'NL',
+                'country_name' => 'The Netherlands',
+                'country_name_local' => 'Nederland',
+                'lang' => 'nl',
                 'name' => 'Nederlands',
                 'lang_country' => 'nl-NL',
                 'emoji_flag' => '🇳🇱',
+                'currency_code' => 'EUR',
+                'currency_symbol' => '€',
+                'currency_symbol_local' => '€',
+                'currency_name' => 'Euro',
+                'currency_name_local' => 'Euro',
             ],
             [
-                'lang' => 'nl',
                 'country' => 'BE',
+                'country_name' => 'Belgium',
+                'country_name_local' => 'België',
+                'lang' => 'nl',
                 'name' => 'België - Vlaams',
                 'lang_country' => 'nl-BE',
                 'emoji_flag' => '🇧🇪',
+                'currency_code' => 'EUR',
+                'currency_symbol' => '€',
+                'currency_symbol_local' => '€',
+                'currency_name' => 'Euro',
+                'currency_name_local' => 'Euro',
             ],
             [
-                'lang' => 'en',
                 'country' => 'GB',
+                'country_name' => 'United Kingdom',
+                'country_name_local' => 'United Kingdom',
+                'lang' => 'en',
                 'name' => 'English',
                 'lang_country' => 'en-GB',
                 'emoji_flag' => '🇬🇧',
+                'currency_code' => 'GBP',
+                'currency_symbol' => '£',
+                'currency_symbol_local' => '£',
+                'currency_name' => 'Pound Stirling',
+                'currency_name_local' => 'Pound',
             ],
             [
-                'lang' => 'en',
                 'country' => 'US',
-                'name' => 'English',
+                'country_name' => 'United States of America',
+                'country_name_local' => 'America',
+                'lang' => 'en',
+                'name' => 'American English',
                 'lang_country' => 'en-US',
                 'emoji_flag' => '🇺🇸',
+                'currency_code' => 'USD',
+                'currency_symbol' => '$',
+                'currency_symbol_local' => 'US$',
+                'currency_name' => 'Dollar',
+                'currency_name_local' => 'US Dollar',
             ],
         ];
         $this->assertEquals(collect($expected), \LangCountry::allLanguages());
@@ -208,9 +306,15 @@ class LangCountryTest extends TestCase
         App::setLocale('nl');
 
         $file = __DIR__.'/../Support/Files/lang-country-overrides/nl-NL.json';
+        $dir = resource_path('lang/lang-country-overrides/');
 
-        mkdir(resource_path('lang/lang-country-overrides/'));
-        $dest = resource_path('lang/lang-country-overrides/').'nl-NL.json';
+        if (! is_dir($dir)) {
+            mkdir($dir);
+        }
+        if (! is_file($dir)) {
+            $dest = $dir.'nl-NL.json';
+        }
+
         copy($file, $dest);
 
         $this->assertEquals('nl', \LangCountry::lang());

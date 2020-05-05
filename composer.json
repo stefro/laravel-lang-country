@@ -1,7 +1,7 @@
 {
     "name": "involved-group/laravel-lang-country",
     "type": "library",
-    "description": "Setting the locale is not enough most of the time, some countries use more than one languages. Also, different countries use different date notation formats. This package is here to help you with that!",
+    "description": "Setting the locale is not enough most of the time, some countries use more than one languages. Also, different countries use different date notation formats, names, flags and currencies. This package is here to help you with that!",
     "keywords": [
         "InvolvedGroup",
         "LaravelLangCountry"
