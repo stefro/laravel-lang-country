@@ -71,7 +71,7 @@ class LangCountryTest extends TestCase
                 'currency_symbol' => '€',
                 'currency_symbol_local' => '€',
                 'currency_name' => 'Euro',
-                'currency_name_local' => 'Euro'
+                'currency_name_local' => 'Euro',
             ],
             'available' => [
                 [
@@ -86,7 +86,7 @@ class LangCountryTest extends TestCase
                     'currency_symbol' => '€',
                     'currency_symbol_local' => '€',
                     'currency_name' => 'Euro',
-                    'currency_name_local' => 'Euro'
+                    'currency_name_local' => 'Euro',
                 ],
                 [
                     'country' => 'GB',
@@ -100,7 +100,7 @@ class LangCountryTest extends TestCase
                     'currency_symbol' => '£',
                     'currency_symbol_local' => '£',
                     'currency_name' =>'Pound Stirling',
-                    'currency_name_local' => 'Pound'
+                    'currency_name_local' => 'Pound',
                 ],
                 [
                     'country' => 'US',
@@ -114,7 +114,7 @@ class LangCountryTest extends TestCase
                     'currency_symbol' => '$',
                     'currency_symbol_local' => 'US$',
                     'currency_name' => 'Dollar',
-                    'currency_name_local' => 'US Dollar'
+                    'currency_name_local' => 'US Dollar',
                 ],
             ],
         ];
@@ -251,7 +251,7 @@ class LangCountryTest extends TestCase
                 'currency_symbol' => '€',
                 'currency_symbol_local' => '€',
                 'currency_name' => 'Euro',
-                'currency_name_local' => 'Euro'
+                'currency_name_local' => 'Euro',
             ],
             [
                 'country' => 'BE',
@@ -265,7 +265,7 @@ class LangCountryTest extends TestCase
                 'currency_symbol' => '€',
                 'currency_symbol_local' => '€',
                 'currency_name' => 'Euro',
-                'currency_name_local' => 'Euro'
+                'currency_name_local' => 'Euro',
             ],
             [
                 'country' => 'GB',
@@ -279,7 +279,7 @@ class LangCountryTest extends TestCase
                 'currency_symbol' => '£',
                 'currency_symbol_local' => '£',
                 'currency_name' => 'Pound Stirling',
-                'currency_name_local' => 'Pound'
+                'currency_name_local' => 'Pound',
             ],
             [
                 'country' => 'US',
@@ -293,7 +293,7 @@ class LangCountryTest extends TestCase
                 'currency_symbol' => '$',
                 'currency_symbol_local' => 'US$',
                 'currency_name' => 'Dollar',
-                'currency_name_local' => 'US Dollar'
+                'currency_name_local' => 'US Dollar',
             ],
         ];
         $this->assertEquals(collect($expected), \LangCountry::allLanguages());
