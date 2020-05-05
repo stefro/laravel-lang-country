@@ -1,5 +1,7 @@
 {
   "country": "GB",
+  "country_name": "United Kingdom",
+  "country_name_local": "United Kingdom",
   "lang": "en",
   "name": "English",
   "date_numbers": "d/m/Y",
@@ -8,5 +10,10 @@
   "date_words_with_day": "l j F Y",
   "date_birthday": "j F",
   "time_format": "h:i a",
-  "emoji_flag": "🇬🇧"
+  "emoji_flag": "🇬🇧",
+  "currency_code": "GBP",
+  "currency_symbol": "£",
+  "currency_symbol_local": "£",
+  "currency_name": "Pound Stirling",
+  "currency_name_local": "Pound"
 }

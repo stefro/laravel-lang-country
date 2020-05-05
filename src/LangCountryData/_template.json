@@ -1,5 +1,7 @@
 {
   "country": "",
+  "country_name": "",
+  "country_name_local": "",
   "lang": "",
   "name": "",
   "date_numbers": "",
@@ -8,5 +10,10 @@
   "date_words_with_day": "",
   "date_birthday": "",
   "time_format": "",
-  "emoji_flag": ""
+  "emoji_flag": "",
+  "currency_code": "",
+  "currency_symbol": "",
+  "currency_symbol_local": "",
+  "currency_name": "",
+  "currency_name_local": ""
 }
