@@ -429,6 +429,7 @@ If you discover any security related issues, please email stef.rouschop@involved
 ## Credits
 
 - [Stef Rouschop](https://github.com/stefro)
+- [Jayenne Montana](https://github.com/jayenne): For adding local country names and currency.
 - Ronald Huijgen: Background vocals, choreography and funny business.
 - [All Contributors][link-contributors]
 
