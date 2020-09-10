@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "illuminate/support": "^7.0"
+        "illuminate/support": "^7.0|^8.0"
     },
     "require-dev": {
         "mockery/mockery": "dev-master@dev",
