@@ -39,7 +39,7 @@ class PreferedLanguage
      * @var string
      */
     public $locale;
-    
+
     /**
      * PreferedLanguage constructor.
      * @param $prefered_languages
