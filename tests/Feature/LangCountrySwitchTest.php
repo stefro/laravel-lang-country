@@ -1,6 +1,6 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
+namespace InvolvedGroup\LaravelLangCountry\Tests\Feature;
 
 use Illuminate\Foundation\Auth\User;
 use InvolvedGroup\LaravelLangCountry\Tests\TestCase;

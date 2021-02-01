@@ -1,6 +1,6 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
+namespace InvolvedGroup\LaravelLangCountry\Tests\Services;
 
 use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
 

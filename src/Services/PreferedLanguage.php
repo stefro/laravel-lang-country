@@ -39,16 +39,18 @@ class PreferedLanguage
      * @var string
      */
     public $locale;
-
+    
     /**
      * PreferedLanguage constructor.
      * @param $prefered_languages
+     * @param  null  $allowed
+     * @param  null  $fallback
      */
-    public function __construct($prefered_languages)
+    public function __construct($prefered_languages, $allowed = null, $fallback = null)
     {
         $this->prefered_languages = $prefered_languages;
-        $this->fallback = config('lang-country.fallback');
-        $this->allowed = collect(config('lang-country.allowed'));
+        $this->allowed = $allowed ?? collect(config('lang-country.allowed'));
+        $this->fallback = $fallback ?? config('lang-country.fallback');
         $this->client_prefered = $this->clientPreferedLanguages();
         $this->lang_country = $this->getLangCountry();
         $this->locale = $this->getLocale();
