@@ -20,6 +20,7 @@ In a nutshell:
 * It will help you to show the right flag in your language switcher (because you now also have a country value, not only a language value).
 * We'll assume you're using Translation Strings As Keys ([Using Translation Strings As Keys](https://laravel.com/docs/5.6/localization#using-translation-strings-as-keys))
 
+I've also written an article about it [here](https://stefrouschop.nl/why-a-locale-is-sometimes-not-enough-in-laravel-28b1e82029cc).
 
 ## Install
 
