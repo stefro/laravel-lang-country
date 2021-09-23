@@ -19,6 +19,7 @@ class PreferedLanguage
 
     /**
      * HTTP_ACCEPT_LANGUAGE string.
+     *
      * @var
      */
     protected $prefered_languages;
@@ -30,18 +31,21 @@ class PreferedLanguage
 
     /**
      * calculated lang_country result.
+     *
      * @var string
      */
     public $lang_country;
 
     /**
      * Calculated locale result.
+     *
      * @var string
      */
     public $locale;
 
     /**
      * PreferedLanguage constructor.
+     *
      * @param $prefered_languages
      * @param  null  $allowed
      * @param  null  $fallback
