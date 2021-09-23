@@ -112,7 +112,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "2018-04-24".
      *
-     * @param Carbon $carbon
+     * @param  Carbon  $carbon
      * @return string
      */
     public function dateNumbers(Carbon $carbon, $override = false)
@@ -151,7 +151,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "April 24th 2018".
      *
-     * @param Carbon $carbon
+     * @param  Carbon  $carbon
      * @return string
      */
     public function dateWordsWithoutDay(Carbon $carbon, $override = false)
@@ -179,7 +179,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "Tuesday April 24th 2018".
      *
-     * @param Carbon $carbon
+     * @param  Carbon  $carbon
      * @return string
      */
     public function dateWordsWithDay(Carbon $carbon, $override = false)
@@ -207,7 +207,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "April 24th".
      *
-     * @param Carbon $carbon
+     * @param  Carbon  $carbon
      * @return string
      */
     public function dateBirthday(Carbon $carbon, $override = false)
@@ -235,7 +235,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "12:00 pm".
      *
-     * @param Carbon $carbon
+     * @param  Carbon  $carbon
      * @return string
      */
     public function time(Carbon $carbon, $override = false)
