@@ -39,6 +39,14 @@ class LangCountry
         $this->lang_country = $lang_country;
         $this->data = $this->getDataFromFile($lang_country);
     }
+    
+    /**
+    * Will return the current LangCountry value
+    **/
+    public function currentLangCountry()
+    {
+        return $this->lang_country;
+    }
 
     /**
      * It will return the right language. This can be a two char representation (ex. "nl", dutch)
