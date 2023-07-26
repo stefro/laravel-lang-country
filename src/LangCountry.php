@@ -24,13 +24,9 @@ class LangCountry
      */
     public function __construct()
     {
-        if(config('lang-country.fallback_based_on_current_locale', false)){
-
-            if (! session()->has('lang_country')) {
-                $lang = new PreferedLanguage(app()->getLocale());
-                $this->lang_country = $lang->lang_country;
-            }
-
+        if(config('lang-country.fallback_based_on_current_locale', false) && ! session()->has('lang_country')){
+            $lang = new PreferedLanguage(app()->getLocale());
+            $this->lang_country = $lang->lang_country;
         } else {
             $this->lang_country = session('lang_country', config('lang-country.fallback'));
         }
