@@ -2,6 +2,8 @@
 
 return [
 
+    'fallback_based_on_current_locale' => false,
+
     'fallback' => 'en-GB',
 
     'allowed' => [
