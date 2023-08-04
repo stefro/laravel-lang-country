@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Stefro\LaravelLangCountry\Tests;
 
-
 use Spatie\LaravelRay\RayServiceProvider;
 use Stefro\LaravelLangCountry\LaravelLangCountryServiceProvider;
 
@@ -39,9 +38,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
         $app['config']->set('app.key', 'base64:f9kzW7cVoE96+f+00BKmlvFujZGy5Pf5GHG6/51mbns=');
         $app['config']->set('lang-country.lang_switcher_middleware', ['web', 'lang_country']);

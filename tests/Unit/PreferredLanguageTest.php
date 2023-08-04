@@ -34,10 +34,10 @@ class PreferredLanguageTest extends TestCase
 
         $expected = collect([
             'nl-NL' => 1.0,
-            'nl'    => 0.8,
+            'nl' => 0.8,
             'en-US' => 0.6,
-            'de'    => 0.5,
-            'en'    => 0.4,
+            'de' => 0.5,
+            'en' => 0.4,
         ]);
 
         $this->assertEquals($expected, $lang->clientPreferedLanguages());
@@ -53,9 +53,9 @@ class PreferredLanguageTest extends TestCase
         $expected = collect([
             'nl-NL' => 1.0,
             'en-US' => 1.0,
-            'nl'    => 1.0,
-            'de'    => 1.0,
-            'en'    => 1.0,
+            'nl' => 1.0,
+            'de' => 1.0,
+            'en' => 1.0,
         ]);
 
         $this->assertEquals($expected, $lang->clientPreferedLanguages());

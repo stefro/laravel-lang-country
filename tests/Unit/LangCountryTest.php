@@ -99,7 +99,7 @@ class LangCountryTest extends TestCase
                     'currency_code' => 'GBP',
                     'currency_symbol' => '£',
                     'currency_symbol_local' => '£',
-                    'currency_name' =>'Pound Stirling',
+                    'currency_name' => 'Pound Stirling',
                     'currency_name_local' => 'Pound',
                 ],
                 [
