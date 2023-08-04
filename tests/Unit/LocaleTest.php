@@ -1,13 +1,13 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
+namespace Stefro\LaravelLangCountry\Tests\Unit;
 
-use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
-use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
+use Stefro\LaravelLangCountry\Services\PreferedLanguage;
+use Stefro\LaravelLangCountry\Tests\TestCase;
 
 class LocaleTest extends TestCase
 {
-    protected function setUp(): void
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -31,7 +31,7 @@ class LocaleTest extends TestCase
     public function four_char_json_available()
     {
         $file = __DIR__.'/../Support/Files/es-CO.json';
-        $dest = resource_path('/lang/').'es-CO.json';
+        $dest = lang_path().'es-CO.json';
         copy($file, $dest);
 
         $lang = new PreferedLanguage('es-CO,en');

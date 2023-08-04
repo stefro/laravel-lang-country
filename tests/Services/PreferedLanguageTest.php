@@ -1,13 +1,13 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests\Services;
+namespace Stefro\LaravelLangCountry\Tests\Services;
 
- use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
- use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
+ use Stefro\LaravelLangCountry\Services\PreferedLanguage;
+ use Stefro\LaravelLangCountry\Tests\TestCase;
 
  class PreferedLanguageTest extends TestCase
  {
-     protected function setUp(): void
+     public function setUp(): void
      {
          parent::setUp();
 

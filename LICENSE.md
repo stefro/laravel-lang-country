@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 
-Copyright (c) 2018 Stef Rouschop <stef.rouschop@involvedgroup.eu>
+Copyright (c) 2018 Stef Rouschop <github@rouschop.com>
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal

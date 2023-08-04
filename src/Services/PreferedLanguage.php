@@ -1,6 +1,6 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Services;
+namespace Stefro\LaravelLangCountry\Services;
 
 /**
  * Class PreferedLanguage.
@@ -68,8 +68,11 @@ class PreferedLanguage
     public function clientPreferedLanguages()
     {
         // regex inspired from @GabrielAnderson on http://stackoverflow.com/questions/6038236/http-accept-language
-        preg_match_all('/([a-z]{1,8}(-[a-z]{1,8})*)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i', $this->prefered_languages,
-            $lang_parse);
+        preg_match_all(
+            '/([a-z]{1,8}(-[a-z]{1,8})*)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i',
+            $this->prefered_languages,
+            $lang_parse
+        );
 
         $langs = $lang_parse[1];
 
@@ -186,7 +189,7 @@ class PreferedLanguage
      */
     private function getLocale()
     {
-        $path = resource_path('/lang/').$this->lang_country.'.json';
+        $path = lang_path().$this->lang_country.'.json';
 
         if (file_exists($path)) {
             return $this->lang_country;

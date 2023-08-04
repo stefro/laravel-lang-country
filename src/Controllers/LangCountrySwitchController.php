@@ -1,6 +1,6 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Controllers;
+namespace Stefro\LaravelLangCountry\Controllers;
 
 use Illuminate\Routing\Controller;
 

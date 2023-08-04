@@ -1,13 +1,13 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
+namespace Stefro\LaravelLangCountry\Tests\Unit;
 
-use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
-use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
+use Stefro\LaravelLangCountry\Services\PreferedLanguage;
+use Stefro\LaravelLangCountry\Tests\TestCase;
 
 class LocaleForDateTest extends TestCase
 {
-    protected function setUp(): void
+    public function setUp(): void
     {
         parent::setUp();
 

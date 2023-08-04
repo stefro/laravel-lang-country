@@ -1,6 +1,6 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry;
+namespace Stefro\LaravelLangCountry;
 
 use Illuminate\Support\Facades\Facade;
 

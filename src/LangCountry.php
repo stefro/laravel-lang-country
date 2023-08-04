@@ -1,9 +1,9 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry;
+namespace Stefro\LaravelLangCountry;
 
 use Carbon\Carbon;
-use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
+use Stefro\LaravelLangCountry\Services\PreferedLanguage;
 
 class LangCountry
 {
@@ -24,7 +24,7 @@ class LangCountry
      */
     public function __construct()
     {
-        if(config('lang-country.fallback_based_on_current_locale', false)){
+        if(config('lang-country.fallback_based_on_current_locale', false)) {
 
             if (! session()->has('lang_country')) {
                 $lang = new PreferedLanguage(app()->getLocale());
@@ -384,8 +384,8 @@ class LangCountry
             return[];
         }
 
-        if (file_exists(resource_path('lang/lang-country-overrides/'.$lang_country.'.json'))) {
-            $resource = resource_path('lang/lang-country-overrides/'.$lang_country.'.json');
+        if (file_exists(lang_path('lang-country-overrides').$lang_country.'.json')) {
+            $resource = lang_path('lang-country-overrides').$lang_country.'.json';
         } else {
             $resource = __DIR__.'/LangCountryData/'.$lang_country.'.json';
         }

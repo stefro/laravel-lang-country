@@ -1,12 +1,12 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests\Services;
+namespace Stefro\LaravelLangCountry\Tests\Services;
 
-use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
+use Stefro\LaravelLangCountry\Tests\TestCase;
 
 class MiddlewareTest extends TestCase
 {
-    protected function setUp(): void
+    public function setUp(): void
     {
         parent::setUp();
 

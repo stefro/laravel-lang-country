@@ -34,7 +34,7 @@ The package will automatically register itself.
 You can publish the config-file with:
 
 ``` bash
-php artisan vendor:publish --provider="InvolvedGroup\LaravelLangCountry\LaravelLangCountryServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Stefro\LaravelLangCountry\LaravelLangCountryServiceProvider" --tag="config"
 ```
 
 Set the middleware. Add this in your `app\Http\Kernel.php` file to the $middlewareGroups web property:
@@ -189,7 +189,7 @@ Array
 With this array you're able to create a simple language/country switcher like this in your own frontend framework of choice:
 
 <p align="center">
-  <img width="350" src="https://involvedgroup.github.io/laravel-lang-country/lang_switcher.png">
+  <img width="350" src="https://Stefro.github.io/laravel-lang-country/lang_switcher.png">
 </p>
 
 ## Usage
@@ -198,7 +198,7 @@ With this array you're able to create a simple language/country switcher like th
 ### Available methods
 
 ``` php
-use InvolvedGroup\LaravelLangCountry\LangCountry
+use Stefro\LaravelLangCountry\LangCountry
 
 LangCountry::country();
 /*
@@ -425,7 +425,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT
 
 ## Security
 
-If you discover any security related issues, please email stef.rouschop@involvedgroup.eu instead of using the issue tracker.
+If you discover any security related issues, please email github@rouschop.com instead of using the issue tracker.
 
 ## Credits
 
@@ -440,15 +440,15 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/involved-group/laravel-lang-country.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/InvolvedGroup/laravel-lang-country/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/InvolvedGroup/laravel-lang-country.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/InvolvedGroup/laravel-lang-country.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/Stefro/laravel-lang-country/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/Stefro/laravel-lang-country.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/Stefro/laravel-lang-country.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/involved-group/laravel-lang-country.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/involved-group/laravel-lang-country
-[link-travis]: https://travis-ci.org/InvolvedGroup/laravel-lang-country
-[link-scrutinizer]: https://scrutinizer-ci.com/g/InvolvedGroup/laravel-lang-country/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/InvolvedGroup/laravel-lang-country
+[link-travis]: https://travis-ci.org/Stefro/laravel-lang-country
+[link-scrutinizer]: https://scrutinizer-ci.com/g/Stefro/laravel-lang-country/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/Stefro/laravel-lang-country
 [link-downloads]: https://packagist.org/packages/involved-group/laravel-lang-country
 [link-author]: https://github.com/stefro
 [link-contributors]: ../../contributors

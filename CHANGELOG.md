@@ -2,9 +2,15 @@
 
 All notable changes to `LaravelLangCountry` will be documented in this file.
 
-Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
-## NEXT - 2020-05-05
+## Unreleased
+* Make use of the `lang_path()` instead of the old Laravel `resources\lang` path.
+* Drop support for < PHP 8.1
+* Drop Support for < Laravel 9
+* move to namespace `Stefro/LaravelLangCountry` from `InvolvedGroup/LaravelLangCountry`
+
+## [2.1.0] - 2020-05-05
 
 ### Added
 - LangCountryData.php : I've added 7 new properties to each file to distinguish between `language name` and `country name`. I have also added a `_local` option so the app can use the localised translation. I have also include the country's official currency too.
@@ -26,7 +32,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 * Added currencyName()
 * Added currencyNameLocal()
 - LangCountryTest.php : Added new tests for each of the new methods and to reflect the changes to the data files.
-- lang-country-overrides/nl.NL.json : included new parameters to reflect those made witihn LangCountryData/...json
+- lang-country-overrides/nl.NL.json : included new parameters to reflect those made within LangCountryData/...json
 
 ### Deprecated
 - Nothing

@@ -1,15 +1,15 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests\Feature;
+namespace Stefro\LaravelLangCountry\Tests\Feature;
 
 use Illuminate\Foundation\Auth\User;
-use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
+use Stefro\LaravelLangCountry\Tests\TestCase;
 
 class LangCountrySwitchTest extends TestCase
 {
     protected $user;
 
-    protected function setUp(): void
+    public function setUp(): void
     {
         parent::setUp();
 

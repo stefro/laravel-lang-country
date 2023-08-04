@@ -1,12 +1,16 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests;
+declare(strict_types=1);
 
-use Orchestra\Testbench\TestCase as Orchestra;
+namespace Stefro\LaravelLangCountry\Tests;
 
-abstract class TestCase extends Orchestra
+
+use Spatie\LaravelRay\RayServiceProvider;
+use Stefro\LaravelLangCountry\LaravelLangCountryServiceProvider;
+
+class TestCase extends \Orchestra\Testbench\TestCase
 {
-    protected function setUp(): void
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -17,24 +21,19 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \InvolvedGroup\LaravelLangCountry\LaravelLangCountryServiceProvider::class,
+            LaravelLangCountryServiceProvider::class,
+            RayServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'LangCountry' => \InvolvedGroup\LaravelLangCountry\LangCountryFacade::class,
+            'LangCountry' => \Stefro\LaravelLangCountry\LangCountryFacade::class,
             'Auth' => \Illuminate\Support\Facades\Auth::class,
         ];
     }
 
-    /**
-     * Define environment setup.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return void
-     */
     protected function getEnvironmentSetUp($app)
     {
         // Setup default database to use sqlite :memory:
@@ -52,7 +51,7 @@ abstract class TestCase extends Orchestra
         // Set the test routes
         $app['router']
             ->middleware(['web', 'lang_country'])
-            ->get('test_route', 'InvolvedGroup\LaravelLangCountry\Tests\Support\Controllers\TestRoutesController@testRoute')
+            ->get('test_route', 'Stefro\LaravelLangCountry\Tests\Support\Controllers\TestRoutesController@testRoute')
             ->name('test_route');
     }
 }

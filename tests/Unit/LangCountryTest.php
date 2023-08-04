@@ -1,16 +1,16 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry\Tests\Unit;
+namespace Stefro\LaravelLangCountry\Tests\Unit;
 
-use App;
 use Carbon\Carbon;
-use InvolvedGroup\LaravelLangCountry\Tests\TestCase;
+use Illuminate\Support\Facades\App;
+use Stefro\LaravelLangCountry\Tests\TestCase;
 
 class LangCountryTest extends TestCase
 {
     protected $test_date;
 
-    protected function setUp(): void
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -306,7 +306,7 @@ class LangCountryTest extends TestCase
         App::setLocale('nl');
 
         $file = __DIR__.'/../Support/Files/lang-country-overrides/nl-NL.json';
-        $dir = resource_path('lang/lang-country-overrides/');
+        $dir = lang_path('lang-country-overrides');
 
         if (! is_dir($dir)) {
             mkdir($dir);
@@ -322,14 +322,14 @@ class LangCountryTest extends TestCase
         $this->assertEquals('Nederlands override!', \LangCountry::name());
 
         // Remove test files from testbench
-        unlink(resource_path('lang/lang-country-overrides/').'nl-NL.json');
-        rmdir(resource_path('lang/lang-country-overrides/'));
+        unlink(lang_path('lang-country-overrides').'nl-NL.json');
+        rmdir(lang_path('lang-country-overrides'));
     }
 
     /**
      * @test
      */
-    public function get_the_language_for_an_overrided_lang_country_code()
+    public function get_the_language_for_an_override_lang_country_code()
     {
         session(['lang_country' => 'nl-NL']);
         App::setLocale('nl');

@@ -1,6 +1,6 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry;
+namespace Stefro\LaravelLangCountry;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,11 +19,11 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        $this->app['router']->aliasMiddleware('lang_country', \InvolvedGroup\LaravelLangCountry\Middleware\LangCountrySession::class);
+        $this->app['router']->aliasMiddleware('lang_country', \Stefro\LaravelLangCountry\Middleware\LangCountrySession::class);
 
         $this->app['router']
             ->middleware(config('lang-country.lang_switcher_middleware'))
-            ->get('/change_lang_country/{lang_country}', 'InvolvedGroup\LaravelLangCountry\Controllers\LangCountrySwitchController@switch')
+            ->get('/change_lang_country/{lang_country}', 'Stefro\LaravelLangCountry\Controllers\LangCountrySwitchController@switch')
             ->name('lang_country.switch');
     }
 
