@@ -2,7 +2,7 @@
 
 namespace Stefro\LaravelLangCountry\Tests\Services;
 
-use Stefro\LaravelLangCountry\Services\PreferedLanguage;
+use Stefro\LaravelLangCountry\Services\PreferredLanguage;
 use Stefro\LaravelLangCountry\Tests\TestCase;
 
 class PreferedLanguageTest extends TestCase
@@ -31,11 +31,11 @@ class PreferedLanguageTest extends TestCase
         ]);
         $override_fallback = 'cn-CN';
 
-        $lang = new PreferedLanguage('es', $override_allowed_languages, $override_fallback);
+        $lang = new PreferredLanguage('es', $override_allowed_languages, $override_fallback);
         $this->assertEquals('es-ES', $lang->lang_country);
         $this->assertEquals('es', $lang->locale);
 
-        $lang = new PreferedLanguage('nl', $override_allowed_languages, $override_fallback);
+        $lang = new PreferredLanguage('nl', $override_allowed_languages, $override_fallback);
         $this->assertEquals('cn-CN', $lang->lang_country);
         $this->assertEquals('cn', $lang->locale);
     }

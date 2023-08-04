@@ -5,12 +5,12 @@ namespace Stefro\LaravelLangCountry\Services;
 /**
  * Class PreferedLanguage.
  */
-class PreferedLanguage
+class PreferredLanguage
 {
     /**
      * @var \Illuminate\Support\Collection
      */
-    protected $client_prefered;
+    protected $client_preferred;
 
     /**
      * @var \Illuminate\Support\Collection
@@ -22,7 +22,7 @@ class PreferedLanguage
      *
      * @var
      */
-    protected $prefered_languages;
+    protected $preferred_languages;
 
     /**
      * @var string
@@ -46,22 +46,22 @@ class PreferedLanguage
     /**
      * PreferedLanguage constructor.
      *
-     * @param $prefered_languages
+     * @param $preferred_languages
      * @param  null  $allowed
      * @param  null  $fallback
      */
-    public function __construct($prefered_languages, $allowed = null, $fallback = null)
+    public function __construct($preferred_languages, $allowed = null, $fallback = null)
     {
-        $this->prefered_languages = $prefered_languages;
+        $this->preferred_languages = $preferred_languages;
         $this->allowed = $allowed ?? collect(config('lang-country.allowed'));
         $this->fallback = $fallback ?? config('lang-country.fallback');
-        $this->client_prefered = $this->clientPreferedLanguages();
+        $this->client_preferred = $this->clientPreferedLanguages();
         $this->lang_country = $this->getLangCountry();
         $this->locale = $this->getLocale();
     }
 
     /**
-     * It will return a list of prefered languages of the browser in order of preference.
+     * It will return a list of preferred languages of the browser in order of preference.
      *
      * @return \Illuminate\Support\Collection
      */
@@ -70,7 +70,7 @@ class PreferedLanguage
         // regex inspired from @GabrielAnderson on http://stackoverflow.com/questions/6038236/http-accept-language
         preg_match_all(
             '/([a-z]{1,8}(-[a-z]{1,8})*)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i',
-            $this->prefered_languages,
+            $this->preferred_languages,
             $lang_parse
         );
 
@@ -109,7 +109,7 @@ class PreferedLanguage
             }
         };
 
-        // sort the languages by prefered language and by the most specific region
+        // sort the languages by preferred language and by the most specific region
         uksort($lang2pref, $cmpLangs);
 
         return collect($lang2pref);
@@ -122,18 +122,18 @@ class PreferedLanguage
      */
     protected function getLangCountry()
     {
-        $prefered = $this->rewritePreferedToFourDigitValues();
+        $preferred = $this->rewritePreferedToFourDigitValues();
 
         // Find exact match for 4 digits
-        $prefered = $this->client_prefered->keys()->filter(function ($value) {
+        $preferred = $this->client_preferred->keys()->filter(function ($value) {
             return 5 == strlen($value);
         })->first(function ($value) {
             return $this->allowed->contains($value);
         });
 
         // Find first two digit (lang) match to four digit lang_country from the allowed-list
-        if (null === $prefered) {
-            $prefered = $this->client_prefered->keys()->filter(function ($value) {
+        if (null === $preferred) {
+            $preferred = $this->client_preferred->keys()->filter(function ($value) {
                 return 2 == strlen($value);
             })->map(function ($item) {
                 return $this->allowed->filter(function ($value) use ($item) {
@@ -145,11 +145,11 @@ class PreferedLanguage
         }
 
         // Get fallback if no results
-        if (null === $prefered) {
-            $prefered = $this->fallback;
+        if (null === $preferred) {
+            $preferred = $this->fallback;
         }
 
-        return $prefered;
+        return $preferred;
     }
 
     /**
@@ -157,7 +157,7 @@ class PreferedLanguage
      */
     private function rewritePreferedToFourDigitValues()
     {
-        $prefered = $this->client_prefered->keys()->map(function ($value) {
+        $preferred = $this->client_preferred->keys()->map(function ($value) {
             if (5 == strlen($value)) {
                 return $value;
             } else {
@@ -167,7 +167,7 @@ class PreferedLanguage
             return $value === null;
         });
 
-        return $prefered;
+        return $preferred;
     }
 
     /**
@@ -185,7 +185,7 @@ class PreferedLanguage
      * Check if 4 char language (ex. en-US.json) file exists in /resources/lang/ dir.
      * If not, just return the first two chars (represents the language).
      *
-     * @return bool|\Illuminate\Config\Repository|int|PreferedLanguage|mixed|string
+     * @return bool|\Illuminate\Config\Repository|int|PreferredLanguage|mixed|string
      */
     private function getLocale()
     {

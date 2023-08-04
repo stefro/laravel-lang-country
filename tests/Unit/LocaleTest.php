@@ -2,7 +2,7 @@
 
 namespace Stefro\LaravelLangCountry\Tests\Unit;
 
-use Stefro\LaravelLangCountry\Services\PreferedLanguage;
+use Stefro\LaravelLangCountry\Services\PreferredLanguage;
 use Stefro\LaravelLangCountry\Tests\TestCase;
 
 class LocaleTest extends TestCase
@@ -34,7 +34,7 @@ class LocaleTest extends TestCase
         $dest = lang_path().'es-CO.json';
         copy($file, $dest);
 
-        $lang = new PreferedLanguage('es-CO,en');
+        $lang = new PreferredLanguage('es-CO,en');
 
         $this->assertEquals('es-CO', $lang->locale);
 
@@ -47,7 +47,7 @@ class LocaleTest extends TestCase
      */
     public function four_char_json_not_available()
     {
-        $lang = new PreferedLanguage('es-CO,en');
+        $lang = new PreferredLanguage('es-CO,en');
 
         $this->assertEquals('es', $lang->locale);
     }

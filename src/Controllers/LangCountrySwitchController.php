@@ -16,7 +16,7 @@ class LangCountrySwitchController extends Controller
         // Set the right sessions
         \LangCountry::setAllSessions($lang_country);
 
-        // If a user is logged in and it has a lang_country propperty, set the new lang_country.
+        // If a user is logged in, and it has a lang_country propperty, set the new lang_country.
         if (\Auth::user() && array_key_exists('lang_country', \Auth::user()->getAttributes())) {
             try {
                 \Auth::user()->lang_country = $lang_country;

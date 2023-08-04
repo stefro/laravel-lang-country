@@ -3,7 +3,7 @@
 namespace Stefro\LaravelLangCountry;
 
 use Carbon\Carbon;
-use Stefro\LaravelLangCountry\Services\PreferedLanguage;
+use Stefro\LaravelLangCountry\Services\PreferredLanguage;
 
 class LangCountry
 {
@@ -25,7 +25,7 @@ class LangCountry
     public function __construct()
     {
         if(config('lang-country.fallback_based_on_current_locale', false) && ! session()->has('lang_country')) {
-            $lang = new PreferedLanguage(app()->getLocale());
+            $lang = new PreferredLanguage(app()->getLocale());
             $this->lang_country = $lang->lang_country;
         } else {
             $this->lang_country = session('lang_country', config('lang-country.fallback'));
@@ -37,7 +37,7 @@ class LangCountry
     {
         // In case the override is not a 4 char value
         if (5 !== strlen($lang_country)) {
-            $lang = new PreferedLanguage($lang_country);
+            $lang = new PreferredLanguage($lang_country);
             $lang_country = $lang->lang_country;
         }
 
@@ -361,9 +361,9 @@ class LangCountry
         });
     }
 
-    public function setAllSessions($prefered_lang)
+    public function setAllSessions($preferred_lang)
     {
-        $lang = new PreferedLanguage($prefered_lang);
+        $lang = new PreferredLanguage($preferred_lang);
         session(['lang_country' => $lang->lang_country]);
         session(['locale' => $lang->locale]);
     }

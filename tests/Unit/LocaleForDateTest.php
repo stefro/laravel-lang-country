@@ -2,7 +2,7 @@
 
 namespace Stefro\LaravelLangCountry\Tests\Unit;
 
-use Stefro\LaravelLangCountry\Services\PreferedLanguage;
+use Stefro\LaravelLangCountry\Services\PreferredLanguage;
 use Stefro\LaravelLangCountry\Tests\TestCase;
 
 class LocaleForDateTest extends TestCase
@@ -31,7 +31,7 @@ class LocaleForDateTest extends TestCase
      */
     public function no_four_char_json_available_in_date_package_fallback_to_just_lang()
     {
-        $lang = new PreferedLanguage('nl-NL');
+        $lang = new PreferredLanguage('nl-NL');
 
         $this->assertEquals('nl', $lang->locale);
     }
@@ -42,7 +42,7 @@ class LocaleForDateTest extends TestCase
      */
     public function no_match_fallback_to_date_package_fallback()
     {
-        $lang = new PreferedLanguage('xx-XX');
+        $lang = new PreferredLanguage('xx-XX');
 
         $this->assertEquals('en', $lang->locale);
     }
