@@ -1,6 +1,6 @@
 <?php
 
-namespace Stefro\LaravelLangCountry\Tests\Services;
+namespace Stefro\LaravelLangCountry\Tests\Feature\Services;
 
 use Stefro\LaravelLangCountry\Tests\TestCase;
 

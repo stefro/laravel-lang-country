@@ -11,7 +11,7 @@
 |
 */
 
-// uses(Tests\TestCase::class)->in('Feature');
+uses(\Stefro\LaravelLangCountry\Tests\TestCase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------

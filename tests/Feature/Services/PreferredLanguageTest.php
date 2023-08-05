@@ -1,11 +1,11 @@
 <?php
 
-namespace Stefro\LaravelLangCountry\Tests\Services;
+namespace Stefro\LaravelLangCountry\Tests\Feature\Services;
 
 use Stefro\LaravelLangCountry\Services\PreferredLanguage;
 use Stefro\LaravelLangCountry\Tests\TestCase;
 
-class PreferedLanguageTest extends TestCase
+class PreferredLanguageTest extends TestCase
 {
     public function setUp(): void
     {
