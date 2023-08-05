@@ -22,7 +22,7 @@
         "friendsofphp/php-cs-fixer": "^3.22",
         "orchestra/testbench": "^7.0|^8.0",
         "pestphp/pest": "^2.12.1",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^9.0|^10.0",
         "spatie/laravel-ray": "^1.32"
     },
     "autoload": {
