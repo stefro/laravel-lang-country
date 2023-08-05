@@ -1,68 +1,54 @@
 <?php
 
-namespace Stefro\LaravelLangCountry\Tests\Feature;
 
 use Illuminate\Foundation\Auth\User;
-use Stefro\LaravelLangCountry\Tests\TestCase;
 
-class LangCountrySwitchTest extends TestCase
-{
-    protected $user;
+beforeEach(function () {
+    // Set config variables
+    $this->app['config']->set('lang-country.fallback', 'en-GB');
+    $this->app['config']->set('lang-country.allowed', [
+        'nl-NL',
+        'nl-BE',
+        'en-GB',
+        'en-US',
+    ]);
 
-    public function setUp(): void
-    {
-        parent::setUp();
+    User::unguard();
+    $this->user = User::create([
+        'name' => 'Orchestra',
+        'email' => 'hello@orchestraplatform.com',
+        'password' => \Hash::make('456'),
+        'lang_country' => null,
+    ]);
+    User::reguard();
+});
 
-        // Set config variables
-        $this->app['config']->set('lang-country.fallback', 'en-GB');
-        $this->app['config']->set('lang-country.allowed', [
-            'nl-NL',
-            'nl-BE',
-            'en-GB',
-            'en-US',
-        ]);
+test('switch for non logged in user', function () {
+    // make first visit and verify fallback values are set
+    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
+        ->assertStatus(200);
+    expect(session('lang_country'))->toEqual('en-GB');
+    expect(session('locale'))->toEqual('en');
 
-        User::unguard();
-        $this->user = User::create([
-            'name' => 'Orchestra',
-            'email' => 'hello@orchestraplatform.com',
-            'password' => \Hash::make('456'),
-            'lang_country' => null,
-        ]);
-        User::reguard();
-    }
+    // visit switch route
+    $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
+        ->assertRedirect(route('test_route'));
+    expect(session('lang_country'))->toEqual('nl-BE');
+    expect(session('locale'))->toEqual('nl');
+});
 
-    /** @test */
-    public function switch_for_non_logged_in_user()
-    {
-        // make first visit and verify fallback values are set
-        $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
-            ->assertStatus(200);
-        $this->assertEquals('en-GB', session('lang_country'));
-        $this->assertEquals('en', session('locale'));
+test('switch for logged in user without lang country setting', function () {
+    // make first visit and verify fallback values are set
+    $this->actingAs($this->user)->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
+        ->assertStatus(200);
+    expect(session('lang_country'))->toEqual('en-GB');
+    expect(session('locale'))->toEqual('en');
 
-        // visit switch route
-        $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
-            ->assertRedirect(route('test_route'));
-        $this->assertEquals('nl-BE', session('lang_country'));
-        $this->assertEquals('nl', session('locale'));
-    }
+    // visit switch route
+    $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
+        ->assertRedirect(route('test_route'));
+    expect(session('lang_country'))->toEqual('nl-BE');
+    expect(session('locale'))->toEqual('nl');
 
-    /** @test */
-    public function switch_for_logged_in_user_without_lang_country_setting()
-    {
-        // make first visit and verify fallback values are set
-        $this->actingAs($this->user)->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
-            ->assertStatus(200);
-        $this->assertEquals('en-GB', session('lang_country'));
-        $this->assertEquals('en', session('locale'));
-
-        // visit switch route
-        $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
-            ->assertRedirect(route('test_route'));
-        $this->assertEquals('nl-BE', session('lang_country'));
-        $this->assertEquals('nl', session('locale'));
-
-        $this->assertEquals('nl-BE', $this->user->lang_country);
-    }
-}
+    expect($this->user->lang_country)->toEqual('nl-BE');
+});

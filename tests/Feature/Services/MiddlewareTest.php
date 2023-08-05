@@ -1,42 +1,29 @@
 <?php
 
-namespace Stefro\LaravelLangCountry\Tests\Feature\Services;
 
-use Stefro\LaravelLangCountry\Tests\TestCase;
+beforeEach(function () {
+    // Set config variables
+    $this->app['config']->set('lang-country.fallback', 'en-GB');
+    $this->app['config']->set('lang-country.allowed', [
+        'nl-NL',
+        'nl-BE',
+        'en-GB',
+        'en-US',
+    ]);
+});
 
-class MiddlewareTest extends TestCase
-{
-    public function setUp(): void
-    {
-        parent::setUp();
+test('sessions will be set on first visit with fallback', function () {
+    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
+        ->assertStatus(200);
 
-        // Set config variables
-        $this->app['config']->set('lang-country.fallback', 'en-GB');
-        $this->app['config']->set('lang-country.allowed', [
-            'nl-NL',
-            'nl-BE',
-            'en-GB',
-            'en-US',
-        ]);
-    }
+    expect(session('lang_country'))->toEqual('en-GB');
+    expect(session('locale'))->toEqual('en');
+});
 
-    /** @test */
-    public function sessions_will_be_set_on_first_visit_with_fallback()
-    {
-        $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
-            ->assertStatus(200);
+test('sessions will be set on first visit according to browser', function () {
+    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'nl-BE'])
+        ->assertStatus(200);
 
-        $this->assertEquals('en-GB', session('lang_country'));
-        $this->assertEquals('en', session('locale'));
-    }
-
-    /** @test */
-    public function sessions_will_be_set_on_first_visit_according_to_browser()
-    {
-        $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'nl-BE'])
-            ->assertStatus(200);
-
-        $this->assertEquals('nl-BE', session('lang_country'));
-        $this->assertEquals('nl', session('locale'));
-    }
-}
+    expect(session('lang_country'))->toEqual('nl-BE');
+    expect(session('locale'))->toEqual('nl');
+});

@@ -1,54 +1,36 @@
 <?php
 
-namespace Stefro\LaravelLangCountry\Tests\Unit;
 
 use Stefro\LaravelLangCountry\Services\PreferredLanguage;
-use Stefro\LaravelLangCountry\Tests\TestCase;
 
-class LocaleTest extends TestCase
-{
-    public function setUp(): void
-    {
-        parent::setUp();
+beforeEach(function () {
+    // Set config variables
+    $this->app['config']->set('lang-country.fallback', 'en-GB');
+    $this->app['config']->set('lang-country.allowed', [
+        'nl-NL',
+        'nl-BE',
+        'en-GB',
+        'en-US',
+        'en-CA',
+        'en-AU',
+        'es-CO',
+    ]);
+});
 
-        // Set config variables
-        $this->app['config']->set('lang-country.fallback', 'en-GB');
-        $this->app['config']->set('lang-country.allowed', [
-            'nl-NL',
-            'nl-BE',
-            'en-GB',
-            'en-US',
-            'en-CA',
-            'en-AU',
-            'es-CO',
-        ]);
-    }
+test('four char json available', function () {
+    $file = __DIR__ . '/../Support/Files/es-CO.json';
+    $dest = lang_path() . 'es-CO.json';
+    copy($file, $dest);
 
-    /**
-     * @group locale_test
-     * @test
-     */
-    public function four_char_json_available()
-    {
-        $file = __DIR__.'/../Support/Files/es-CO.json';
-        $dest = lang_path().'es-CO.json';
-        copy($file, $dest);
+    $lang = new PreferredLanguage('es-CO,en');
 
-        $lang = new PreferredLanguage('es-CO,en');
+    expect($lang->locale)->toEqual('es-CO');
 
-        $this->assertEquals('es-CO', $lang->locale);
+    @unlink($dest);
+})->group('locale_test');
 
-        @unlink($dest);
-    }
+test('four char json not available', function () {
+    $lang = new PreferredLanguage('es-CO,en');
 
-    /**
-     * @group locale_test
-     * @test
-     */
-    public function four_char_json_not_available()
-    {
-        $lang = new PreferredLanguage('es-CO,en');
-
-        $this->assertEquals('es', $lang->locale);
-    }
-}
+    expect($lang->locale)->toEqual('es');
+})->group('locale_test');

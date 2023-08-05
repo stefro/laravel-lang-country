@@ -1,49 +1,31 @@
 <?php
 
-namespace Stefro\LaravelLangCountry\Tests\Unit;
 
 use Stefro\LaravelLangCountry\Services\PreferredLanguage;
-use Stefro\LaravelLangCountry\Tests\TestCase;
 
-class LocaleForDateTest extends TestCase
-{
-    public function setUp(): void
-    {
-        parent::setUp();
+beforeEach(function () {
+    // Set config variables
+    $this->app['config']->set('lang-country.fallback', 'en-GB');
+    $this->app['config']->set('lang-country.allowed', [
+        'nl-NL',
+        'nl-BE',
+        'en-GB',
+        'en-US',
+        'en-CA',
+        'en-AU',
+        'de-DE',
+        'zh-CN',
+    ]);
+});
 
-        // Set config variables
-        $this->app['config']->set('lang-country.fallback', 'en-GB');
-        $this->app['config']->set('lang-country.allowed', [
-            'nl-NL',
-            'nl-BE',
-            'en-GB',
-            'en-US',
-            'en-CA',
-            'en-AU',
-            'de-DE',
-            'zh-CN',
-        ]);
-    }
+test('no four char json available in date package fallback to just lang', function () {
+    $lang = new PreferredLanguage('nl-NL');
 
-    /**
-     * @group locale_for_date_test
-     * @test
-     */
-    public function no_four_char_json_available_in_date_package_fallback_to_just_lang()
-    {
-        $lang = new PreferredLanguage('nl-NL');
+    expect($lang->locale)->toEqual('nl');
+})->group('locale_for_date_test');
 
-        $this->assertEquals('nl', $lang->locale);
-    }
+test('no match fallback to date package fallback', function () {
+    $lang = new PreferredLanguage('xx-XX');
 
-    /**
-     * @group locale_for_date_test
-     * @test
-     */
-    public function no_match_fallback_to_date_package_fallback()
-    {
-        $lang = new PreferredLanguage('xx-XX');
-
-        $this->assertEquals('en', $lang->locale);
-    }
-}
+    expect($lang->locale)->toEqual('en');
+})->group('locale_for_date_test');

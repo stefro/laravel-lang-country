@@ -11,7 +11,9 @@
 |
 */
 
-uses(\Stefro\LaravelLangCountry\Tests\TestCase::class)->in('Feature');
+use Stefro\LaravelLangCountry\Tests\TestCase;
+
+uses(TestCase::class)->in(__DIR__);
 
 /*
 |--------------------------------------------------------------------------
