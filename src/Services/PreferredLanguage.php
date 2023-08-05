@@ -47,8 +47,8 @@ class PreferredLanguage
      * PreferedLanguage constructor.
      *
      * @param $preferred_languages
-     * @param  null  $allowed
-     * @param  null  $fallback
+     * @param null $allowed
+     * @param null $fallback
      */
     public function __construct($preferred_languages, $allowed = null, $fallback = null)
     {
@@ -91,7 +91,7 @@ class PreferredLanguage
         // (create an associative array 'language' => 'preference')
         $lang2pref = [];
         for ($i = 0; $i < count($langs); $i++) {
-            $lang2pref[$langs[$i]] = (float) (! empty($ranks[$i]) ? $ranks[$i] : 1);
+            $lang2pref[$langs[$i]] = (float)(! empty($ranks[$i]) ? $ranks[$i] : 1);
         }
 
         // (comparison function for uksort)
@@ -189,7 +189,7 @@ class PreferredLanguage
      */
     private function getLocale()
     {
-        $path = lang_path().$this->lang_country.'.json';
+        $path = lang_path() . $this->lang_country . '.json';
 
         if (file_exists($path)) {
             return $this->lang_country;
