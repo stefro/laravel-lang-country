@@ -8,21 +8,23 @@ on:
 
 jobs:
     test:
-        runs-on: ${{ matrix.os }}
+        runs-on: ubuntu-latest
         strategy:
-            fail-fast: true
+            fail-fast: false
             matrix:
-                os: [ ubuntu-latest ]
-                php: [ 8.1, 8.2 ]
-                laravel: [ 9.*, 10.* ]
-                stability: [ prefer-lowest, prefer-stable ]
+                php: [ 8.2, 8.1, 8.0 ]
+                laravel: [ 10.*, 9.* ]
+                dependency-version: [ prefer-lowest, prefer-stable ]
                 include:
-                    -   laravel: 9.*
-                        testbench: ^7.0
                     -   laravel: 10.*
                         testbench: ^8.0
+                    -   laravel: 9.*
+                        testbench: ^7.0
+                exclude:
+                    -   laravel: 10.*
+                        php: 8.0
 
-        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
+        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
 
         steps:
             -   name: Checkout code
@@ -42,8 +44,8 @@ jobs:
 
             -   name: Install dependencies
                 run: |
-                    composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update --dev
-                    composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+                    composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
+                    composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
             -   name: Execute tests
                 run: vendor/bin/pest
