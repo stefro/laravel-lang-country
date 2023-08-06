@@ -274,7 +274,7 @@ it('uses the override when available', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
 
-    $file = __DIR__ . '/../Support/Files/lang-country-overrides/nl-NL.json';
+    $file = __DIR__ . '/../../Support/Files/lang-country-overrides/nl-NL.json';
     $dir = lang_path('lang-country-overrides');
 
     if (! is_dir($dir)) {

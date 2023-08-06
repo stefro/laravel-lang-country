@@ -18,7 +18,7 @@ beforeEach(function () {
 });
 
 test('four char json available', function () {
-    $file = __DIR__ . '/../Support/Files/es-CO.json';
+    $file = __DIR__ . '/../../Support/Files/es-CO.json';
     $dest = lang_path() . 'es-CO.json';
     copy($file, $dest);
 
