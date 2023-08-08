@@ -20,7 +20,7 @@ beforeEach(function () {
     ]);
 });
 
-it('switches for non logged in user', function () {
+it('should switch for non logged in user', function () {
     $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
         ->assertRedirect(route('test_route'));
 
@@ -28,7 +28,7 @@ it('switches for non logged in user', function () {
         ->and(session('locale'))->toEqual('nl');
 });
 
-it('switches for logged in user without lang country setting', function () {
+it('should switch for logged in user without lang country setting', function () {
     $this->actingAs($this->user);
 
     $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
@@ -39,7 +39,7 @@ it('switches for logged in user without lang country setting', function () {
 
 });
 
-it('switches for logged in user with lang country setting', function () {
+it('should switch for logged in user with lang country setting', function () {
     $this->user->update([
         'lang-country' => 'en-US',
     ]);
@@ -54,7 +54,7 @@ it('switches for logged in user with lang country setting', function () {
 
 });
 
-it('redirects back without changes if a lang country is not allowed', function () {
+it('should redirect back without changes if a lang country is not allowed', function () {
     session(['lang_country' => 'nl-BE', 'locale' => 'nl']);
 
     $this->get(route('lang_country.switch', ['lang_country' => 'xx-YY']), ['HTTP_REFERER' => 'test_route'])

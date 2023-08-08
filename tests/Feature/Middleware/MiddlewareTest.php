@@ -21,25 +21,75 @@ beforeEach(function () {
     ]);
 });
 
-it('sessions will be set on first visit with fallback', function () {
-    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
+
+it('should call the setAllSessions method when there is no lang_country session and no logged in user', function () {
+    \LangCountry::shouldReceive('setAllSessions')->once()->with('nl,de')->andReturnUsing(function () {
+        session()->put([
+            'lang_country' => 'nl-NL',
+            'locale' => 'nl',
+        ]);
+    });
+
+    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'nl,de'])
         ->assertStatus(200);
 
-    expect(session('lang_country'))->toEqual('en-GB');
-    expect(session('locale'))->toEqual('en');
+    expect(session('locale'))->toBe('nl')->and(session('lang_country'))->toBe('nl-NL');
 });
 
-it('sessions will be set on first visit according to browser', function () {
-    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'nl-BE'])
+it('should not call the setAllSessions method when there is a lang_country session but no logged in user', function () {
+    session()->put([
+        'lang_country' => 'nl-NL',
+        'locale' => 'nl',
+    ]);
+
+    \LangCountry::shouldReceive('setAllSessions')->never();
+
+    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'de'])
         ->assertStatus(200);
 
-    expect(session('lang_country'))->toEqual('nl-BE');
-    expect(session('locale'))->toEqual('nl');
+    expect(session('locale'))->toBe('nl')->and(session('lang_country'))->toBe('nl-NL');
 });
 
-it('uses fallback for logged in user without lang country setting', function () {
-    $this->actingAs($this->user)->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
+it('should call the setAllSessions method with the browser locale when there is a lang_country session but there is a user without a lang_country value in the database', function () {
+    \LangCountry::shouldReceive('setAllSessions')->once()->with('nl,de')->andReturnUsing(function () {
+        session()->put([
+            'lang_country' => 'nl-NL',
+            'locale' => 'nl',
+        ]);
+    });
+
+    $this->user->update([
+        'lang_country' => null,
+    ]);
+
+    $this->actingAs($this->user);
+
+    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'nl,de'])
         ->assertStatus(200);
-    expect(session('lang_country'))->toEqual('en-GB')
-        ->and(session('locale'))->toEqual('en');
+
+    expect(session('locale'))->toBe('nl')
+        ->and(session('lang_country'))->toBe('nl-NL')
+        ->and($this->user->refresh()->lang_country)->toBe('nl-NL');
+
+});
+
+it('should call the setAllSessions method with the user lang_country value when there is a lang_country session but there is a user with a lang_country value in the database', function () {
+    \LangCountry::shouldReceive('setAllSessions')->once()->with('nl-NL')->andReturnUsing(function () {
+        session()->put([
+            'lang_country' => 'nl-NL',
+            'locale' => 'nl',
+        ]);
+    });
+
+    $this->user->update([
+        'lang_country' => 'nl-NL',
+    ]);
+
+    $this->actingAs($this->user);
+
+    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'nl,de'])
+        ->assertStatus(200);
+
+    expect(session('locale'))->toBe('nl')
+        ->and(session('lang_country'))->toBe('nl-NL');
 });

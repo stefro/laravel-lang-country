@@ -24,7 +24,7 @@ class LangCountry
      */
     public function __construct()
     {
-        if(config('lang-country.fallback_based_on_current_locale', false) && ! session()->has('lang_country')) {
+        if (config('lang-country.fallback_based_on_current_locale', false) && ! session()->has('lang_country')) {
             $lang = new PreferredLanguage(app()->getLocale());
             $this->lang_country = $lang->lang_country;
         } else {
@@ -46,8 +46,8 @@ class LangCountry
     }
 
     /**
-    * Will return the current LangCountry value
-    **/
+     * Will return the current LangCountry value
+     **/
     public function currentLangCountry()
     {
         return $this->lang_country;
@@ -125,7 +125,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "2018-04-24".
      *
-     * @param  Carbon  $carbon
+     * @param Carbon $carbon
      * @return string
      */
     public function dateNumbers(Carbon $carbon, $override = false)
@@ -164,7 +164,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "April 24th 2018".
      *
-     * @param  Carbon  $carbon
+     * @param Carbon $carbon
      * @return string
      */
     public function dateWordsWithoutDay(Carbon $carbon, $override = false)
@@ -192,7 +192,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "Tuesday April 24th 2018".
      *
-     * @param  Carbon  $carbon
+     * @param Carbon $carbon
      * @return string
      */
     public function dateWordsWithDay(Carbon $carbon, $override = false)
@@ -220,7 +220,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "April 24th".
      *
-     * @param  Carbon  $carbon
+     * @param Carbon $carbon
      * @return string
      */
     public function dateBirthday(Carbon $carbon, $override = false)
@@ -248,7 +248,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "12:00 pm".
      *
-     * @param  Carbon  $carbon
+     * @param Carbon $carbon
      * @return string
      */
     public function time(Carbon $carbon, $override = false)
@@ -377,13 +377,13 @@ class LangCountry
     private function getDataFromFile($lang_country)
     {
         if ($lang_country === null) {
-            return[];
+            return [];
         }
 
-        if (file_exists(lang_path('lang-country-overrides').$lang_country.'.json')) {
-            $resource = lang_path('lang-country-overrides').$lang_country.'.json';
+        if (file_exists(lang_path('lang-country-overrides') . $lang_country . '.json')) {
+            $resource = lang_path('lang-country-overrides') . $lang_country . '.json';
         } else {
-            $resource = __DIR__.'/LangCountryData/'.$lang_country.'.json';
+            $resource = __DIR__ . '/LangCountryData/' . $lang_country . '.json';
         }
 
         return json_decode(file_get_contents($resource));
