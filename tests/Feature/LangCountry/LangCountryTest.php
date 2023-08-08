@@ -295,7 +295,7 @@ it('uses the override when available', function () {
     rmdir(lang_path('lang-country-overrides'));
 });
 
-test('get the language for an override lang country code', function () {
+it('get the language for an override lang country code', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
 

@@ -18,13 +18,13 @@ beforeEach(function () {
     ]);
 });
 
-test('no four char json available in date package fallback to just lang', function () {
+it('no four char json available in date package fallback to just lang', function () {
     $lang = new PreferredLanguage('nl-NL');
 
     expect($lang->locale)->toEqual('nl');
 })->group('locale_for_date_test');
 
-test('no match fallback to date package fallback', function () {
+it('no match fallback to date package fallback', function () {
     $lang = new PreferredLanguage('xx-XX');
 
     expect($lang->locale)->toEqual('en');

@@ -17,7 +17,7 @@ beforeEach(function () {
     ]);
 });
 
-test('get preferred languages in right order', function () {
+it('get preferred languages in right order', function () {
     $lang = new PreferredLanguage('nl-NL,nl;q=0.8,en-US;q=0.6,en;q=0.4,de;q=0.5');
 
     $expected = collect([
@@ -31,7 +31,7 @@ test('get preferred languages in right order', function () {
     expect($lang->clientPreferedLanguages())->toEqual($expected);
 })->group('preferred_lang_test');
 
-test('prioritize more specific values', function () {
+it('prioritize more specific values', function () {
     $lang = new PreferredLanguage('nl-NL,nl,en-US,en,de');
     $expected = collect([
         'nl-NL' => 1.0,
@@ -44,25 +44,25 @@ test('prioritize more specific values', function () {
     expect($lang->clientPreferedLanguages())->toEqual($expected);
 })->group('preferred_lang_test');
 
-test('exact match with allowed lang country', function () {
+it('exact match with allowed lang country', function () {
     $lang = new PreferredLanguage('gr,nl,de-DE,en');
 
     expect($lang->lang_country)->toEqual('de-DE');
 })->group('preferred_lang_test');
 
-test('match based on lang', function () {
+it('match based on lang', function () {
     $lang = new PreferredLanguage('gr,nl,zh-CH,en');
 
     expect($lang->lang_country)->toEqual('nl-NL');
 })->group('preferred_lang_test');
 
-test('no match return fallback', function () {
+it('no match return fallback', function () {
     $lang = new PreferredLanguage('gr,zh-CH');
 
     expect($lang->lang_country)->toEqual('en-GB');
 })->group('preferred_lang_test');
 
-test('country in lowecase', function () {
+it('country in lowecase', function () {
     $lang = new PreferredLanguage('nl-nl,nl-be,gr');
 
     expect($lang->lang_country)->toEqual('nl-NL');

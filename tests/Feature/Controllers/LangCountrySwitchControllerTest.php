@@ -1,7 +1,6 @@
 <?php
 
-
-use Illuminate\Foundation\Auth\User;
+use Stefro\LaravelLangCountry\Tests\Support\Models\User;
 
 beforeEach(function () {
     // Set config variables
@@ -13,42 +12,54 @@ beforeEach(function () {
         'en-US',
     ]);
 
-    User::unguard();
     $this->user = User::create([
         'name' => 'Orchestra',
         'email' => 'hello@orchestraplatform.com',
         'password' => \Hash::make('456'),
         'lang_country' => null,
     ]);
-    User::reguard();
 });
 
-test('switch for non logged in user', function () {
-    // make first visit and verify fallback values are set
-    $this->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
-        ->assertStatus(200);
-    expect(session('lang_country'))->toEqual('en-GB');
-    expect(session('locale'))->toEqual('en');
-
-    // visit switch route
+it('switches for non logged in user', function () {
     $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
         ->assertRedirect(route('test_route'));
-    expect(session('lang_country'))->toEqual('nl-BE');
-    expect(session('locale'))->toEqual('nl');
+
+    expect(session('lang_country'))->toEqual('nl-BE')
+        ->and(session('locale'))->toEqual('nl');
 });
 
-test('switch for logged in user without lang country setting', function () {
-    // make first visit and verify fallback values are set
-    $this->actingAs($this->user)->get('test_route', ['HTTP_ACCEPT_LANGUAGE' => 'gr,zh-CH'])
-        ->assertStatus(200);
-    expect(session('lang_country'))->toEqual('en-GB');
-    expect(session('locale'))->toEqual('en');
+it('switches for logged in user without lang country setting', function () {
+    $this->actingAs($this->user);
 
-    // visit switch route
     $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
         ->assertRedirect(route('test_route'));
-    expect(session('lang_country'))->toEqual('nl-BE');
-    expect(session('locale'))->toEqual('nl');
+    expect(session('lang_country'))->toEqual('nl-BE')
+        ->and(session('locale'))->toEqual('nl')
+        ->and($this->user->lang_country)->toEqual('nl-BE');
 
-    expect($this->user->lang_country)->toEqual('nl-BE');
+});
+
+it('switches for logged in user with lang country setting', function () {
+    $this->user->update([
+        'lang-country' => 'en-US',
+    ]);
+
+    $this->actingAs($this->user);
+
+    $this->get(route('lang_country.switch', ['lang_country' => 'nl-BE']), ['HTTP_REFERER' => 'test_route'])
+        ->assertRedirect(route('test_route'));
+    expect(session('lang_country'))->toEqual('nl-BE')
+        ->and(session('locale'))->toEqual('nl')
+        ->and($this->user->lang_country)->toEqual('nl-BE');
+
+});
+
+it('redirects back without changes if a lang country is not allowed', function () {
+    session(['lang_country' => 'nl-BE', 'locale' => 'nl']);
+
+    $this->get(route('lang_country.switch', ['lang_country' => 'xx-YY']), ['HTTP_REFERER' => 'test_route'])
+        ->assertRedirect(route('test_route'));
+
+    expect(session('lang_country'))->toEqual('nl-BE')
+        ->and(session('locale'))->toEqual('nl');
 });

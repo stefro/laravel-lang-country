@@ -17,7 +17,7 @@ beforeEach(function () {
     ]);
 });
 
-test('four char json available', function () {
+it('four char json available', function () {
     $file = __DIR__ . '/../../Support/Files/es-CO.json';
     $dest = lang_path() . 'es-CO.json';
     copy($file, $dest);
@@ -29,7 +29,7 @@ test('four char json available', function () {
     @unlink($dest);
 })->group('locale_test');
 
-test('four char json not available', function () {
+it('four char json not available', function () {
     $lang = new PreferredLanguage('es-CO,en');
 
     expect($lang->locale)->toEqual('es');
