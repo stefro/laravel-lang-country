@@ -20,7 +20,7 @@ class LangCountrySession
 
             \LangCountry::setAllSessions($preferred_lang);
 
-            if (\Auth::user() && array_key_exists('lang_country', \Auth::user()->getAttributes())) {
+            if (\Auth::user() && array_key_exists('lang_country', \Auth::user()->getAttributes()) && \Auth::user()->lang_country === null) {
                 \Auth::user()->lang_country = session('lang_country');
                 \Auth::user()->save();
             }
