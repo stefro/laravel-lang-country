@@ -27,7 +27,7 @@ it('should get preferred languages in right order', function () {
         'en' => 0.4,
     ]);
 
-    expect($lang->clientPreferedLanguages())->toEqual($expected);
+    expect($lang->clientPreferredLanguages())->toEqual($expected);
 });
 
 it('prioritize more specific values', function () {
@@ -40,7 +40,7 @@ it('prioritize more specific values', function () {
         'en' => 1.0,
     ]);
 
-    expect($lang->clientPreferedLanguages())->toEqual($expected);
+    expect($lang->clientPreferredLanguages())->toEqual($expected);
 });
 
 it('should return exact match with allowed lang country', function () {

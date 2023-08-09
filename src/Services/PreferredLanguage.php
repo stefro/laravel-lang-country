@@ -2,70 +2,36 @@
 
 namespace Stefro\LaravelLangCountry\Services;
 
+use Illuminate\Support\Collection;
+
 /**
  * Class PreferedLanguage.
  */
 class PreferredLanguage
 {
-    /**
-     * @var \Illuminate\Support\Collection
-     */
-    protected $client_preferred;
+    protected Collection $client_preferred;
 
-    /**
-     * @var \Illuminate\Support\Collection
-     */
-    protected $allowed;
+    protected Collection $allowed;
 
-    /**
-     * HTTP_ACCEPT_LANGUAGE string.
-     *
-     * @var
-     */
-    protected $preferred_languages;
+    protected string $fallback;
 
-    /**
-     * @var string
-     */
-    protected $fallback;
+    public string $lang_country;
 
-    /**
-     * calculated lang_country result.
-     *
-     * @var string
-     */
-    public $lang_country;
+    public string $locale;
 
-    /**
-     * Calculated locale result.
-     *
-     * @var string
-     */
-    public $locale;
-
-    /**
-     * PreferedLanguage constructor.
-     *
-     * @param $preferred_languages
-     * @param null $allowed
-     * @param null $fallback
-     */
-    public function __construct($preferred_languages, $allowed = null, $fallback = null)
+    public function __construct(protected string $preferred_languages, $allowed = null, $fallback = null)
     {
-        $this->preferred_languages = $preferred_languages;
         $this->allowed = $allowed ?? collect(config('lang-country.allowed'));
         $this->fallback = $fallback ?? config('lang-country.fallback');
-        $this->client_preferred = $this->clientPreferedLanguages();
+        $this->client_preferred = $this->clientPreferredLanguages();
         $this->lang_country = $this->getLangCountry();
         $this->locale = $this->getLocale();
     }
 
     /**
      * It will return a list of preferred languages of the browser in order of preference.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function clientPreferedLanguages()
+    public function clientPreferredLanguages(): Collection
     {
         // regex inspired from @GabrielAnderson on http://stackoverflow.com/questions/6038236/http-accept-language
         preg_match_all(
@@ -117,31 +83,13 @@ class PreferredLanguage
 
     /**
      * It will find the first best match for lang_country according to the allowed list (from config file).
-     *
-     * @return \Illuminate\Config\Repository|int|mixed|string|static
      */
-    protected function getLangCountry()
+    protected function getLangCountry(): string
     {
-        $preferred = $this->rewritePreferedToFourDigitValues();
+        $preferred = $this->findExactMatchForFourCharsOrReturnNull();
 
-        // Find exact match for 4 digits
-        $preferred = $this->client_preferred->keys()->filter(function ($value) {
-            return 5 == strlen($value);
-        })->first(function ($value) {
-            return $this->allowed->contains($value);
-        });
-
-        // Find first two digit (lang) match to four digit lang_country from the allowed-list
         if (null === $preferred) {
-            $preferred = $this->client_preferred->keys()->filter(function ($value) {
-                return 2 == strlen($value);
-            })->map(function ($item) {
-                return $this->allowed->filter(function ($value) use ($item) {
-                    return $item == explode('-', $value)[0];
-                })->first();
-            })->reject(function ($value) {
-                return $value === null;
-            })->first();
+            $preferred = $this->findFirstMatchBasedOnOnlyTheLangChars();
         }
 
         // Get fallback if no results
@@ -152,42 +100,33 @@ class PreferredLanguage
         return $preferred;
     }
 
-    /**
-     * @return string|null
-     */
-    private function rewritePreferedToFourDigitValues()
+    public function findExactMatchForFourCharsOrReturnNull(): ?string
     {
-        $preferred = $this->client_preferred->keys()->map(function ($value) {
-            if (5 == strlen($value)) {
-                return $value;
-            } else {
-                return $this->findFourDigitValueInOther($value);
-            }
-        })->reject(function ($value) {
-            return $value === null;
+        return $this->client_preferred->keys()->filter(function ($value) {
+            return 5 == strlen($value);
+        })->first(function ($value) {
+            return $this->allowed->contains($value);
         });
-
-        return $preferred;
     }
 
-    /**
-     * @param $value
-     * @return mixed
-     */
-    private function findFourDigitValueInOther($value)
+    public function findFirstMatchBasedOnOnlyTheLangChars()
     {
-        return $this->allowed->filter(function ($item) use ($value) {
-            return $value == explode('-', $value)[0];
+        return $this->client_preferred->keys()->filter(function ($value) {
+            return 2 === strlen($value);
+        })->map(function ($item) {
+            return $this->allowed->filter(function ($value) use ($item) {
+                return $item === explode('-', $value)[0];
+            })->first();
+        })->reject(function ($value) {
+            return $value === null;
         })->first();
     }
 
     /**
      * Check if 4 char language (ex. en-US.json) file exists in /resources/lang/ dir.
      * If not, just return the first two chars (represents the language).
-     *
-     * @return bool|\Illuminate\Config\Repository|int|PreferredLanguage|mixed|string
      */
-    private function getLocale()
+    private function getLocale(): string
     {
         $path = lang_path() . $this->lang_country . '.json';
 
@@ -196,10 +135,5 @@ class PreferredLanguage
         } else {
             return substr($this->lang_country, 0, 2);
         }
-    }
-
-    private function getLocaleForDate()
-    {
-        return substr($this->lang_country, 0, 2);
     }
 }
