@@ -17,32 +17,32 @@ beforeEach(function () {
     ]);
 });
 
-it('returns the right values for nl  n l', function () {
+it('should return the right values for nl-nl', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
 
-    expect(\LangCountry::country())->toEqual('NL');
-    expect(\LangCountry::countryName())->toEqual('The Netherlands');
-    expect(\LangCountry::countryNameLocal())->toEqual('Nederland');
-    expect(\LangCountry::lang())->toEqual('nl');
-    expect(\LangCountry::name())->toEqual('Nederlands');
-    expect(\LangCountry::dateNumbersFormat())->toEqual('d-m-Y');
-    expect(\LangCountry::dateNumbers($this->test_date))->toEqual('10-03-2018');
-    expect(\LangCountry::dateNumbersFullCapitalsFormat())->toEqual('DD-MM-YYYY');
-    expect(\LangCountry::dateWordsWithoutDayFormat())->toEqual('j F Y');
-    expect(\LangCountry::dateWordsWithoutDay($this->test_date))->toEqual('10 maart 2018');
-    expect(\LangCountry::dateWordsWithDayFormat())->toEqual('l j F Y');
-    expect(\LangCountry::dateWordsWithDay($this->test_date))->toEqual('zaterdag 10 maart 2018');
-    expect(\LangCountry::dateBirthdayFormat())->toEqual('j F');
-    expect(\LangCountry::dateBirthday($this->test_date))->toEqual('10 maart');
-    expect(\LangCountry::timeFormat())->toEqual('H:i');
-    expect(\LangCountry::time($this->test_date))->toEqual('13:05');
-    expect(\LangCountry::emojiFlag())->toEqual('🇳🇱');
-    expect(\LangCountry::currencyCode())->toEqual('EUR');
-    expect(\LangCountry::currencySymbol())->toEqual('€');
-    expect(\LangCountry::currencySymbolLocal())->toEqual('€');
-    expect(\LangCountry::currencyName())->toEqual('Euro');
-    expect(\LangCountry::currencyNameLocal())->toEqual('Euro');
+    expect(\LangCountry::country())->toEqual('NL')
+        ->and(\LangCountry::countryName())->toEqual('The Netherlands')
+        ->and(\LangCountry::countryNameLocal())->toEqual('Nederland')
+        ->and(\LangCountry::lang())->toEqual('nl')
+        ->and(\LangCountry::name())->toEqual('Nederlands')
+        ->and(\LangCountry::dateNumbersFormat())->toEqual('d-m-Y')
+        ->and(\LangCountry::dateNumbers($this->test_date))->toEqual('10-03-2018')
+        ->and(\LangCountry::dateNumbersFullCapitalsFormat())->toEqual('DD-MM-YYYY')
+        ->and(\LangCountry::dateWordsWithoutDayFormat())->toEqual('j F Y')
+        ->and(\LangCountry::dateWordsWithoutDay($this->test_date))->toEqual('10 maart 2018')
+        ->and(\LangCountry::dateWordsWithDayFormat())->toEqual('l j F Y')
+        ->and(\LangCountry::dateWordsWithDay($this->test_date))->toEqual('zaterdag 10 maart 2018')
+        ->and(\LangCountry::dateBirthdayFormat())->toEqual('j F')
+        ->and(\LangCountry::dateBirthday($this->test_date))->toEqual('10 maart')
+        ->and(\LangCountry::timeFormat())->toEqual('H:i')
+        ->and(\LangCountry::time($this->test_date))->toEqual('13:05')
+        ->and(\LangCountry::emojiFlag())->toEqual('🇳🇱')
+        ->and(\LangCountry::currencyCode())->toEqual('EUR')
+        ->and(\LangCountry::currencySymbol())->toEqual('€')
+        ->and(\LangCountry::currencySymbolLocal())->toEqual('€')
+        ->and(\LangCountry::currencyName())->toEqual('Euro')
+        ->and(\LangCountry::currencyNameLocal())->toEqual('Euro');
 
     $expected = [
         'current' => [
@@ -105,34 +105,34 @@ it('returns the right values for nl  n l', function () {
         ],
     ];
     expect(\LangCountry::langSelectorHelper())->toEqual($expected);
-})->group('lang_country_test');
+});
 
-it('returns the right values for en  u s', function () {
+it('returns the right values for en-US', function () {
     session(['lang_country' => 'en-US']);
     App::setLocale('en');
 
-    expect(\LangCountry::country())->toEqual('US');
-    expect(\LangCountry::countryName())->toEqual('United States of America');
-    expect(\LangCountry::countryNameLocal())->toEqual('America');
-    expect(\LangCountry::lang())->toEqual('en');
-    expect(\LangCountry::name())->toEqual('American English');
-    expect(\LangCountry::dateNumbersFormat())->toEqual('m/d/Y');
-    expect(\LangCountry::dateNumbers($this->test_date))->toEqual('03/10/2018');
-    expect(\LangCountry::dateNumbersFullCapitalsFormat())->toEqual('MM/DD/YYYY');
-    expect(\LangCountry::dateWordsWithoutDayFormat())->toEqual('F jS Y');
-    expect(\LangCountry::dateWordsWithoutDay($this->test_date))->toEqual('March 10th 2018');
-    expect(\LangCountry::dateWordsWithDayFormat())->toEqual('l F jS Y');
-    expect(\LangCountry::dateWordsWithDay($this->test_date))->toEqual('Saturday March 10th 2018');
-    expect(\LangCountry::dateBirthdayFormat())->toEqual('F jS');
-    expect(\LangCountry::dateBirthday($this->test_date))->toEqual('March 10th');
-    expect(\LangCountry::timeFormat())->toEqual('h:i a');
-    expect(\LangCountry::time($this->test_date))->toEqual('01:05 pm');
-    expect(\LangCountry::emojiFlag())->toEqual('🇺🇸');
-    expect(\LangCountry::currencyCode())->toEqual('USD');
-    expect(\LangCountry::currencySymbol())->toEqual('$');
-    expect(\LangCountry::currencySymbolLocal())->toEqual('US$');
-    expect(\LangCountry::currencyName())->toEqual('Dollar');
-    expect(\LangCountry::currencyNameLocal())->toEqual('US Dollar');
+    expect(\LangCountry::country())->toEqual('US')
+        ->and(\LangCountry::countryName())->toEqual('United States of America')
+        ->and(\LangCountry::countryNameLocal())->toEqual('America')
+        ->and(\LangCountry::lang())->toEqual('en')
+        ->and(\LangCountry::name())->toEqual('American English')
+        ->and(\LangCountry::dateNumbersFormat())->toEqual('m/d/Y')
+        ->and(\LangCountry::dateNumbers($this->test_date))->toEqual('03/10/2018')
+        ->and(\LangCountry::dateNumbersFullCapitalsFormat())->toEqual('MM/DD/YYYY')
+        ->and(\LangCountry::dateWordsWithoutDayFormat())->toEqual('F jS Y')
+        ->and(\LangCountry::dateWordsWithoutDay($this->test_date))->toEqual('March 10th 2018')
+        ->and(\LangCountry::dateWordsWithDayFormat())->toEqual('l F jS Y')
+        ->and(\LangCountry::dateWordsWithDay($this->test_date))->toEqual('Saturday March 10th 2018')
+        ->and(\LangCountry::dateBirthdayFormat())->toEqual('F jS')
+        ->and(\LangCountry::dateBirthday($this->test_date))->toEqual('March 10th')
+        ->and(\LangCountry::timeFormat())->toEqual('h:i a')
+        ->and(\LangCountry::time($this->test_date))->toEqual('01:05 pm')
+        ->and(\LangCountry::emojiFlag())->toEqual('🇺🇸')
+        ->and(\LangCountry::currencyCode())->toEqual('USD')
+        ->and(\LangCountry::currencySymbol())->toEqual('$')
+        ->and(\LangCountry::currencySymbolLocal())->toEqual('US$')
+        ->and(\LangCountry::currencyName())->toEqual('Dollar')
+        ->and(\LangCountry::currencyNameLocal())->toEqual('US Dollar');
 
     $expected = [
         'current' => [
@@ -195,20 +195,21 @@ it('returns the right values for en  u s', function () {
         ],
     ];
     expect(\LangCountry::langSelectorHelper())->toEqual($expected);
-})->group('lang_country_test');
+});
 
-it('returns the right values for en  u s while session is nl  n l but is overruled', function () {
+it('should return the right values for enUS while session is nl-NL but is overruled', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
 
-    expect(\LangCountry::dateNumbers($this->test_date, 'en-US'))->toEqual('03/10/2018');
-    expect(\LangCountry::dateWordsWithoutDay($this->test_date, 'en-US'))->toEqual('March 10th 2018');
-    expect(\LangCountry::dateWordsWithDay($this->test_date, 'en-US'))->toEqual('Saturday March 10th 2018');
-    expect(\LangCountry::dateBirthday($this->test_date, 'en-US'))->toEqual('March 10th');
-    expect(\LangCountry::time($this->test_date, 'en-US'))->toEqual('01:05 pm');
-})->group('lang_country_test');
+    expect(\LangCountry::dateNumbers($this->test_date, 'en-US'))->toEqual('03/10/2018')
+        ->and(\LangCountry::dateWordsWithoutDay($this->test_date, 'en-US'))->toEqual('March 10th 2018')
+        ->and(\LangCountry::dateWordsWithDay($this->test_date, 'en-US'))->toEqual('Saturday March 10th 2018')
+        ->and(\LangCountry::dateBirthday($this->test_date, 'en-US'))->toEqual('March 10th')
+        ->and(\LangCountry::time($this->test_date, 'en-US'))->toEqual('01:05 pm');
+});
 
-it('returns all the availeble languages', function () {
+it('should return all the available languages', function () {
+
     $expected = [
         [
             'country' => 'NL',
@@ -268,9 +269,9 @@ it('returns all the availeble languages', function () {
         ],
     ];
     expect(\LangCountry::allLanguages())->toEqual(collect($expected));
-})->group('lang_country_test');
+});
 
-it('uses the override when available', function () {
+it('should use the override when available', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
 
@@ -286,16 +287,16 @@ it('uses the override when available', function () {
 
     copy($file, $dest);
 
-    expect(\LangCountry::lang())->toEqual('nl');
-    expect(\LangCountry::country())->toEqual('NL');
-    expect(\LangCountry::name())->toEqual('Nederlands override!');
+    expect(\LangCountry::lang())->toEqual('nl')
+        ->and(\LangCountry::country())->toEqual('NL')
+        ->and(\LangCountry::name())->toEqual('Nederlands override!');
 
     // Remove test files from testbench
     unlink(lang_path('lang-country-overrides') . 'nl-NL.json');
     rmdir(lang_path('lang-country-overrides'));
 });
 
-it('get the language for an override lang country code', function () {
+it('should return the language for an override lang country code', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
 
