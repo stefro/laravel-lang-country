@@ -44,12 +44,12 @@ class LangCountry
     }
 
     /**
-     * It will return the right language. This can be a two char representation (ex. "nl", dutch)
+     * It will return the right language. This can be a two char representation (ex. "nl", Dutch)
      * or a four char representation (ex. es_CO; Spanish-colombian).
      */
     public function lang($override = false): string
     {
-        if ($override != false) {
+        if ($override) {
             $this->overrideSession($override);
         }
 
@@ -113,7 +113,7 @@ class LangCountry
     }
 
     /**
-     * String representation of the dateformat with only capitals, some javascript dateselectors use this.
+     * String representation of the dateformat with only capitals, some javascript date selectors use this.
      * Ex: "DD-MM-YYYY".
      */
     public function dateNumbersFullCapitalsFormat(): string
@@ -191,7 +191,7 @@ class LangCountry
     }
 
     /**
-     * String representation of the timeformat.
+     * String representation of the time-format.
      * Ex: "h:i a".
      */
     public function timeFormat(): string
