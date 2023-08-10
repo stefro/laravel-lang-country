@@ -37,7 +37,7 @@
     "scripts": {
         "test": "vendor/bin/pest",
         "test:fast": "vendor/bin/pest --parallel",
-        "test:coverage": "vendor/bin/pest --parallel --coverage",
+        "test:coverage": "vendor/bin/pest --parallel --coverage --min=100",
         "format": "vendor/bin/php-cs-fixer fix src --allow-risky=yes"
     },
     "extra": {
