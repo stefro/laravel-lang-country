@@ -3,6 +3,7 @@
 namespace Stefro\LaravelLangCountry;
 
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Collection;
 use Stefro\LaravelLangCountry\Services\PreferredLanguage;
 
@@ -25,13 +26,9 @@ class LangCountry
 
     public function overrideSession($lang_country): void
     {
-        // In case the override is not a 4 char value
-        if (5 !== strlen($lang_country)) {
-            $lang = new PreferredLanguage($lang_country);
-            $lang_country = $lang->lang_country;
-        }
+        $lang = new PreferredLanguage($lang_country);
 
-        $this->lang_country = $lang_country;
+        $this->lang_country = $lang->lang_country;
         $this->data = $this->getDataFromFile($lang_country);
     }
 
@@ -309,10 +306,13 @@ class LangCountry
         session(['locale' => $lang->locale]);
     }
 
+    /**
+     * @throws Exception
+     */
     private function getDataFromFile($lang_country): array
     {
         if ($lang_country === null) {
-            return [];
+            throw new Exception('The lang_country session is not set');
         }
 
         if (file_exists(lang_path('lang-country-overrides') . $lang_country . '.json')) {

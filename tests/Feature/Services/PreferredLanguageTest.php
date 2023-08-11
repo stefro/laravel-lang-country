@@ -118,3 +118,19 @@ it('should use four char json when available', function () {
     expect($lang->locale)->toEqual('es-CO');
     @unlink($dest);
 });
+
+it('should should be able to override the lang_country session', function () {
+    session()->put('lang_country', 'nl-NL');
+    $langCountry = new \Stefro\LaravelLangCountry\LangCountry();
+
+    expect($langCountry->currentLangCountry())->toEqual('nl-NL');
+
+    $langCountry->overrideSession('en-GB');
+
+    expect($langCountry->currentLangCountry())->toEqual('en-GB');
+});
+
+it('should throw an error when the lang_country session is null', function () {
+    session()->put('lang_country', null);
+    $langCountry = new \Stefro\LaravelLangCountry\LangCountry();
+})->throws(\Exception::class, 'The lang_country session is not set');
