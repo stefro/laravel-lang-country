@@ -17,6 +17,30 @@ beforeEach(function () {
     ]);
 });
 
+it(
+    'should get lang_country based on app locale, lang_country session and fallback_based_on_current_locale setting',
+    function ($fallbackBasedOnCurrentLocale, $langCountrySession, $appLocale, $expected) {
+        $this->app['config']->set('lang-country.fallback_based_on_current_locale', $fallbackBasedOnCurrentLocale);
+
+        if ($langCountrySession === null) {
+            session()->forget('lang_country');
+        } else {
+            session(['lang_country' => $langCountrySession]);
+        }
+
+        App::setLocale($appLocale);
+
+        expect(\LangCountry::currentLangCountry())->toEqual($expected);
+
+    }
+)->with([
+    [true, null, 'en', 'en-GB'],
+    [true, null, 'nl', 'nl-NL'],
+    [false, 'en-US', 'en', 'en-US'],
+    [false, null, 'nl', 'en-GB'],
+]);
+
+
 it('should return the right values for nl-nl', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
