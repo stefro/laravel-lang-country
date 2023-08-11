@@ -54,3 +54,7 @@ jobs:
 
             -   name: Execute tests
                 run: composer test:coverage
+
+            -   name: Type check
+                if: ${{ contains(matrix.laravel, '10.*') }}
+                run: composer type:check
