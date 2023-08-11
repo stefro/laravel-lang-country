@@ -39,10 +39,18 @@ jobs:
                     echo "::add-matcher::${{ runner.tool_cache }}/php.json"
                     echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
-            -   name: Install dependencies
+            -   name: Install dependencies Laravel 9
+                if: matrix.laravel == 9.*'
                 run: |
                     composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
-                    composer update --${{ matrix.dependency-version }} --ignore="pestphp/pest-plugin-type-coverage" --prefer-dist --no-interaction
+                    composer remove --dev "pestphp/pest-plugin-type-coverage" --no-interaction --no-update
+                    composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+
+            -   name: Install dependencies Laravel 10
+                if: matrix.laravel == '10.*'
+                run: |
+                    composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
+                    composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
             -   name: Execute tests
                 run: composer test:coverage
