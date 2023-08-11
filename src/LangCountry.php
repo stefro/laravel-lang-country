@@ -24,7 +24,7 @@ class LangCountry
         $this->data = $this->getDataFromFile($this->lang_country);
     }
 
-    public function overrideSession($lang_country): void
+    public function overrideSession(string $lang_country): void
     {
         $lang = new PreferredLanguage($lang_country);
 
@@ -44,7 +44,7 @@ class LangCountry
      * It will return the right language. This can be a two char representation (ex. "nl", Dutch)
      * or a four char representation (ex. es_CO; Spanish-colombian).
      */
-    public function lang($override = false): string
+    public function lang(string|bool $override = false): string
     {
         if ($override) {
             $this->overrideSession($override);
@@ -100,7 +100,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "2018-04-24".
      */
-    public function dateNumbers(Carbon $carbon, $override = false): string
+    public function dateNumbers(Carbon $carbon, string|bool $override = false): string
     {
         if ($override) {
             $this->overrideSession($override);
@@ -132,7 +132,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "April 24th 2018".
      */
-    public function dateWordsWithoutDay(Carbon $carbon, $override = false): string
+    public function dateWordsWithoutDay(Carbon $carbon, string|bool $override = false): string
     {
         if ($override) {
             $this->overrideSession($override);
@@ -155,7 +155,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "Tuesday April 24th 2018".
      */
-    public function dateWordsWithDay(Carbon $carbon, $override = false): string
+    public function dateWordsWithDay(Carbon $carbon, string|bool $override = false): string
     {
         if ($override) {
             $this->overrideSession($override);
@@ -178,7 +178,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "April 24th".
      */
-    public function dateBirthday(Carbon $carbon, $override = false): string
+    public function dateBirthday(Carbon $carbon, string|bool $override = false): string
     {
         if ($override) {
             $this->overrideSession($override);
@@ -201,7 +201,7 @@ class LangCountry
      * It will be translated through \Date
      * Ex: "12:00 pm".
      */
-    public function time(Carbon $carbon, $override = false): string
+    public function time(Carbon $carbon, string|bool $override = false): string
     {
         if ($override) {
             $this->overrideSession($override);
@@ -222,7 +222,7 @@ class LangCountry
     public function allLanguages(): Collection
     {
         return collect(config('lang-country.allowed'))
-            ->map(function ($item) {
+            ->map(function (string $item) {
                 $file = $this->getDataFromFile($item);
 
                 return [
@@ -288,7 +288,7 @@ class LangCountry
      */
     public function langSelectorHelper(): array
     {
-        return $this->allLanguages()->reduce(function ($carry, $item) {
+        return $this->allLanguages()->reduce(function (?array $carry, array $item) {
             if ($item['lang_country'] != session('lang_country')) {
                 $carry['available'][] = $item;
             } else {
@@ -299,7 +299,7 @@ class LangCountry
         });
     }
 
-    public function setAllSessions($preferred_lang): void
+    public function setAllSessions(string $preferred_lang): void
     {
         $lang = new PreferredLanguage($preferred_lang);
         session(['lang_country' => $lang->lang_country]);
@@ -309,7 +309,7 @@ class LangCountry
     /**
      * @throws Exception
      */
-    private function getDataFromFile($lang_country): array
+    private function getDataFromFile(?string $lang_country): array
     {
         if ($lang_country === null) {
             throw new Exception('The lang_country session is not set');

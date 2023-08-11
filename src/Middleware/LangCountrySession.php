@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class LangCountrySession
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         if (! session()->has('lang_country') || ! session()->has('locale')) {
 

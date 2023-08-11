@@ -19,7 +19,7 @@ class PreferredLanguage
 
     public string $locale;
 
-    public function __construct(protected string $preferred_languages, $allowed = null, $fallback = null)
+    public function __construct(protected string $preferred_languages, ?Collection $allowed = null, ?string $fallback = null)
     {
         $this->allowed = $allowed ?? collect(config('lang-country.allowed'));
         $this->fallback = $fallback ?? config('lang-country.fallback');
@@ -43,7 +43,7 @@ class PreferredLanguage
         $langs = $lang_parse[1];
 
         // Make sure the country chars (when available) are uppercase.
-        $langs = collect($langs)->map(function ($lang) {
+        $langs = collect($langs)->map(function (string $lang) {
             if (5 == strlen($lang)) {
                 $lang = explode('-', $lang);
                 $lang = implode('-', [$lang[0], strtoupper($lang[1])]);
@@ -61,7 +61,7 @@ class PreferredLanguage
         }
 
         // (comparison function for uksort)
-        $cmpLangs = function ($a, $b) use ($lang2pref) {
+        $cmpLangs = function (string $a, string $b) use ($lang2pref) {
             if ($lang2pref[$a] > $lang2pref[$b]) {
                 return -1;
             } elseif ($lang2pref[$a] < $lang2pref[$b]) {
@@ -102,22 +102,22 @@ class PreferredLanguage
 
     public function findExactMatchForFourCharsOrReturnNull(): ?string
     {
-        return $this->client_preferred->keys()->filter(function ($value) {
+        return $this->client_preferred->keys()->filter(function (string $value) {
             return 5 == strlen($value);
-        })->first(function ($value) {
+        })->first(function (string $value) {
             return $this->allowed->contains($value);
         });
     }
 
-    public function findFirstMatchBasedOnOnlyTheLangChars()
+    public function findFirstMatchBasedOnOnlyTheLangChars(): ?string
     {
-        return $this->client_preferred->keys()->filter(function ($value) {
+        return $this->client_preferred->keys()->filter(function (string $value) {
             return 2 === strlen($value);
-        })->map(function ($item) {
-            return $this->allowed->filter(function ($value) use ($item) {
+        })->map(function (string $item) {
+            return $this->allowed->filter(function (string $value) use ($item) {
                 return $item === explode('-', $value)[0];
             })->first();
-        })->reject(function ($value) {
+        })->reject(function (?string $value) {
             return $value === null;
         })->first();
     }

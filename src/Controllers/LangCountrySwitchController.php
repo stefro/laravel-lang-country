@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller;
 
 class LangCountrySwitchController extends Controller
 {
-    public function switch($lang_country): RedirectResponse
+    public function switch(string $lang_country): RedirectResponse
     {
         if (! in_array($lang_country, config('lang-country.allowed'))) {
             return redirect()->back();

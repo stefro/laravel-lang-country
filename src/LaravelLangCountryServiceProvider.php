@@ -11,13 +11,13 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/lang-country.php' => config_path('lang-country.php'),
+            __DIR__ . '/../config/lang-country.php' => config_path('lang-country.php'),
         ], 'config');
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->app['router']->aliasMiddleware('lang_country', \Stefro\LaravelLangCountry\Middleware\LangCountrySession::class);
 
@@ -32,7 +32,7 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
     }
 }
