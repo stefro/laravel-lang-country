@@ -8,7 +8,7 @@ use Stefro\LaravelLangCountry\Services\PreferredLanguage;
 
 class LangCountry
 {
-    protected string $lang_country;
+    protected ?string $lang_country = null;
 
     protected array $data;
 

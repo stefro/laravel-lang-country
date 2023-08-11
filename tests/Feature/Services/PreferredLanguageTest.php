@@ -81,3 +81,40 @@ it('should override the default allowed languages from the config', function () 
     expect($lang->lang_country)->toEqual('cn-CN')
         ->and($lang->locale)->toEqual('cn');
 });
+
+it('should fall back to only country two char if four char json not available', function () {
+    $this->app['config']->set('lang-country.allowed', [
+        'nl-NL',
+        'nl-BE',
+        'en-GB',
+        'en-US',
+        'en-CA',
+        'en-AU',
+        'es-CO',
+    ]);
+
+    $lang = new PreferredLanguage('es-CO,en');
+
+    expect($lang->locale)->toEqual('es');
+});
+
+it('should use four char json when available', function () {
+    $this->app['config']->set('lang-country.allowed', [
+        'nl-NL',
+        'nl-BE',
+        'en-GB',
+        'en-US',
+        'en-CA',
+        'en-AU',
+        'es-CO',
+    ]);
+
+    $file = __DIR__ . '/../../Support/Files/es-CO.json';
+    $dest = lang_path() . 'es-CO.json';
+    copy($file, $dest);
+
+    $lang = new PreferredLanguage('es-CO,en');
+
+    expect($lang->locale)->toEqual('es-CO');
+    @unlink($dest);
+});

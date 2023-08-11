@@ -19,6 +19,7 @@
         "illuminate/support": "^9.0|^10.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.13",
         "friendsofphp/php-cs-fixer": "^3.22",
         "orchestra/testbench": "^7.0|^8.0",
         "pestphp/pest": "^1.21 | ^2.0",
@@ -35,6 +36,13 @@
         }
     },
     "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php vendor/bin/testbench ide-helper:generate",
+            "@php vendor/bin/testbench ide-helper:meta"
+        ],
         "test": "vendor/bin/pest",
         "test:fast": "vendor/bin/pest --parallel",
         "test:coverage": "vendor/bin/pest --parallel --coverage --min=100",
