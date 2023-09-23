@@ -1,9 +1,6 @@
 <?php
 
 return [
-
-    'fallback_based_on_current_locale' => false,
-
     'fallback' => 'en-GB',
 
     'allowed' => [
@@ -376,4 +373,6 @@ return [
     ],
 
     'lang_switcher_middleware' => ['web'],
+
+    'fallback_based_on_current_locale' => false,
 ];

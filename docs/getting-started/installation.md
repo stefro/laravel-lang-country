@@ -21,7 +21,7 @@ You can install this package via composer using this command:
 composer require involved-group/laravel-lang-country
 ```
 
-### Laravel configuration
+### Laravel configuration file
 
 The package will automatically register itself.
 
@@ -30,6 +30,8 @@ You can publish the config-file with:
 ``` bash
 php artisan vendor:publish --provider="Stefro\LaravelLangCountry\LaravelLangCountryServiceProvider" --tag="config"
 ```
+
+### Middleware (optional)
 
 Set the middleware. Add this in your `app\Http\Kernel.php` file to the $middlewareGroups web property:
 
@@ -40,6 +42,10 @@ protected $middlewareGroups = [
         'lang_country'
     ],
 ```
+
+You can find more information about the middleware [here](/usage/middleware).
+
+### Migration
 
 As soon as you run the migration, a `lang_country` column will be set for your User table. The migration will be load
 through the service provider of the package, so you don't need to publish it first.

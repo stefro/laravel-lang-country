@@ -6,7 +6,7 @@ export default defineConfig({
     description: "The localisation package for auto date-formats, language switcher helper and more.",
     lastUpdated: true,
     themeConfig: {
-        logo: './public/logo.svg',
+        logo: '/public/logo.svg',
         nav: [
             {text: 'Home', link: '/'},
         ],
@@ -19,6 +19,7 @@ export default defineConfig({
                     {text: 'Introduction', link: '/'},
                     {text: 'Installation', link: '/getting-started/installation'},
                     {text: 'Change log', link: '/getting-started/changelog'},
+                    {text: 'Upgrade guide', link: '/getting-started/upgrade'},
                 ]
             }, {
                 text: 'Usage',
@@ -26,8 +27,9 @@ export default defineConfig({
                 items: [
                     {text: 'Configuration', link: '/usage/configuration'},
                     {text: 'Language switcher', link: '/usage/language-switcher'},
-                    {text: 'Methods', link: '/usage/methods'},
                     {text: 'Middleware', link: '/usage/middleware'},
+                    {text: 'Date/time', link: '/usage/date-time'},
+                    {text: 'Language helpers', link: '/usage/language'},
                     {text: 'Overrides', link: '/usage/override'},
                 ]
             }
