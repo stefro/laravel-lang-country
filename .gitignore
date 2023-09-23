@@ -1,6 +1,5 @@
 build
 composer.lock
-docs
 vendor
 coverage
 .DS_store
@@ -9,3 +8,4 @@ coverage
 .php-cs-fixer.cache
 phpstan.neon
 coverage.xml
+node_modules
