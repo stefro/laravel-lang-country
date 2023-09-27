@@ -28,8 +28,8 @@ export default defineConfig({
                     {text: 'Configuration', link: '/usage/configuration'},
                     {text: 'Language switcher', link: '/usage/language-switcher'},
                     {text: 'Middleware', link: '/usage/middleware'},
-                    {text: 'Date/time', link: '/usage/date-time'},
                     {text: 'Language helpers', link: '/usage/language'},
+                    {text: 'Date/time helpers', link: '/usage/date-time'},
                     {text: 'Overrides', link: '/usage/override'},
                 ]
             }
