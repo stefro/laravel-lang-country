@@ -1,5 +1,3 @@
-# 🚨🚨 V3 is almost done we're still working on the docs and a change on the packagist link 🚨🚨
-
 # LaravelLangCountry
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
