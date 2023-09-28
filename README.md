@@ -13,11 +13,11 @@
 * that you needed to show a currency symbol in the local currency?
 * ...
 
-**The Laravel Lang Country package is here to help you with just that!**
+**The Laravel LangCountry package is here to help you with just that!**
 
 # Documentation
 
-(You can find the extensive [documentation here](https://stefrouschop.github.io/laravel-lang-country/)
+You can find the extensive [documentation here](https://stefrouschop.github.io/laravel-lang-country/)
 
 ## Change log
 
