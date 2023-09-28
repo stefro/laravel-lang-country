@@ -1,7 +1,12 @@
 build
 composer.lock
-docs
 vendor
 coverage
 .DS_store
 .idea/
+.phpunit.result.cache
+.php-cs-fixer.cache
+phpstan.neon
+coverage.xml
+node_modules
+docs/.vitepress/cache

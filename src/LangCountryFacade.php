@@ -1,12 +1,12 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry;
+namespace Stefro\LaravelLangCountry;
 
 use Illuminate\Support\Facades\Facade;
 
 class LangCountryFacade extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return LangCountry::class;
     }

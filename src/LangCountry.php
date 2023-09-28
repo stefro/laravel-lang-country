@@ -1,31 +1,22 @@
 <?php
 
-namespace InvolvedGroup\LaravelLangCountry;
+namespace Stefro\LaravelLangCountry;
 
 use Carbon\Carbon;
-use InvolvedGroup\LaravelLangCountry\Services\PreferedLanguage;
+use Exception;
+use Illuminate\Support\Collection;
+use Stefro\LaravelLangCountry\Services\PreferredLanguage;
 
 class LangCountry
 {
-    /**
-     * The lang_country from the session, or the fallback.
-     *
-     * @var string
-     */
-    protected $lang_country;
+    protected ?string $lang_country = null;
 
-    /**
-     * @array
-     */
-    protected $data;
+    protected array $data;
 
-    /**
-     * LangCountry constructor.
-     */
     public function __construct()
     {
-        if(config('lang-country.fallback_based_on_current_locale', false) && ! session()->has('lang_country')){
-            $lang = new PreferedLanguage(app()->getLocale());
+        if (config('lang-country.fallback_based_on_current_locale', false) && ! session()->has('lang_country')) {
+            $lang = new PreferredLanguage(app()->getLocale());
             $this->lang_country = $lang->lang_country;
         } else {
             $this->lang_country = session('lang_country', config('lang-country.fallback'));
@@ -33,324 +24,266 @@ class LangCountry
         $this->data = $this->getDataFromFile($this->lang_country);
     }
 
-    public function overrideSession($lang_country)
+    public function overrideSession(string $lang_country): void
     {
-        // In case the override is not a 4 char value
-        if (5 !== strlen($lang_country)) {
-            $lang = new PreferedLanguage($lang_country);
-            $lang_country = $lang->lang_country;
-        }
+        $lang = new PreferredLanguage($lang_country);
 
-        $this->lang_country = $lang_country;
+        $this->lang_country = $lang->lang_country;
         $this->data = $this->getDataFromFile($lang_country);
     }
 
     /**
-    * Will return the current LangCountry value
-    **/
-    public function currentLangCountry()
+     * Will return the current LangCountry value
+     **/
+    public function currentLangCountry(): string
     {
         return $this->lang_country;
     }
 
     /**
-     * It will return the right language. This can be a two char representation (ex. "nl", dutch)
+     * It will return the right language. This can be a two char representation (ex. "nl", Dutch)
      * or a four char representation (ex. es_CO; Spanish-colombian).
-     *
-     * @return string
      */
-    public function lang($override = false)
+    public function lang(string|bool $override = false): string
     {
-        if ($override != false) {
+        if ($override) {
             $this->overrideSession($override);
         }
 
-        return $this->data->lang;
+        return $this->data['lang'];
     }
 
     /**
      * It will return the two character code representation of the country.
-     *
-     * @return string
      */
-    public function country()
+    public function country(): string
     {
-        return $this->data->country;
+        return $this->data['country'];
     }
 
     /**
      * It will return the name of the country represented by the country code.
-     *
-     * @return string
      */
-    public function countryName()
+    public function countryName(): string
     {
-        return $this->data->country_name;
+        return $this->data['country_name'];
     }
 
     /**
      * It will return the two character code representation of the country.
-     *
-     * @return string
      */
-    public function countryNameLocal()
+    public function countryNameLocal(): string
     {
-        return $this->data->country_name_local;
+        return $this->data['country_name_local'];
     }
 
     /**
      * It will return the name of the language TRANSLATED IN THE LANGUAGE IN QUESTION.
      * You can use this for nice country-selectors in your app.
-     *
-     * @return string
      */
-    public function name()
+    public function name(): string
     {
-        return $this->data->name;
+        return $this->data['name'];
     }
 
     /**
      * String representation of the dateformat with only numbers.
      * Ex: "Y-m-d".
-     *
-     * @return string
      */
-    public function dateNumbersFormat()
+    public function dateNumbersFormat(): string
     {
-        return $this->data->date_numbers;
+        return $this->data['date_numbers'];
     }
 
     /**
      * String representation of the date with only numbers from the Carbon instance provided.
-     * It will be translated through \Date
      * Ex: "2018-04-24".
-     *
-     * @param  Carbon  $carbon
-     * @return string
      */
-    public function dateNumbers(Carbon $carbon, $override = false)
+    public function dateNumbers(Carbon $carbon, string|bool $override = false): string
     {
-        if ($override != false) {
+        if ($override) {
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data->lang)->translatedFormat($this->data->date_numbers);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['date_numbers']);
     }
 
     /**
-     * String representation of the dateformat with only capitals, some javascript dateselectors use this.
+     * String representation of the dateformat with only capitals, some javascript date selectors use this.
      * Ex: "DD-MM-YYYY".
-     *
-     * @return string
      */
-    public function dateNumbersFullCapitalsFormat()
+    public function dateNumbersFullCapitalsFormat(): string
     {
-        return $this->data->date_numbers_full_capitals;
+        return $this->data['date_numbers_full_capitals'];
     }
 
     /**
      * String representation of the dateformat with words but without the day.
      * Ex: "F jS Y".
-     *
-     * @return string
      */
-    public function dateWordsWithoutDayFormat()
+    public function dateWordsWithoutDayFormat(): string
     {
-        return $this->data->date_words_without_day;
+        return $this->data['date_words_without_day'];
     }
 
     /**
      * String representation of the date in words but without the day.
-     * It will be translated through \Date
      * Ex: "April 24th 2018".
-     *
-     * @param  Carbon  $carbon
-     * @return string
      */
-    public function dateWordsWithoutDay(Carbon $carbon, $override = false)
+    public function dateWordsWithoutDay(Carbon $carbon, string|bool $override = false): string
     {
-        if ($override != false) {
+        if ($override) {
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data->lang)->translatedFormat($this->data->date_words_without_day);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['date_words_without_day']);
     }
 
     /**
      * String representation of the dateformat with words but without the day.
      * Ex: "l F jS Y".
-     *
-     * @return string
      */
-    public function dateWordsWithDayFormat()
+    public function dateWordsWithDayFormat(): string
     {
-        return $this->data->date_words_with_day;
+        return $this->data['date_words_with_day'];
     }
 
     /**
      * String representation of the date with words but without the day.
-     * It will be translated through \Date
      * Ex: "Tuesday April 24th 2018".
-     *
-     * @param  Carbon  $carbon
-     * @return string
      */
-    public function dateWordsWithDay(Carbon $carbon, $override = false)
+    public function dateWordsWithDay(Carbon $carbon, string|bool $override = false): string
     {
-        if ($override != false) {
+        if ($override) {
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data->lang)->translatedFormat($this->data->date_words_with_day);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['date_words_with_day']);
     }
 
     /**
      * String representation of the dateformat for a birthday.
      * Ex: "F jS".
-     *
-     * @return string
      */
-    public function dateBirthdayFormat()
+    public function dateBirthdayFormat(): string
     {
-        return $this->data->date_birthday;
+        return $this->data['date_birthday'];
     }
 
     /**
      * String representation of a birthday date.
-     * It will be translated through \Date
      * Ex: "April 24th".
-     *
-     * @param  Carbon  $carbon
-     * @return string
      */
-    public function dateBirthday(Carbon $carbon, $override = false)
+    public function dateBirthday(Carbon $carbon, string|bool $override = false): string
     {
-        if ($override != false) {
+        if ($override) {
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data->lang)->translatedFormat($this->data->date_birthday);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['date_birthday']);
     }
 
     /**
-     * String representation of the timeformat.
+     * String representation of the time-format.
      * Ex: "h:i a".
-     *
-     * @return string
      */
-    public function timeFormat()
+    public function timeFormat(): string
     {
-        return $this->data->time_format;
+        return $this->data['time_format'];
     }
 
     /**
      * String representation of time.
-     * It will be translated through \Date
      * Ex: "12:00 pm".
-     *
-     * @param  Carbon  $carbon
-     * @return string
      */
-    public function time(Carbon $carbon, $override = false)
+    public function time(Carbon $carbon, string|bool $override = false): string
     {
-        if ($override != false) {
+        if ($override) {
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data->lang)->translatedFormat($this->data->time_format);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['time_format']);
     }
 
     /**
      * Emoji representation of language country flag.
      * Ex: "🇱🇹".
-     *
-     * @return string
      */
-    public function emojiFlag()
+    public function emojiFlag(): string
     {
-        return $this->data->emoji_flag;
+        return $this->data['emoji_flag'];
     }
 
-    public function allLanguages()
+    public function allLanguages(): Collection
     {
         return collect(config('lang-country.allowed'))
-            ->map(function ($item) {
+            ->map(function (string $item) {
                 $file = $this->getDataFromFile($item);
 
                 return [
-                    'country' => $file->country,
-                    'country_name' => $file->country_name,
-                    'country_name_local' => $file->country_name_local,
-                    'lang' => $file->lang,
-                    'name' => $file->name,
+                    'country' => $file['country'],
+                    'country_name' => $file['country_name'],
+                    'country_name_local' => $file['country_name_local'],
+                    'lang' => $file['lang'],
+                    'name' => $file['name'],
                     'lang_country' => $item,
-                    'emoji_flag' => $file->emoji_flag,
-                    'currency_code' => $file->currency_code,
-                    'currency_symbol' => $file->currency_symbol,
-                    'currency_symbol_local' => $file->currency_symbol_local,
-                    'currency_name' => $file->currency_name,
-                    'currency_name_local' => $file->currency_name_local,
+                    'emoji_flag' => $file['emoji_flag'],
+                    'currency_code' => $file['currency_code'],
+                    'currency_symbol' => $file['currency_symbol'],
+                    'currency_symbol_local' => $file['currency_symbol_local'],
+                    'currency_name' => $file['currency_name'],
+                    'currency_name_local' => $file['currency_name_local'],
                 ];
             });
     }
 
     /**
      * It will return the iso code of the country's currency.
-     *
-     * @return string
      */
-    public function currencyCode()
+    public function currencyCode(): string
     {
-        return $this->data->currency_code;
+        return $this->data['currency_code'];
     }
 
     /**
      * It will return the iso symbol of the country's currency.
-     *
-     * @return string
      */
-    public function currencySymbol()
+    public function currencySymbol(): string
     {
-        return $this->data->currency_symbol;
+        return $this->data['currency_symbol'];
     }
 
     /**
      * It will return the iso symbol of the country's currency, prefixed with localization.
-     *
-     * @return string
      */
-    public function currencySymbolLocal()
+    public function currencySymbolLocal(): string
     {
-        return $this->data->currency_symbol_local;
+        return $this->data['currency_symbol_local'];
     }
 
     /**
      * It will return the name of the country's currency.
-     *
-     * @return string
      */
-    public function currencyName()
+    public function currencyName(): string
     {
-        return $this->data->currency_name;
+        return $this->data['currency_name'];
     }
 
     /**
      * It will return the name of the country's currency as spoken locally by language code.
-     *
-     * @return string
      */
-    public function currencyNameLocal()
+    public function currencyNameLocal(): string
     {
-        return $this->data->currency_name_local;
+        return $this->data['currency_name_local'];
     }
 
     /**
      * It will return a collection with the current language, country and name
      * and also the other available language, country and name.
      */
-    public function langSelectorHelper()
+    public function langSelectorHelper(): array
     {
-        return $this->allLanguages()->reduce(function ($carry, $item) {
+        return $this->allLanguages()->reduce(function (?array $carry, array $item) {
             if ($item['lang_country'] != session('lang_country')) {
                 $carry['available'][] = $item;
             } else {
@@ -361,31 +294,28 @@ class LangCountry
         });
     }
 
-    public function setAllSessions($prefered_lang)
+    public function setAllSessions(string $preferred_lang): void
     {
-        $lang = new PreferedLanguage($prefered_lang);
+        $lang = new PreferredLanguage($preferred_lang);
         session(['lang_country' => $lang->lang_country]);
         session(['locale' => $lang->locale]);
     }
 
     /**
-     * Retreive the data for the lang_country from the external file.
-     *
-     * @param $lang_country
-     * @return mixed
+     * @throws Exception
      */
-    private function getDataFromFile($lang_country)
+    private function getDataFromFile(?string $lang_country): array
     {
         if ($lang_country === null) {
-            return[];
+            throw new Exception('The lang_country session is not set');
         }
 
-        if (file_exists(resource_path('lang/lang-country-overrides/'.$lang_country.'.json'))) {
-            $resource = resource_path('lang/lang-country-overrides/'.$lang_country.'.json');
+        if (file_exists(lang_path('lang-country-overrides') . $lang_country . '.json')) {
+            $resource = lang_path('lang-country-overrides') . $lang_country . '.json';
         } else {
-            $resource = __DIR__.'/LangCountryData/'.$lang_country.'.json';
+            $resource = __DIR__ . '/LangCountryData/' . $lang_country . '.json';
         }
 
-        return json_decode(file_get_contents($resource));
+        return json_decode(file_get_contents($resource), true);
     }
 }

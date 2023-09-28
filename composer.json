@@ -1,62 +1,67 @@
 {
-    "name": "involved-group/laravel-lang-country",
-    "type": "library",
+    "name": "stefro/laravel-lang-country",
     "description": "Setting the locale is not enough most of the time, some countries use more than one languages. Also, different countries use different date notation formats, names, flags and currencies. This package is here to help you with that!",
     "keywords": [
-        "InvolvedGroup",
         "LaravelLangCountry"
     ],
-    "homepage": "https://github.com/InvolvedGroup/LaravelLangCountry",
+    "homepage": "https://github.com/stefro/laravel-lang-country",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Stef Rouschop",
-            "email": "stef.rouschop@involvedgroup.eu",
-            "homepage": "https://github.com/stefro",
+            "email": "github@rouschop.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.3|^8.0|^8.1",
-        "illuminate/support": "^7.0|^8.0|^9.0|^10"
+        "php": "^8.1|^8.2",
+        "illuminate/support": "^9.0|^10.0"
     },
     "require-dev": {
-        "mockery/mockery": "dev-master@dev",
-        "phpunit/phpunit" : "^8.0",
-        "squizlabs/php_codesniffer": "^2.3",
-        "orchestra/testbench": "^5.0"
+        "barryvdh/laravel-ide-helper": "^2.13",
+        "friendsofphp/php-cs-fixer": "^3.22",
+        "orchestra/testbench": "^7.0|^8.0",
+        "pestphp/pest": "^1.21 | ^2.0",
+        "pestphp/pest-plugin-type-coverage": "^2.0",
+        "spatie/laravel-ray": "^1.32"
     },
     "autoload": {
         "psr-4": {
-            "InvolvedGroup\\LaravelLangCountry\\": "src"
+            "Stefro\\LaravelLangCountry\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "InvolvedGroup\\LaravelLangCountry\\Tests\\": "tests"
+            "Stefro\\LaravelLangCountry\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
-        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "test": "vendor/bin/pest",
+        "test:fast": "vendor/bin/pest --parallel",
+        "test:coverage": "vendor/bin/pest --coverage --min=100 --coverage-clover=coverage.xml",
+        "type:check": "vendor/bin/pest --type-coverage --min=100",
+        "format": "vendor/bin/php-cs-fixer fix src --allow-risky=yes"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
         "laravel": {
             "providers": [
-                "InvolvedGroup\\LaravelLangCountry\\LaravelLangCountryServiceProvider"
+                "Stefro\\LaravelLangCountry\\LaravelLangCountryServiceProvider"
             ],
             "aliases": {
-                "LangCountry": "InvolvedGroup\\LaravelLangCountry\\LangCountryFacade"
+                "LangCountry": "Stefro\\LaravelLangCountry\\LangCountryFacade"
             }
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }
