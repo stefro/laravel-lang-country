@@ -4,6 +4,9 @@ outline: deep
 
 # Language and locale helpers
 
+Below you can find all the language and locale helpers that are available in this package through the `LangCountry`
+facade.
+
 ### Country
 
 This will return the **two character ISO-3166** code representation of the country.
@@ -53,11 +56,18 @@ LangCountry::lang(); // Will return "nl"
 
 // When the lang_country session is "en-GB"
 LangCountry::lang(); // Will return "en"
+```
 
-// You can pass a second argument to override the lang_country.
+::: tip
+You can pass a second argument to override the lang_country. This can be helpful in some cases where you don't want to
+use the current lang_country that is stored in the session.
+
+```php
 // When the lang_country session is "nl-NL"
 LangCountry::lang('fr-BE'); // Will return "fr"
 ```
+
+:::
 
 ### Language name (local)
 
@@ -74,3 +84,5 @@ LangCountry::name(); // Will return "België - Vlaams"
 // When the lang_country session is "fr-BE"
 LangCountry::name(); // Will return "Belgique - Français"
 ```
+
+### All 
