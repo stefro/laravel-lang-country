@@ -1,17 +1,40 @@
+---
+outline: deep
+---
+
 # Change log
 
 All notable changes to `LaravelLangCountry` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
-## Unreleased
+## [Unreleased]
 
-* Make use of the `lang_path()` instead of the old Laravel `resources\lang` path.
+## [3.0.0]
+
+### Added
+
+* Codebases is now 100% testable 🎉
+* Codebase is now 100% typed 🎉
+* Complete rewrite of the documentation.
+* Enforcing 100% code coverage and 100% type coverage in CI.
+* Using Pest for testing.
+
+### Fixed
+
+### Changed
+
+* It now makes use of the `lang_path()` instead of the old Laravel `resources\lang` path.
+* Moved to namespace `Stefro/LaravelLangCountry` from `InvolvedGroup/LaravelLangCountry`
+* Changed a nasty typo throughout the entire codebase `Prefered` -> `preferred`.
+* Middleware has been changed to use the user lang_country when available.
+
+### Removed
+
 * Drop support for < PHP 8.1
 * Drop Support for < Laravel 9
-* move to namespace `Stefro/LaravelLangCountry` from `InvolvedGroup/LaravelLangCountry`
-* Prefered -> preferred typo changed in the entire codebase.
-* Middleware has been changed to use the user lang_country when available.
+* Removed unused `lang-countries` in the `allowed` config list.
+* Removed Travis CI in favour of GitHub Actions.
 
 ## [2.1.0] - 2020-05-05
 

@@ -85,6 +85,18 @@ LangCountry::name(); // Will return "België - Vlaams"
 LangCountry::name(); // Will return "Belgique - Français"
 ```
 
+### Emoji flag
+
+This will return the emoji flag of the country.
+
+```php
+// When the lang_country session is "nl-NL"
+LangCountry::emojiFlag(); // Will return "🇳🇱"
+
+// When the lang_country session is "en-GB"
+LangCountry::emojiFlag(); // Will return "🇬🇧"
+```
+
 ### All available languages
 
 This will return a Collection with all the available languages including their properties that are set in the config

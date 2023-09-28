@@ -97,7 +97,6 @@ class LangCountry
 
     /**
      * String representation of the date with only numbers from the Carbon instance provided.
-     * It will be translated through \Date
      * Ex: "2018-04-24".
      */
     public function dateNumbers(Carbon $carbon, string|bool $override = false): string
@@ -129,7 +128,6 @@ class LangCountry
 
     /**
      * String representation of the date in words but without the day.
-     * It will be translated through \Date
      * Ex: "April 24th 2018".
      */
     public function dateWordsWithoutDay(Carbon $carbon, string|bool $override = false): string
@@ -152,7 +150,6 @@ class LangCountry
 
     /**
      * String representation of the date with words but without the day.
-     * It will be translated through \Date
      * Ex: "Tuesday April 24th 2018".
      */
     public function dateWordsWithDay(Carbon $carbon, string|bool $override = false): string
@@ -175,7 +172,6 @@ class LangCountry
 
     /**
      * String representation of a birthday date.
-     * It will be translated through \Date
      * Ex: "April 24th".
      */
     public function dateBirthday(Carbon $carbon, string|bool $override = false): string
@@ -198,7 +194,6 @@ class LangCountry
 
     /**
      * String representation of time.
-     * It will be translated through \Date
      * Ex: "12:00 pm".
      */
     public function time(Carbon $carbon, string|bool $override = false): string

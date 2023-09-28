@@ -33,6 +33,12 @@ export default defineConfig({
                     {text: 'Currency helpers', link: '/usage/currency'},
                     {text: 'Overrides', link: '/usage/override'},
                 ]
+            }, {
+                text: 'Contribute',
+                collapsed: true,
+                items: [
+                    {text: 'How can you help?', link: 'contribute/contribution'}
+                ]
             }
         ],
 
