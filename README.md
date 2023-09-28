@@ -19,19 +19,23 @@
 
 # Documentation
 
-DOCS COMING SOON!
+You can find the [extensive documentation here](https://stefro.github.io/laravel-lang-country/).
 
 ## Change log
 
-DOCS COMING SOON!
+Please see [CHANGELOG](https://stefro.github.io/laravel-lang-country/getting-started/changelog.html) for more
+information on what has changed recently.
 
-[//]: # (Please see [CHANGELOG]&#40;CHANGELOG.md&#41; for more information on what has changed recently.)
+## Upgrading
+
+Please see [UPGRADING](https://stefro.github.io/laravel-lang-country/getting-started/upgrade.html) for detailed upgrade
+instructions.
 
 ## Contributing
 
-DOCS COMING SOON!
-
-[//]: # (Great! Please see [the contributing guide in the documentation]&#40;CONTRIBUTING.md&#41; for details.)
+Great! Please
+see [the contributing guide in the documentation](https://stefro.github.io/laravel-lang-country/contribute/contribution.html)
+for details.
 
 ## ToDo
 
