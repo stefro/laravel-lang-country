@@ -5,6 +5,7 @@ export default defineConfig({
     title: "Laravel LangCountry",
     description: "The localisation package for auto date-formats, language switcher helper and more.",
     lastUpdated: true,
+    base: '/laravel-lang-country',
     themeConfig: {
         logo: '/public/logo.svg',
         nav: [

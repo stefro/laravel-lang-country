@@ -7,8 +7,8 @@
 
 # Have you ever...
 
-* Had the problem that you needed a date format had to be localized?
-* Needed to show a date in a specific language?
+* had the problem that you needed a date format had to be localized?
+* needed to show a date in a specific language?
 * that you needed to show a country name in the local language?
 * that you needed to show a currency symbol in the local currency?
 * ...
