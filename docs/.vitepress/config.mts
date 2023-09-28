@@ -37,7 +37,8 @@ export default defineConfig({
                 text: 'Contribute',
                 collapsed: true,
                 items: [
-                    {text: 'How can you help?', link: 'contribute/contribution'}
+                    {text: 'How can you help?', link: 'contribute/country-info'},
+                    {text: 'Contribution', link: 'contribute/contribution'}
                 ]
             }
         ],
