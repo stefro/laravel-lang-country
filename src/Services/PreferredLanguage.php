@@ -4,9 +4,6 @@ namespace Stefro\LaravelLangCountry\Services;
 
 use Illuminate\Support\Collection;
 
-/**
- * Class PreferedLanguage.
- */
 class PreferredLanguage
 {
     protected Collection $client_preferred;
