@@ -18,7 +18,6 @@
 # Documentation
 
 DOCS COMING SOON!
-[//]: # (You can find the extensive [documentation here]&#40;https://stefrouschop.github.io/laravel-lang-country/&#41;)
 
 ## Change log
 
