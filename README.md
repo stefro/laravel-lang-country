@@ -56,13 +56,13 @@ If you discover any security related issues, please email github@rouschop.com in
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/involved-group/laravel-lang-country.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/stefro/laravel-lang-country.svg?style=flat-square
 
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 
-[ico-downloads]: https://img.shields.io/packagist/dt/involved-group/laravel-lang-country.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/stefro/laravel-lang-country.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/involved-group/laravel-lang-country
+[link-packagist]: https://packagist.org/packages/stefro/laravel-lang-country
 
 [link-author]: https://github.com/stefro
 

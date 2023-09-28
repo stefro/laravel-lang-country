@@ -18,7 +18,7 @@ branch. Please note that this documentation is only for the latest version of th
 You can install this package via composer using this command:
 
 ``` bash
-composer require involved-group/laravel-lang-country
+composer require stefro/laravel-lang-country
 ```
 
 ### Laravel configuration file
