@@ -17,15 +17,20 @@
 
 # Documentation
 
-You can find the extensive [documentation here](https://stefrouschop.github.io/laravel-lang-country/)
+DOCS COMING SOON!
+[//]: # (You can find the extensive [documentation here]&#40;https://stefrouschop.github.io/laravel-lang-country/&#41;)
 
 ## Change log
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+DOCS COMING SOON!
+
+[//]: # (Please see [CHANGELOG]&#40;CHANGELOG.md&#41; for more information on what has changed recently.)
 
 ## Contributing
 
-Great! Please see [the contributing guide in the documentation](CONTRIBUTING.md) for details.
+DOCS COMING SOON!
+
+[//]: # (Great! Please see [the contributing guide in the documentation]&#40;CONTRIBUTING.md&#41; for details.)
 
 ## ToDo
 
