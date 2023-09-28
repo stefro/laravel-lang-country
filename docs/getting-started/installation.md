@@ -77,4 +77,4 @@ public function authenticated(Request $request, $user)
 }
 ```
 
-**That's all folks!**
+**That's all!**
