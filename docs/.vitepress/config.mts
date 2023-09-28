@@ -30,6 +30,7 @@ export default defineConfig({
                     {text: 'Middleware', link: '/usage/middleware'},
                     {text: 'Date/time helpers', link: '/usage/date-time'},
                     {text: 'Language helpers', link: '/usage/language'},
+                    {text: 'Currency helpers', link: '/usage/currency'},
                     {text: 'Overrides', link: '/usage/override'},
                 ]
             }

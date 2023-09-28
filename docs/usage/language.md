@@ -85,4 +85,117 @@ LangCountry::name(); // Will return "België - Vlaams"
 LangCountry::name(); // Will return "Belgique - Français"
 ```
 
-### All 
+### All available languages
+
+This will return a Collection with all the available languages including their properties that are set in the config
+file
+under `allowed`.
+
+```php
+LangCountry::availableLanguages(); 
+// Will return a Collection with all the available languages
+Illuminate\Support\Collection {
+    all: [
+      [
+        "country" => "NL",
+        "country_name" => "The Netherlands",
+        "country_name_local" => "Nederland",
+        "lang" => "nl",
+        "name" => "Nederlands",
+        "lang_country" => "nl-NL",
+        "emoji_flag" => "🇳🇱",
+        "currency_code" => "EUR",
+        "currency_symbol" => "€",
+        "currency_symbol_local" => "€",
+        "currency_name" => "Euro",
+        "currency_name_local" => "Euro",
+      ],
+      [
+        "country" => "BE",
+        "country_name" => "Belgium",
+        "country_name_local" => "België",
+        "lang" => "nl",
+        "name" => "België - Vlaams",
+        "lang_country" => "nl-BE",
+        "emoji_flag" => "🇧🇪",
+        "currency_code" => "EUR",
+        "currency_symbol" => "€",
+        "currency_symbol_local" => "€",
+        "currency_name" => "Euro",
+        "currency_name_local" => "Euro",
+      ],
+      //...
+  ]
+ }
+```
+
+### Language selector helper
+
+This will return an array with the current language, country and name and also the other available (set in config file
+under `allowed`) language, country and name.
+
+```php
+LangCountry::langSelectorHelper();
+// Will return an array with all the available languages
+[
+    "current" => [
+      "country" => "NL",
+      "country_name" => "The Netherlands",
+      "country_name_local" => "Nederland",
+      "lang" => "nl",
+      "name" => "Nederlands",
+      "lang_country" => "nl-NL",
+      "emoji_flag" => "🇳🇱",
+      "currency_code" => "EUR",
+      "currency_symbol" => "€",
+      "currency_symbol_local" => "€",
+      "currency_name" => "Euro",
+      "currency_name_local" => "Euro",
+    ],
+    "available" => [
+      [
+        "country" => "BE",
+        "country_name" => "Belgium",
+        "country_name_local" => "België",
+        "lang" => "nl",
+        "name" => "België - Vlaams",
+        "lang_country" => "nl-BE",
+        "emoji_flag" => "🇧🇪",
+        "currency_code" => "EUR",
+        "currency_symbol" => "€",
+        "currency_symbol_local" => "€",
+        "currency_name" => "Euro",
+        "currency_name_local" => "Euro",
+      ],
+      [
+        "country" => "BE",
+        "country_name" => "Belgium",
+        "country_name_local" => "Belgique",
+        "lang" => "fr",
+        "name" => "Belgique - Français",
+        "lang_country" => "fr-BE",
+        "emoji_flag" => "🇧🇪",
+        "currency_code" => "EUR",
+        "currency_symbol" => "€",
+        "currency_symbol_local" => "€",
+        "currency_name" => "Euro",
+        "currency_name_local" => "Euro",
+      ],
+      [
+        "country" => "GB",
+        "country_name" => "United Kingdom",
+        "country_name_local" => "United Kingdom",
+        "lang" => "en",
+        "name" => "English",
+        "lang_country" => "en-GB",
+        "emoji_flag" => "🇬🇧",
+        "currency_code" => "GBP",
+        "currency_symbol" => "£",
+        "currency_symbol_local" => "£",
+        "currency_name" => "Pound Stirling",
+        "currency_name_local" => "Pound",
+      ],
+      
+      //...
+]
+```

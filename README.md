@@ -219,17 +219,6 @@ choice:
 ``` php
 use Stefro\LaravelLangCountry\LangCountry
 
-LangCountry::allLanguages();
-/*
- * It will return a collection with all the available languages with all propperties of that language.
- */
- 
-LangCountry::langSelectorHelper();
-/*
- * It will return an array with the current language, country and name
- * and also the other available language, country and name.
- */
-
 LangCountry::currencyCode();
 /*
  * This will return the ISO-4217 of the country in this file .
