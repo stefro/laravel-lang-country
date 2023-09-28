@@ -14,7 +14,7 @@ Or that you ...
 
 Setting the locale in Laravel is not enough most of the time, some countries use more than one language. Also,
 different countries use different date notations formats despite their language. Proper localization gives us many
-challenges. **This package will help you out with a lot of new tools in out tool belt**.
+challenges. **This package will help you out with new tools in your tool belt**.
 
 ## In a nutshell
 
