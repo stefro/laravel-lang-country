@@ -7,7 +7,7 @@ export default defineConfig({
     lastUpdated: true,
     base: '/laravel-lang-country',
     themeConfig: {
-        logo: '/public/logo.svg',
+        logo: 'logo.svg',
         nav: [
             {text: 'Home', link: '/'},
         ],
