@@ -50,5 +50,19 @@ export default defineConfig({
         search: {
             provider: 'local'
         }
-    }
+    },
+    head: [
+        [
+            'script',
+            {async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-ZNPSG44PGL'}
+        ],
+        [
+            'script',
+            {},
+            `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZNPSG44PGL');`
+        ]
+    ]
 })
