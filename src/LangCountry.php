@@ -297,7 +297,7 @@ class LangCountry
         });
     }
 
-    public function setAllSessions(string $preferred_lang): void
+    public function setAllSessions(?string $preferred_lang): void
     {
         $lang = new PreferredLanguage($preferred_lang);
         session(['lang_country' => $lang->lang_country]);
