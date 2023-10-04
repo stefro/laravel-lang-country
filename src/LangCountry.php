@@ -24,12 +24,15 @@ class LangCountry
         $this->data = $this->getDataFromFile($this->lang_country);
     }
 
+    /**
+     * @throws Exception
+     */
     public function overrideSession(string $lang_country): void
     {
         $lang = new PreferredLanguage($lang_country);
 
         $this->lang_country = $lang->lang_country;
-        $this->data = $this->getDataFromFile($lang_country);
+        $this->data = $this->getDataFromFile($this->lang_country);
     }
 
     /**

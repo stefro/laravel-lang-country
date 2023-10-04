@@ -9,7 +9,7 @@
 
 #### Breaking Changes
 
-* The namespace has changed from `InvolvedGroup/LaravelLangCountry` to `Stefro/LaravelLangCountry`. In case you have
+* The namespace has changed from `InvolvedGroup\LaravelLangCountry` to `Stefro\LaravelLangCountry`. In case you have
   used the namespace in your code, you need to update it.
 * A typo has slipped into the codebase. In case you're using the class `PreferedLanguage` directly, it has now been
   changed to `PreferredLanguage`. You should do a find and replace in your codebase to fix this.
