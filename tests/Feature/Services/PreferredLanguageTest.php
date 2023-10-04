@@ -134,3 +134,15 @@ it('should throw an error when the lang_country session is null', function () {
     session()->put('lang_country', null);
     $langCountry = new \Stefro\LaravelLangCountry\LangCountry();
 })->throws(\Exception::class, 'The lang_country session is not set');
+
+it('should use the fallback when the preferred_languages is null', function () {
+    $lang = new PreferredLanguage(null);
+
+    expect($lang->lang_country)->toEqual('en-GB');
+});
+
+it('should use the fallback when the preferred_languages is an empty string', function () {
+    $lang = new PreferredLanguage('');
+
+    expect($lang->lang_country)->toEqual('en-GB');
+});

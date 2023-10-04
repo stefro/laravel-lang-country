@@ -16,7 +16,7 @@ class PreferredLanguage
 
     public string $locale;
 
-    public function __construct(protected string $preferred_languages, ?Collection $allowed = null, ?string $fallback = null)
+    public function __construct(protected ?string $preferred_languages, ?Collection $allowed = null, ?string $fallback = null)
     {
         $this->allowed = $allowed ?? collect(config('lang-country.allowed'));
         $this->fallback = $fallback ?? config('lang-country.fallback');
