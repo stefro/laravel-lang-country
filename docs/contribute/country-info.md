@@ -8,6 +8,7 @@ Some good resources:
 * [https://gist.github.com/mlconnor/1887156](https://gist.github.com/mlconnor/1887156)
 * [http://www.lingoes.net/en/translator/langcode.htm](http://www.lingoes.net/en/translator/langcode.htm)
 * [https://emojipedia.org/flags/](https://emojipedia.org/flags/)
+* [https://github.com/mledoze/countries](https://github.com/mledoze/countries)
 
 Please see [contributing](/contribute/contribution)
 and [code of conduct](https://github.com/stefro/laravel-lang-country/blob/master/CODE_OF_CONDUCT.md) for details.
