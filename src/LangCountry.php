@@ -313,10 +313,11 @@ class LangCountry
             throw new Exception('The lang_country session is not set');
         }
 
-        if (file_exists(lang_path('lang-country-overrides') . $lang_country . '.json')) {
-            $resource = lang_path('lang-country-overrides') . $lang_country . '.json';
+        $filename = $lang_country . '.json';
+        if (file_exists(lang_path('lang-country-overrides/' . $filename))) {
+            $resource = lang_path('lang-country-overrides/' . $filename);
         } else {
-            $resource = __DIR__ . '/LangCountryData/' . $lang_country . '.json';
+            $resource = __DIR__ . '/LangCountryData/' . $filename;
         }
 
         return json_decode(file_get_contents($resource), true);

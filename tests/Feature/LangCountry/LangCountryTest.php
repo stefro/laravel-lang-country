@@ -301,12 +301,13 @@ it('should use the override when available', function () {
 
     $file = __DIR__ . '/../../Support/Files/lang-country-overrides/nl-NL.json';
     $dir = lang_path('lang-country-overrides');
+    $filename = 'nl-NL.json';
 
     if (! is_dir($dir)) {
         mkdir($dir);
     }
     if (! is_file($dir)) {
-        $dest = $dir . 'nl-NL.json';
+        $dest = lang_path('lang-country-overrides/' . $filename);
     }
 
     copy($file, $dest);
@@ -316,7 +317,7 @@ it('should use the override when available', function () {
         ->and(\LangCountry::name())->toEqual('Nederlands override!');
 
     // Remove test files from testbench
-    unlink(lang_path('lang-country-overrides') . 'nl-NL.json');
+    unlink(lang_path('lang-country-overrides/' . $filename));
     rmdir(lang_path('lang-country-overrides'));
 });
 
