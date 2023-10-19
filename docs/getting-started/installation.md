@@ -62,8 +62,15 @@ protected $fillable = [
 ];
 ```
 
-To make sure this will be loaded and stored in the session add this to method to
-your `app\Http\Controllers\Auth\LoginController.php`:
+### Login event listener
+
+By default, the package will listen to the `Illuminate\Auth\Events\Login` event. When this event is fired, the package
+will set the right sessions for the newly logged-in user based on the users database preferences.
+The `Illuminate\Auth\Events\Login` event is dispatched when you're using the default Laravel authentication system (
+Breeze/Jetstream).
+
+If you're using a custom authentication system, you need to add the following to the code that is being handled after a
+user is logged in:
 
 ```php
 public function authenticated(Request $request, $user)
@@ -73,7 +80,7 @@ public function authenticated(Request $request, $user)
         \LangCountry::setAllSessions($user->lang_country);
     }
 
-    return redirect()->intended($this->redirectPath());
+    //...
 }
 ```
 
