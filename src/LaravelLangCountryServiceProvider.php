@@ -2,7 +2,10 @@
 
 namespace Stefro\LaravelLangCountry;
 
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\ServiceProvider;
+use Stefro\LaravelLangCountry\Listeners\UserAuthenticated;
+use Stefro\LaravelLangCountry\Middleware\LangCountrySession;
 
 class LaravelLangCountryServiceProvider extends ServiceProvider
 {
@@ -19,12 +22,14 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        $this->app['router']->aliasMiddleware('lang_country', \Stefro\LaravelLangCountry\Middleware\LangCountrySession::class);
+        $this->app['router']->aliasMiddleware('lang_country', LangCountrySession::class);
 
         $this->app['router']
             ->middleware(config('lang-country.lang_switcher_middleware'))
             ->get('/change_lang_country/{lang_country}', 'Stefro\LaravelLangCountry\Controllers\LangCountrySwitchController@switch')
             ->name('lang_country.switch');
+
+        \Event::listen(Login::class, UserAuthenticated::class);
     }
 
     /**
