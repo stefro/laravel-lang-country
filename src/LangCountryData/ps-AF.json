@@ -1,0 +1,19 @@
+{
+    "country": "AF",
+    "country_name": "Afghanistan",
+    "country_name_local": "افغانستان",
+    "lang": "ps",
+    "name": "Pashto",
+    "date_numbers": "Y/m/d",
+    "date_numbers_full_capitals": "YYYY/MM/DD",
+    "date_words_without_day": "j F Y",
+    "date_words_with_day": "l j F Y",
+    "date_birthday": "j F",
+    "time_format": "H:i",
+    "emoji_flag": "🇦🇫",
+    "currency_code": "AFN",
+    "currency_symbol": "؋",
+    "currency_symbol_local": "؋",
+    "currency_name": "Afghani",
+    "currency_name_local": "افغانۍ"
+  }
