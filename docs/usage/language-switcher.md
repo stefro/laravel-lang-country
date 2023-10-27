@@ -16,7 +16,7 @@ preference of this user to the database.
 ## Create a language selector
 
 It's really easy to create a language selector! You can use `LangCountry::langSelectorHelper()`.
-TThe output will be based on the `allowed` list of your config file. It will return an array with the following example:
+The output will be based on the `allowed` list of your config file. It will return an array with the following example:
 
 ``` php
 Array
@@ -95,7 +95,7 @@ Array
             [country_name] => United States of America
             [country_name_local] => America
             [lang] => en
-            [name] => Amreican English
+            [name] => American English
             [lang_country] => en-US
             [emoji_flag] => 🇺🇸
             [currency_code] => USD
@@ -108,7 +108,7 @@ Array
 )
 ```
 
-With this array you're able to create a dynamic language/country switcher like this in your own frontend framework of
+With this array, you're able to create a dynamic language/country switcher like this in your own frontend framework of
 choice.
 
 ![lang-switcher.png](/public/lang-switcher.png)
