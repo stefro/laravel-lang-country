@@ -17,7 +17,7 @@
 
 # Documentation
 
-You can find the [extensive documentation here](https://stefro.github.io/laravel-lang-country/).
+You can find the [official documentation here](https://stefro.github.io/laravel-lang-country/).
 
 ## Change log
 
