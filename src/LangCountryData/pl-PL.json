@@ -1,0 +1,19 @@
+{
+  "country": "PL",
+  "country_name": "Poland",
+  "country_name_local": "Polska",
+  "lang": "pl",
+  "name": "Polski",
+  "date_numbers": "d.m.Y",
+  "date_numbers_full_capitals": "DD.MM.YYYY",
+  "date_words_without_day": "j F Y",
+  "date_words_with_day": "l j F Y",
+  "date_birthday": "j F",
+  "time_format": "H:i",
+  "emoji_flag": "🇵🇱",
+  "currency_code": "PLN",
+  "currency_symbol": "zł",
+  "currency_symbol_local": "zł",
+  "currency_name": "Polish Złoty",
+  "currency_name_local": "Złoty"
+}
