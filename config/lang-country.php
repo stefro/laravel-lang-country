@@ -27,5 +27,7 @@ return [
 
     'lang_switcher_middleware' => ['web'],
 
+    'lang_switcher_uri' => 'change_lang_country',
+
     'fallback_based_on_current_locale' => false,
 ];
