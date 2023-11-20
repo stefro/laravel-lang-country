@@ -55,7 +55,6 @@ jobs:
             -   name: Execute tests
                 run: composer test:coverage
 
-# Temporarily disabled due to error: Argument #9 ($signatureMapProvider) must be of type PHPStan\Reflection\SignatureMap\SignatureMapProvider, PHPStan\PhpDoc\PhpDocInheritanceResolver given
-#            -   name: Type check
-#                if: ${{ contains(matrix.laravel, '10.*') && contains(matrix.dependency-version, 'prefer-stable') }}
-#                run: composer type:check
+            -   name: Type check
+                if: ${{ contains(matrix.laravel, '10.*') && contains(matrix.dependency-version, 'prefer-stable') }}
+                run: composer type:check
