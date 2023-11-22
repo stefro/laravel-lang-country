@@ -24,7 +24,6 @@
         "orchestra/testbench": "^7.0|^8.0",
         "pestphp/pest": "^1.21 | ^2.0",
         "pestphp/pest-plugin-type-coverage": "^2.0",
-        "phpstan/phpstan": "1.10.41",
         "spatie/laravel-ray": "^1.32"
     },
     "autoload": {
