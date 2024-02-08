@@ -327,3 +327,23 @@ it('should return the language for an override lang country code', function () {
 
     expect(\LangCountry::lang('en-US'))->toEqual('en');
 });
+
+it('should accept the withTime method', function () {
+    session(['lang_country' => 'en-US']);
+    App::setLocale('en');
+
+    expect(\LangCountry::dateNumbersFormat())->toEqual('m/d/Y')
+        ->and(\LangCountry::withTime()->dateNumbersFormat())->toEqual('m/d/Y h:i a')
+        ->and(\LangCountry::dateNumbers($this->test_date))->toEqual('03/10/2018')
+        ->and(\LangCountry::withTime()->dateNumbers($this->test_date))->toEqual('03/10/2018 01:05 pm')
+        ->and(\LangCountry::dateWordsWithoutDayFormat())->toEqual('F jS Y')
+        ->and(\LangCountry::withTime()->dateWordsWithoutDayFormat())->toEqual('F jS Y h:i a')
+        ->and(\LangCountry::dateWordsWithoutDay($this->test_date))->toEqual('March 10th 2018')
+        ->and(\LangCountry::withTime()->dateWordsWithoutDay($this->test_date))->toEqual('March 10th 2018 01:05 pm')
+        ->and(\LangCountry::dateWordsWithDayFormat())->toEqual('l F jS Y')
+        ->and(\LangCountry::withTime()->dateWordsWithDayFormat())->toEqual('l F jS Y h:i a')
+        ->and(\LangCountry::dateWordsWithDay($this->test_date))->toEqual('Saturday March 10th 2018')
+        ->and(\LangCountry::withTime()->dateWordsWithDay($this->test_date))->toEqual('Saturday March 10th 2018 01:05 pm')
+        ->and(\LangCountry::dateNumbersFullCapitalsFormat())->toEqual('MM/DD/YYYY')
+        ->and(\LangCountry::withTime()->dateNumbersFullCapitalsFormat())->toEqual('MM/DD/YYYY h:i a');
+});

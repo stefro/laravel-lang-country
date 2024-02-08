@@ -54,7 +54,7 @@ class PreferredLanguage
         // (create an associative array 'language' => 'preference')
         $lang2pref = [];
         for ($i = 0; $i < count($langs); $i++) {
-            $lang2pref[$langs[$i]] = (float)(! empty($ranks[$i]) ? $ranks[$i] : 1);
+            $lang2pref[$langs[$i]] = (float)(!empty($ranks[$i]) ? $ranks[$i] : 1);
         }
 
         // (comparison function for uksort)

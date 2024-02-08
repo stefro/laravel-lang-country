@@ -10,7 +10,7 @@ class LangCountrySession
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        if (! session()->has('lang_country') || ! session()->has('locale')) {
+        if (!session()->has('lang_country') || !session()->has('locale')) {
 
             if (\Auth::user() && \Auth::user()?->lang_country !== null) {
                 $preferred_lang = \Auth::user()->lang_country;
