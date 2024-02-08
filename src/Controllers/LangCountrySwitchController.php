@@ -9,7 +9,7 @@ class LangCountrySwitchController extends Controller
 {
     public function switch(string $lang_country): RedirectResponse
     {
-        if (!in_array($lang_country, config('lang-country.allowed'))) {
+        if (! in_array($lang_country, config('lang-country.allowed'))) {
             return redirect()->back();
         }
 
