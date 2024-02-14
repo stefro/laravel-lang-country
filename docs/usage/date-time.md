@@ -116,6 +116,31 @@ LangCountry::dateWordsWithDayFormat(); // Will return "l F jS Y"
 LangCountry::dateWordsWithDayFormat(); // Will return "l j F Y"
 ```
 
+### Add time to dates and date strings
+
+If you would like to add a time to a date string, you can use the `withTime` method. This method will add the time to
+the date string. It is a chainable method, you call it before the date format method. It will work in combination with
+these date format methods:
+
+* `dateNumbersFormat`
+* `dateNumbers`
+* `dateWordsWithoutDayFormat`
+* `dateWordsWithoutDay`
+* `dateWordsWithDayFormat`
+* `dateWordsWithDay`
+* `dateNumbersFullCapitalsFormat`
+
+```php
+// When the lang_country session is 'en-US'
+LangCountry::withTime()->dateNumbersFormat(); // Will return "m/d/Y"
+LangCountry::withTime()->dateNumbers($post->created_at); // Will return "09/27/2023 01:05 pm"
+LangCountry::withTime()->dateWordsWithoutDayFormat(); // Will return "F jS Y h:i a"
+LangCountry::withTime()->dateWordsWithoutDay($post->created_at); // Will return "September 27th 2023 01:05 pm"
+LangCountry::withTime()->dateWordsWithDayFormat(); // Will return "l F jS Y h:i a"
+LangCountry::withTime()->dateWordsWithDay($post->created_at); // Will return "Wednesday September 27th 2023 01:05 pm"
+LangCountry::withTime()->dateNumbersFullCapitalsFormat(); // Will return "MM/DD/YYYY h:i a"
+```
+
 ### Birthday
 
 Returns a **birthday string representation** that is used in the country.

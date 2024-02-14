@@ -13,6 +13,8 @@ class LangCountry
 
     protected array $data;
 
+    protected bool $withTime = false;
+
     public function __construct()
     {
         if (config('lang-country.fallback_based_on_current_locale', false) && ! session()->has('lang_country')) {
@@ -56,6 +58,24 @@ class LangCountry
         return $this->data['lang'];
     }
 
+    public function withTime(): self
+    {
+        $this->withTime = true;
+
+        return $this;
+    }
+
+    protected function createFormatString(string $format): string
+    {
+        if ($this->withTime) {
+            $format .= ' ' . $this->timeFormat();
+        }
+
+        $this->withTime = false; // Reset the time flag, so it doesn't affect the next call.
+
+        return $format;
+    }
+
     /**
      * It will return the two character code representation of the country.
      */
@@ -95,7 +115,7 @@ class LangCountry
      */
     public function dateNumbersFormat(): string
     {
-        return $this->data['date_numbers'];
+        return $this->createFormatString($this->data['date_numbers']);
     }
 
     /**
@@ -108,7 +128,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['date_numbers']);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->dateNumbersFormat());
     }
 
     /**
@@ -117,7 +137,7 @@ class LangCountry
      */
     public function dateNumbersFullCapitalsFormat(): string
     {
-        return $this->data['date_numbers_full_capitals'];
+        return $this->createFormatString($this->data['date_numbers_full_capitals']);
     }
 
     /**
@@ -126,7 +146,7 @@ class LangCountry
      */
     public function dateWordsWithoutDayFormat(): string
     {
-        return $this->data['date_words_without_day'];
+        return $this->createFormatString($this->data['date_words_without_day']);
     }
 
     /**
@@ -139,7 +159,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['date_words_without_day']);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->dateWordsWithoutDayFormat());
     }
 
     /**
@@ -148,7 +168,7 @@ class LangCountry
      */
     public function dateWordsWithDayFormat(): string
     {
-        return $this->data['date_words_with_day'];
+        return $this->createFormatString($this->data['date_words_with_day']);
     }
 
     /**
@@ -161,7 +181,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['date_words_with_day']);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->dateWordsWithDayFormat());
     }
 
     /**
@@ -183,7 +203,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['date_birthday']);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->dateBirthdayFormat());
     }
 
     /**
@@ -205,7 +225,7 @@ class LangCountry
             $this->overrideSession($override);
         }
 
-        return $carbon->locale($this->data['lang'])->translatedFormat($this->data['time_format']);
+        return $carbon->locale($this->data['lang'])->translatedFormat($this->timeFormat());
     }
 
     /**
