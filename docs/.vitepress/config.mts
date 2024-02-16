@@ -9,7 +9,15 @@ export default defineConfig({
     themeConfig: {
         logo: 'logo.svg',
         nav: [
-            {text: 'Home', link: '/'},
+            {
+                text: 'Version 4 (current)',
+                items: [
+                    {
+                        text: 'Version 3',
+                        link: '/'
+                    }
+                ]
+            },
         ],
 
         sidebar: [
