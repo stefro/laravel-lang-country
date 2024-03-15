@@ -4,6 +4,7 @@ coverage
 .DS_store
 .idea/
 .phpunit.result.cache
+.phpunit.cache/
 .php-cs-fixer.cache
 phpstan.neon
 coverage.xml
