@@ -48,8 +48,8 @@ jobs:
                     composer remove --dev "pestphp/pest-plugin-type-coverage" --no-interaction --no-update
                     composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
-            -   name: Install dependencies Laravel 10 + 11
-                if: ${{ contains(matrix.laravel, '10.*') || contains(matrix.laravel, '11.*') }}
+            -   name: Install dependencies Laravel 10
+                if: ${{ contains(matrix.laravel, '10.*') }}
                 run: |
                     composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
                     composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
