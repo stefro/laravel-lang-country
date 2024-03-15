@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>pcov</name>
+ <channel>pecl.php.net</channel>
+ <summary>Code coverage driver</summary>
+ <description>A self contained php-code-coverage compatible driver for PHP.</description>
+ <lead>
+  <name>Joe Watkins</name>
+  <user>krakjoe</user>
+  <email>krakjoe@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-12-20</date>
+ <time>16:52:09</time>
+ <version>
+  <release>1.0.11</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Fix anonymous function coverage
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="93f5486205626d6eba2d209b17bd193e" name="tests/001.phpt" role="test" />
+   <file md5sum="6b95706fb3f8dc5aa3d3bddf32a59f77" name="tests/002.phpt" role="test" />
+   <file md5sum="b3f1c66c5acdbf38f0e71bd4b68a113b" name="tests/003.phpt" role="test" />
+   <file md5sum="4a71f06f3c696ebba237f7cf384a6add" name="tests/004.phpt" role="test" />
+   <file md5sum="d01afd57c13e8d6c14eaba8f13580cfd" name="tests/005.phpt" role="test" />
+   <file md5sum="19ef5f87be894ea2e21741e11ff070e3" name="tests/006.phpt" role="test" />
+   <file md5sum="8a30bcf04d22dd4cedb596523fecd51d" name="tests/007.phpt" role="test" />
+   <file md5sum="dd62ffbecb188d3ba1dc2f1d75500471" name="cfg/701/zend_cfg.h" role="src" />
+   <file md5sum="87b970404e3031a02359d8a304a178cd" name="cfg/701/zend_cfg.c" role="src" />
+   <file md5sum="71191356d54ce9d0b092e32a1af93a89" name="cfg/701/zend_worklist.h" role="src" />
+   <file md5sum="3cfc353db84cbbe5a4cc6ee24e0d373f" name="cfg/702/zend_cfg.h" role="src" />
+   <file md5sum="0d0c5fd1d3e013b683ba96ddf095f8da" name="cfg/702/zend_cfg.c" role="src" />
+   <file md5sum="5e7ced31fffd27eb43086a9c2c4a0a79" name="cfg/702/zend_worklist.h" role="src" />
+   <file md5sum="558cb212089bf4be25ac65f315a2d336" name="cfg/703/zend_cfg.h" role="src" />
+   <file md5sum="1a0f67c3956478a2fc2b9085b67a2b33" name="cfg/703/zend_cfg.c" role="src" />
+   <file md5sum="e8d04cc62e08921dc37bceb54e21caf3" name="cfg/703/zend_worklist.h" role="src" />
+   <file md5sum="b33132efb5ea6c6ad6cb8c84b12be7ed" name="cfg/704/zend_cfg.h" role="src" />
+   <file md5sum="ddb9d10c26bfa5f6f386746257ec57db" name="cfg/704/zend_cfg.c" role="src" />
+   <file md5sum="f86293a5a150c9b208cb88edac66025f" name="cfg/704/zend_worklist.h" role="src" />
+   <file md5sum="fb07bfc51f6d5e0c30b65d9701233b2e" name="LICENSE" role="doc" />
+   <file md5sum="e5bd4101b1949bc39e45840bafcb22b7" name="README.md" role="doc" />
+   <file md5sum="a2c30f07ba7cf6353da075ca57609ceb" name="config.m4" role="src" />
+   <file md5sum="bdb0adc09350e458d4ecc60ea747f828" name="config.w32" role="src" />
+   <file md5sum="509fc4e7754da03938e61171ecce1573" name="php_pcov.h" role="src" />
+   <file md5sum="adb8dceda66e3f1c55d997963d6efae0" name="pcov.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>pcov</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2021-11-24</date>
+   <version>
+    <release>1.0.10</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Use zend_new_interned_string instead of hand-rolling
+- Use ZEND_MOD_END to fix build warning
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-07</date>
+   <version>
+    <release>1.0.9</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix #67 huge memory consumption to generate coverage
+   </notes>
+  </release>
+  <release>
+   <date>2021-03-22</date>
+   <version>
+    <release>1.0.8</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix Windows build
+   </notes>
+  </release>
+  <release>
+   <date>2021-03-19</date>
+   <version>
+    <release>1.0.7</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix #46 Segmentation fault on 7.4 on macOS with anonymous class
+- Fix #59 &quot;malloc_consolidate(): invalid chunk size&quot; with PHP 8.1
+   </notes>
+  </release>
+  <release>
+   <date>2019-06-13</date>
+   <version>
+    <release>1.0.6</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix for 7.4.0alpha1
+   </notes>
+  </release>
+  <release>
+   <date>2019-06-11</date>
+   <version>
+    <release>1.0.5</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix #19 fault in 7.2 caused by modification of filename pointer
+   </notes>
+  </release>
+  <release>
+   <date>2019-06-03</date>
+   <version>
+    <release>1.0.4</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix #17 Lines not covered when more tests are run
+- Improve perf of clear routine
+- Merge upstream cfg updates (switch block change)
+- Omit ignored opcodes from internal coverage data completely (doesn&apos;t effect users, except less memory used)
+   </notes>
+  </release>
+  <release>
+   <date>2019-05-06</date>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix #12 issue with faulty line coverage
+   </notes>
+  </release>
+  <release>
+   <date>2019-03-31</date>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix #10 second non-cli SAPI request behaves strangely
+   </notes>
+  </release>
+  <release>
+   <date>2019-03-25</date>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Release memory from building CFG as early as possible
+- Compat with 7.4/8.0 changes
+   </notes>
+  </release>
+  <release>
+   <date>2019-01-30</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- initial pecl stable release
+   </notes>
+  </release>
+  <release>
+   <date>2019-01-22</date>
+   <version>
+    <release>0.9.0</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- initial pecl release
+   </notes>
+  </release>
+ </changelog>
+</package>

@@ -10,3 +10,4 @@ phpstan.neon
 coverage.xml
 node_modules
 docs/.vitepress/cache
+.phpunit.cache
