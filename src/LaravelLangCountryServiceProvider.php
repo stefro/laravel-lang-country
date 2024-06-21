@@ -2,7 +2,6 @@
 
 namespace Stefro\LaravelLangCountry;
 
-use Carbon\Carbon;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\ServiceProvider;
 use Stefro\LaravelLangCountry\Listeners\UserAuthenticated;
@@ -40,37 +39,5 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Carbon::macro('langCountryDateNumbers', function (bool|string $override = false, bool $withTime = false) {
-            if($withTime) {
-                return \LangCountry::withTime()->dateNumbers($this, $override);
-            }
-
-            return \LangCountry::dateNumbers($this, $override);
-        });
-
-        Carbon::macro('langCountryDateWordsWithoutDay', function (bool|string $override = false, bool $withTime = false) {
-            if($withTime) {
-                return \LangCountry::withTime()->dateWordsWithoutDay($this, $override);
-            }
-
-            return \LangCountry::dateWordsWithoutDay($this, $override);
-        });
-
-        Carbon::macro('langCountryDateWordsWithDay', function (bool|string $override = false, bool $withTime = false) {
-            if($withTime) {
-                return \LangCountry::withTime()->dateWordsWithDay($this, $override);
-            }
-
-            return \LangCountry::dateWordsWithDay($this, $override);
-        });
-
-        Carbon::macro('langCountryDateBirthday', function (bool|string $override = false) {
-            return \LangCountry::dateBirthday($this, $override);
-        });
-
-        Carbon::macro('langCountryTime', function (bool|string $override = false) {
-            return \LangCountry::time($this, $override);
-        });
-
     }
 }

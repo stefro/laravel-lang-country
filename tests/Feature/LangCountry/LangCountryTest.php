@@ -40,6 +40,7 @@ it(
     [false, null, 'nl', 'en-GB'],
 ]);
 
+
 it('should return the right values for nl-nl', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
@@ -51,20 +52,15 @@ it('should return the right values for nl-nl', function () {
         ->and(\LangCountry::name())->toEqual('Nederlands')
         ->and(\LangCountry::dateNumbersFormat())->toEqual('d-m-Y')
         ->and(\LangCountry::dateNumbers($this->test_date))->toEqual('10-03-2018')
-        ->and($this->test_date->langCountryDateNumbers())->toEqual('10-03-2018')
         ->and(\LangCountry::dateNumbersFullCapitalsFormat())->toEqual('DD-MM-YYYY')
         ->and(\LangCountry::dateWordsWithoutDayFormat())->toEqual('j F Y')
         ->and(\LangCountry::dateWordsWithoutDay($this->test_date))->toEqual('10 maart 2018')
-        ->and($this->test_date->langCountryDateWordsWithoutDay())->toEqual('10 maart 2018')
         ->and(\LangCountry::dateWordsWithDayFormat())->toEqual('l j F Y')
         ->and(\LangCountry::dateWordsWithDay($this->test_date))->toEqual('zaterdag 10 maart 2018')
-        ->and($this->test_date->langCountryDateWordsWithDay())->toEqual('zaterdag 10 maart 2018')
         ->and(\LangCountry::dateBirthdayFormat())->toEqual('j F')
         ->and(\LangCountry::dateBirthday($this->test_date))->toEqual('10 maart')
-        ->and($this->test_date->langCountryDateBirthday())->toEqual('10 maart')
         ->and(\LangCountry::timeFormat())->toEqual('H:i')
         ->and(\LangCountry::time($this->test_date))->toEqual('13:05')
-        ->and($this->test_date->langCountryTime())->toEqual('13:05')
         ->and(\LangCountry::emojiFlag())->toEqual('🇳🇱')
         ->and(\LangCountry::currencyCode())->toEqual('EUR')
         ->and(\LangCountry::currencySymbol())->toEqual('€')
@@ -146,20 +142,15 @@ it('returns the right values for en-US', function () {
         ->and(\LangCountry::name())->toEqual('American English')
         ->and(\LangCountry::dateNumbersFormat())->toEqual('m/d/Y')
         ->and(\LangCountry::dateNumbers($this->test_date))->toEqual('03/10/2018')
-        ->and($this->test_date->langCountryDateNumbers())->toEqual('03/10/2018')
         ->and(\LangCountry::dateNumbersFullCapitalsFormat())->toEqual('MM/DD/YYYY')
         ->and(\LangCountry::dateWordsWithoutDayFormat())->toEqual('F jS Y')
         ->and(\LangCountry::dateWordsWithoutDay($this->test_date))->toEqual('March 10th 2018')
-        ->and($this->test_date->langCountryDateWordsWithoutDay())->toEqual('March 10th 2018')
         ->and(\LangCountry::dateWordsWithDayFormat())->toEqual('l F jS Y')
         ->and(\LangCountry::dateWordsWithDay($this->test_date))->toEqual('Saturday March 10th 2018')
-        ->and($this->test_date->langCountryDateWordsWithDay())->toEqual('Saturday March 10th 2018')
         ->and(\LangCountry::dateBirthdayFormat())->toEqual('F jS')
         ->and(\LangCountry::dateBirthday($this->test_date))->toEqual('March 10th')
-        ->and($this->test_date->langCountryDateBirthday())->toEqual('March 10th')
         ->and(\LangCountry::timeFormat())->toEqual('h:i a')
         ->and(\LangCountry::time($this->test_date))->toEqual('01:05 pm')
-        ->and($this->test_date->langCountryTime())->toEqual('01:05 pm')
         ->and(\LangCountry::emojiFlag())->toEqual('🇺🇸')
         ->and(\LangCountry::currencyCode())->toEqual('USD')
         ->and(\LangCountry::currencySymbol())->toEqual('$')
@@ -230,33 +221,16 @@ it('returns the right values for en-US', function () {
     expect(\LangCountry::langSelectorHelper())->toEqual($expected);
 });
 
-it('should return the right values for enUS while session is nl-NL but is overruled', function ($method, $override, $expectation) {
-    // We need to run this test in a loop with a dateset, to prevent a sticky override when testing in a chain
+it('should return the right values for enUS while session is nl-NL but is overruled', function () {
     session(['lang_country' => 'nl-NL']);
     App::setLocale('nl');
 
-    expect(\LangCountry::$method($this->test_date, $override))->toEqual($expectation);
-})->with([
-    ['dateNumbers', 'en-US', '03/10/2018'],
-    ['dateWordsWithoutDay', 'en-US', 'March 10th 2018'],
-    ['dateWordsWithDay', 'en-US', 'Saturday March 10th 2018'],
-    ['dateBirthday', 'en-US', 'March 10th'],
-    ['time', 'en-US', '01:05 pm'],
-]);
-
-it('should return the right values for enUS while session is nl-NL but is overruled when using the Carbon Macro', function ($method, $override, $expectation) {
-    // We need to run this test in a loop with a dateset, to prevent a sticky override when testing in a chain
-    session(['lang_country' => 'nl-NL']);
-    App::setLocale('nl');
-
-    expect($this->test_date->$method($override))->toEqual($expectation);
-})->with([
-    ['langCountryDateNumbers', 'en-US', '03/10/2018'],
-    ['langCountryDateWordsWithoutDay', 'en-US', 'March 10th 2018'],
-    ['langCountryDateWordsWithDay', 'en-US', 'Saturday March 10th 2018'],
-    ['langCountryDateBirthday', 'en-US', 'March 10th'],
-    ['langCountryTime', 'en-US', '01:05 pm'],
-]);
+    expect(\LangCountry::dateNumbers($this->test_date, 'en-US'))->toEqual('03/10/2018')
+        ->and(\LangCountry::dateWordsWithoutDay($this->test_date, 'en-US'))->toEqual('March 10th 2018')
+        ->and(\LangCountry::dateWordsWithDay($this->test_date, 'en-US'))->toEqual('Saturday March 10th 2018')
+        ->and(\LangCountry::dateBirthday($this->test_date, 'en-US'))->toEqual('March 10th')
+        ->and(\LangCountry::time($this->test_date, 'en-US'))->toEqual('01:05 pm');
+});
 
 it('should return all the available languages', function () {
 
@@ -361,21 +335,15 @@ it('should accept the withTime method', function () {
     expect(\LangCountry::dateNumbersFormat())->toEqual('m/d/Y')
         ->and(\LangCountry::withTime()->dateNumbersFormat())->toEqual('m/d/Y h:i a')
         ->and(\LangCountry::dateNumbers($this->test_date))->toEqual('03/10/2018')
-        ->and($this->test_date->langCountryDateNumbers())->toEqual('03/10/2018')
         ->and(\LangCountry::withTime()->dateNumbers($this->test_date))->toEqual('03/10/2018 01:05 pm')
-        ->and($this->test_date->langCountryDateNumbers(false, true))->toEqual('03/10/2018 01:05 pm')
         ->and(\LangCountry::dateWordsWithoutDayFormat())->toEqual('F jS Y')
         ->and(\LangCountry::withTime()->dateWordsWithoutDayFormat())->toEqual('F jS Y h:i a')
         ->and(\LangCountry::dateWordsWithoutDay($this->test_date))->toEqual('March 10th 2018')
-        ->and($this->test_date->langCountryDateWordsWithoutDay())->toEqual('March 10th 2018')
         ->and(\LangCountry::withTime()->dateWordsWithoutDay($this->test_date))->toEqual('March 10th 2018 01:05 pm')
-        ->and($this->test_date->langCountryDateWordsWithoutDay(false, true))->toEqual('March 10th 2018 01:05 pm')
         ->and(\LangCountry::dateWordsWithDayFormat())->toEqual('l F jS Y')
         ->and(\LangCountry::withTime()->dateWordsWithDayFormat())->toEqual('l F jS Y h:i a')
         ->and(\LangCountry::dateWordsWithDay($this->test_date))->toEqual('Saturday March 10th 2018')
-        ->and($this->test_date->langCountryDateWordsWithDay())->toEqual('Saturday March 10th 2018')
         ->and(\LangCountry::withTime()->dateWordsWithDay($this->test_date))->toEqual('Saturday March 10th 2018 01:05 pm')
-        ->and($this->test_date->langCountryDateWordsWithDay(false, true))->toEqual('Saturday March 10th 2018 01:05 pm')
         ->and(\LangCountry::dateNumbersFullCapitalsFormat())->toEqual('MM/DD/YYYY')
         ->and(\LangCountry::withTime()->dateNumbersFullCapitalsFormat())->toEqual('MM/DD/YYYY h:i a');
 });
