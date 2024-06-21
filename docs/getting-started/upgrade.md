@@ -1,5 +1,20 @@
 # Upgrade Guide
 
+## Version 3 -> 4
+
+#### Minimum Requirements
+
+* You need PHP 8.1 or higher.
+* You need Laravel 9 or higher.
+
+#### Migration
+
+No migration required.
+
+#### Breaking Changes
+
+There should not be any breaking changes in this release.
+
 ## Version 2 -> 3
 
 #### Minimum Requirements
