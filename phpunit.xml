@@ -14,9 +14,12 @@
             <directory suffix=".php">./src</directory>
         </include>
     </source>
-    <coverage>
+    <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./src</directory>
         </include>
+        <exclude>
+            <file>./src/.stubs.php</file>
+        </exclude>
     </coverage>
 </phpunit>

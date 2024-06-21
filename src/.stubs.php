@@ -12,7 +12,9 @@ namespace Carbon;
      * @method string langCountryDateWordsWithDay(bool|string $override = false, bool $withTime = false)
      * @method string langCountryDateBirthday(bool|string $override = false)
      * @method string langCountryTime(bool|string $override = false)
+     *
      */
+
     class Carbon
     {
     }
