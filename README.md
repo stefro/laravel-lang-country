@@ -5,6 +5,14 @@
 
 ![laravel-langcountry.png](/docs/public/laravel-langcountry.png)
 
+# TLDR;
+
+Laravel has great localisation functionality, but it is all based on the locale. The locale only refers to a language,
+not a country. This package adds the ability to localize based on the country.
+**Why?** Mainly because dates dates can be pronounced the same in a language, but be formatted differently in different
+countries.
+The package also adds more convenience functions to get localized country names, currency symbols and more.
+
 # Have you ever...
 
 * had the problem that you needed a date format had to be localized?
