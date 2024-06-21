@@ -1,6 +1,6 @@
 ![laravel-langcountry.png](./public/laravel-langcountry.png)
 
-# TLDR;
+## TLDR;
 
 Laravel has great localisation functionality, but it is all based on the locale. The locale only refers to a language,
 not a country. This package adds the ability to localize based on the country.
