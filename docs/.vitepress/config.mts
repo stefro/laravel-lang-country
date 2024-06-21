@@ -9,10 +9,21 @@ export default defineConfig({
     themeConfig: {
         logo: 'logo.svg',
         nav: [
-            {text: 'Home', link: '/'},
+            {
+                text: 'Version 4 (current)',
+                items: [
+                    {
+                        text: 'Version 3',
+                        link: 'https://stefro.github.io/laravel-lang-country-docs-v3/'
+                    }
+                ]
+            },
         ],
 
         sidebar: [
+            {
+                text: '<div class="tip custom-block"><p style="margin-bottom: 5px; font-weight: bold">Version 4.x ⭐️</p></div>',
+            },
             {
                 text: 'Getting Started',
                 collapsed: false,
