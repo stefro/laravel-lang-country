@@ -19,6 +19,7 @@ return [
         'fr-CA',
         'fr-CH',
         'fr-FR',
+        'id-ID',
         'it-IT',
         'lt-LT',
         'nl-BE',
