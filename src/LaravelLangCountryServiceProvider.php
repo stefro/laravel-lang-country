@@ -41,7 +41,7 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
     public function register(): void
     {
         Carbon::macro('langCountryDateNumbers', function (bool|string $override = false, bool $withTime = false) {
-            if($withTime) {
+            if ($withTime) {
                 return \LangCountry::withTime()->dateNumbers($this, $override);
             }
 
@@ -49,7 +49,7 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
         });
 
         Carbon::macro('langCountryDateWordsWithoutDay', function (bool|string $override = false, bool $withTime = false) {
-            if($withTime) {
+            if ($withTime) {
                 return \LangCountry::withTime()->dateWordsWithoutDay($this, $override);
             }
 
@@ -57,7 +57,7 @@ class LaravelLangCountryServiceProvider extends ServiceProvider
         });
 
         Carbon::macro('langCountryDateWordsWithDay', function (bool|string $override = false, bool $withTime = false) {
-            if($withTime) {
+            if ($withTime) {
                 return \LangCountry::withTime()->dateWordsWithDay($this, $override);
             }
 
