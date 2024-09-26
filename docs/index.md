@@ -60,3 +60,22 @@ When a user will log in to your app, it will load the last `lang_country` and se
 With these sessions, you can use the Laravel localization features as you are used to. But now you can also use the new
 helpers that are available in this package.
 :::
+
+## What is new in version 4?
+
+Version 4 is adding Carbon Macros so you can use the LangCountry formatting directly on your Carbon instances. On most
+IDE's they're also autocompleted for convenience.
+
+![autocomplete.png](./public/autocomplete.png)
+
+### Examples
+
+```php
+session(['lang_country' => 'nl-NL']);
+$post->created_at->langCountryDateNumbers(); // Will return "27-09-2023"
+
+// You can also include the time by adding `true` as the second parameter.
+$post->created_at->langCountryDateWordsWithDay(false, true); // Will return "Wednesday September 27th 2023 01:05 pm"
+
+
+```

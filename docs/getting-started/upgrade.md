@@ -2,6 +2,8 @@
 
 ## Version 3 -> 4
 
+Version 4 adds Carbon Macros and IDE autocompletion.
+
 #### Minimum Requirements
 
 * You need PHP 8.1 or higher.

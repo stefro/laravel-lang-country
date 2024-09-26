@@ -5,10 +5,10 @@ outline: deep
 # Date (& time) helpers
 
 Below you can find all the date helpers (that can also be chained to add time) that are available in this package
-through the `LangCountry` facade or the Carbon macro's.
+through the `LangCountry` facade or the Carbon macros.
 
-::: tip Carbon Macro's
-On most IDE's, the Carbon Macro's will be autocompleted.
+::: tip Carbon Macros
+On most IDE's, the Carbon Macros will be autocompleted.
 :::
 
 ### Only numbers
@@ -182,7 +182,7 @@ LangCountry::withTime()->dateWordsWithDayFormat(); // Will return "l F jS Y h:i 
 LangCountry::withTime()->dateWordsWithDay($post->created_at); // Will return "Wednesday September 27th 2023 01:05 pm"
 LangCountry::withTime()->dateNumbersFullCapitalsFormat(); // Will return "MM/DD/YYYY h:i a"
 
-// When using macro's, you can pass `true` as the second parameter
+// When using macros, you can pass `true` as the second parameter
 $post->created_at->langCountryDateNumbers(false, true); // Will return "09/27/2023 01:05 pm"
 $post->created_at->langCountryDateWordsWithoutDay(false, true); // Will return "September 27th 2023 01:05 pm"
 $post->created_at->langCountryDateWordsWithDay(false, true); // Will return "Wednesday September 27th 2023 01:05 pm"
