@@ -22,7 +22,7 @@
         "barryvdh/laravel-ide-helper": "^2.13|^3.0",
         "friendsofphp/php-cs-fixer": "^3.22",
         "orchestra/testbench": "^7.0|^8.0|^9.0",
-        "pestphp/pest": "^1.21 | ^2.0",
+        "pestphp/pest": "^1.21 | ^2.0 | ^3.0",
         "pestphp/pest-plugin-type-coverage": "^2.0",
         "spatie/laravel-ray": "^1.32"
     },
@@ -43,6 +43,7 @@
         "test": "vendor/bin/pest",
         "test:fast": "vendor/bin/pest --parallel",
         "test:coverage": "vendor/bin/pest --coverage --min=100 --coverage-clover=coverage.xml",
+        "test:coverage-herd": "herd coverage vendor/bin/pest --coverage --min=100 --coverage-clover=coverage.xml",
         "type:check": "vendor/bin/pest --type-coverage --min=100",
         "format": "vendor/bin/php-cs-fixer fix src --allow-risky=yes"
     },

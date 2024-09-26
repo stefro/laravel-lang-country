@@ -9,10 +9,10 @@ outline: deep
 This will return the **three character ISO-4217** code representation of the currency of the country.
 
 ```php
-// When the lang_country session is "nl-NL"
+session(['lang_country' => 'nl-NL']);
 LangCountry::currencyCode(); // Will return "EUR"
 
-// When the lang_country session is "en-GB"
+session(['lang_country' => 'en-GB']);
 LangCountry::currencyCode(); // Will return "GBP"
 ```
 
@@ -21,10 +21,10 @@ LangCountry::currencyCode(); // Will return "GBP"
 This will return the **currency symbol** of the country.
 
 ```php
-// When the lang_country session is "nl-NL"
+session(['lang_country' => 'nl-NL']);
 LangCountry::currencySymbol(); // Will return "€"
 
-// When the lang_country session is "en-GB"
+session(['lang_country' => 'en-GB']);
 LangCountry::currencySymbol(); // Will return "£"
 ```
 
@@ -33,10 +33,10 @@ LangCountry::currencySymbol(); // Will return "£"
 This will return the `localized` symbol of the officially recognised (primary) currency of the country.
 
 ```php
-// When the lang_country session is "es-CO"
+session(['lang_country' => 'es-CO']);
 LangCountry::currencySymbolLocal(); // Will return "COP$"
 
-// When the lang_country session is "en-CA"
+session(['lang_country' => 'en-CA']);
 LangCountry::currencySymbolLocal(); // Will return "CA$"
 ```
 
@@ -45,16 +45,16 @@ LangCountry::currencySymbolLocal(); // Will return "CA$"
 This will return the **currency name** of the country.
 
 ```php
-// When the lang_country session is "nl-NL"
+session(['lang_country' => 'nl-NL'])
 LangCountry::currencyName(); // Will return "Euro"
 
-// When the lang_country session is "en-GB"
+session(['lang_country' => 'en-GB'])
 LangCountry::currencyName(); // Will return "Pound Stirling"
 
-// When the lang_country session is "es-CO"
+session(['lang_country' => 'es-CO']);
 LangCountry::currencyName(); // Will return "Peso"
 
-// When the lang_country session is "en-CA"
+session(['lang_country' => 'en-CA']);
 LangCountry::currencyName(); // Will return "Canadian Dollar"
 ```
 
@@ -63,9 +63,9 @@ LangCountry::currencyName(); // Will return "Canadian Dollar"
 This will return the `localized` name of the officially recognised (primary) currency of the country.
 
 ```php
-// When the lang_country session is "en-AU"
+session(['lang_country' => 'en-AU']);
 LangCountry::currencyNameLocal(); // Will return "Australian Dollar"
 
-// When the lang_country session is "lt-LT"
+session(['lang_country' => 'lt-LT']);
 LangCountry::currencyNameLocal(); // Will return "Euras"
 ```
