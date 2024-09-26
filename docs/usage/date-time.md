@@ -5,7 +5,11 @@ outline: deep
 # Date (& time) helpers
 
 Below you can find all the date helpers (that can also be chained to add time) that are available in this package
-through the `LangCountry` facade.
+through the `LangCountry` facade or the Carbon macro's.
+
+::: tip Carbon Macro's
+On most IDE's, the Carbon Macro's will be autocompleted.
+:::
 
 ### Only numbers
 
@@ -15,12 +19,16 @@ You should provide a Carbon instance.
 ```php
 session(['lang_country' => 'nl-NL']);
 LangCountry::dateNumbers($post->created_at); // Will return "27-09-2023"
+$post->created_at->langCountryDateNumbers(); // Will return "27-09-2023"
 
 session(['lang_country' => 'en-US']);
 LangCountry::dateNumbers($post->created_at); // Will return "09/27/2023"
+$post->created_at->langCountryDateNumbers(); // Will return "09/27/2023"
 
 session(['lang_country' => 'de-DE']);
 LangCountry::dateNumbers($post->created_at); // Will return "27.09.2023"
+$post->created_at->langCountryDateNumbers(); // Will return "27.09.2023"
+
 ```
 
 ### Only numbers (string format)
@@ -63,12 +71,15 @@ You should provide a Carbon instance.
 
 session(['lang_country' => 'nl-NL']);
 LangCountry::dateWordsWithoutDay($post->created_at); // Will return "27 september 2023"
+$post->created_at->langCountryDateWordsWithoutDay(); // Will return "27 september 2023"
 
 session(['lang_country' => 'en-US']);
 LangCountry::dateWordsWithoutDay($post->created_at); // Will return "September 27th 2023"
+$post->created_at->langCountryDateWordsWithoutDay(); // Will return "September 27th 2023"
 
 session(['lang_country' => 'fr-FR']);
 LangCountry::dateWordsWithoutDay($post->created_at); // Will return "27 septembre 2023"
+$post->created_at->langCountryDateWordsWithoutDay(); // Will return "27 septembre 2023"
 ```
 
 ### Only words, without day (string format)
@@ -94,12 +105,15 @@ You should provide a Carbon instance.
 ```php
 session(['lang_country' => 'nl-NL']);
 LangCountry::dateWordsWithDay($post->created_at); // Will return "woensdag 27 september 2023"
+$post->created_at->langCountryDateWordsWithDay(); // Will return "woensdag 27 september 2023"
 
 session(['lang_country' => 'en-US']);
 LangCountry::dateWordsWithDay($post->created_at); // Will return "Wednesday September 27th 2023"
+$post->created_at->langCountryDateWordsWithDay(); // Will return "Wednesday September 27th 2023"
 
 session(['lang_country' => 'fr-FR']);
 LangCountry::dateWordsWithDay($post->created_at); // Will return "mercredi 27 septembre 2023"
+$post->created_at->langCountryDateWordsWithDay(); // Will return "mercredi 27 septembre 2023"
 ```
 
 ### Only words, with day (string format)
@@ -125,9 +139,11 @@ You should provide a Carbon instance.
 ```php
 session(['lang_country' => 'nl-NL']);
 LangCountry::dateBirthday($user->date_of_birth); // Will return "27 september"
+$user->date_of_birth->langCountryDateBirthday(); // Will return "27 september"
 
 session(['lang_country' => 'en-US']);
 LangCountry::dateBirthday($user->date_of_birth); // Will return "September 27th"
+$user->date_of_birth->langCountryDateBirthday(); // Will return "September 27th"
 ```
 
 ### Birthday (string format)
@@ -165,4 +181,10 @@ LangCountry::withTime()->dateWordsWithoutDay($post->created_at); // Will return 
 LangCountry::withTime()->dateWordsWithDayFormat(); // Will return "l F jS Y h:i a"
 LangCountry::withTime()->dateWordsWithDay($post->created_at); // Will return "Wednesday September 27th 2023 01:05 pm"
 LangCountry::withTime()->dateNumbersFullCapitalsFormat(); // Will return "MM/DD/YYYY h:i a"
+
+// When using macro's, you can pass `true` as the second parameter
+$post->created_at->langCountryDateNumbers(false, true); // Will return "09/27/2023 01:05 pm"
+$post->created_at->langCountryDateWordsWithoutDay(false, true); // Will return "September 27th 2023 01:05 pm"
+$post->created_at->langCountryDateWordsWithDay(false, true); // Will return "Wednesday September 27th 2023 01:05 pm"
+
 ```
