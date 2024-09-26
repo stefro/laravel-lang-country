@@ -8,7 +8,7 @@ outline: deep
 
 For version 4.0.0 and above, you need to have at least PHP 8.1 and Laravel 9 or above.
 
-For older PHP and Laravel versions, please use the [V2.x](https://github.com/stefro/laravel-lang-country/tree/V2.x)
+For older PHP and Laravel versions, please use the [V3.x](https://stefro.github.io/laravel-lang-country-docs-v3/)
 branch. Please note that this documentation is only for the latest version of the package.
 
 ## Install
