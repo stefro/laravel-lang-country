@@ -6,6 +6,7 @@ return [
     'allowed' => [
         'bn-BD',
         'ca-ES',
+        'da-DA',
         'de-AT',
         'de-CH',
         'de-DE',
