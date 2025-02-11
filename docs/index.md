@@ -1,4 +1,4 @@
-![laravel-langcountry.png](./public/laravel-langcountry.png)
+![laravel-langcountry.png](/laravel-langcountry.png)
 
 ## TLDR;
 
@@ -13,7 +13,7 @@ The package also adds more convenience functions to get localized country names,
 Version 4 is adding Carbon Macros so you can use the LangCountry formatting directly on your Carbon instances. On most
 IDE's they're also autocompleted for convenience.
 
-![autocomplete.png](./public/autocomplete.png)
+![autocomplete.png](/autocomplete.png)
 
 ### Examples
 
