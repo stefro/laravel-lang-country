@@ -22,7 +22,7 @@ export default defineConfig({
 
         sidebar: [
             {
-                text: '<div class="tip custom-block"><p style="margin-bottom: 5px; font-weight: bold">Version 4.x ⭐️</p></div>',
+                text: '<b>Version 4.x</b> ⭐',
             },
             {
                 text: 'Getting Started',
