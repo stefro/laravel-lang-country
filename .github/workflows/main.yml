@@ -1,67 +1,69 @@
 name: run-tests
 
 on:
-    push:
-        branches: [ master,v3 ]
-    pull_request:
-        branches: [ master ]
+  push:
+    branches: [ master,v3 ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                php: [ 8.3, 8.2, 8.1 ]
-                laravel: [ 11.*, 10.*, 9.* ]
-                dependency-version: [ prefer-lowest, prefer-stable ]
-                include:
-                    -   laravel: 11.*
-                        testbench: ^9.0
-                    -   laravel: 10.*
-                        testbench: ^8.0
-                    -   laravel: 9.*
-                        testbench: ^7.0
-                exclude:
-                    -   laravel: 11.*
-                        php: 8.1
-                    -   laravel: 10.*
-                        dependency-version: prefer-lowest
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ 8.3, 8.2, 8.1 ]
+        laravel: [ 12.*,11.*, 10.*, 9.* ]
+        dependency-version: [ prefer-lowest, prefer-stable ]
+        include:
+          - laravel: 12.*
+            testbench: ^10.0
+          - laravel: 11.*
+            testbench: ^9.0
+          - laravel: 10.*
+            testbench: ^8.0
+          - laravel: 9.*
+            testbench: ^7.0
+        exclude:
+          - laravel: 11.*
+            php: 8.1
+          - laravel: 10.*
+            dependency-version: prefer-lowest
 
-        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
 
-        steps:
-            -   name: Checkout code
-                uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-            -   name: Setup PHP
-                uses: shivammathur/setup-php@v2
-                with:
-                    php-version: ${{ matrix.php }}
-                    extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
-                    coverage: pcov
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+          coverage: pcov
 
-            -   name: Setup problem matchers
-                run: |
-                    echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-                    echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+      - name: Setup problem matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
-            -   name: Install dependencies Laravel 9
-                if: ${{ contains(matrix.laravel, '9.*') }}
-                run: |
-                    composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
-                    composer remove --dev "pestphp/pest-plugin-type-coverage" --no-interaction --no-update
-                    composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+      - name: Install dependencies Laravel 9
+        if: ${{ contains(matrix.laravel, '9.*') }}
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
+          composer remove --dev "pestphp/pest-plugin-type-coverage" --no-interaction --no-update
+          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
-            -   name: Install dependencies Laravel 10
-                if: ${{ contains(matrix.laravel, '10.*') || contains(matrix.laravel, '11.*') }}
-                run: |
-                    composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
-                    composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+      - name: Install dependencies Laravel 10 to 12
+        if: ${{ contains(matrix.laravel, '10.*') || contains(matrix.laravel, '11.*') || contains(matrix.laravel, '12.*') }}
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
+          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
-            -   name: Execute tests
-                run: composer test:coverage
+      - name: Execute tests
+        run: composer test:coverage
 
-            -   name: Type check
-                if: ${{ contains(matrix.laravel, '11.*') && contains(matrix.dependency-version, 'prefer-stable') }}
-                run: composer type:check
+      - name: Type check
+        if: ${{ contains(matrix.laravel, '12.*') && contains(matrix.dependency-version, 'prefer-stable') }}
+        run: composer type:check
