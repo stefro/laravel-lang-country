@@ -14,6 +14,7 @@ return [
         'en-CA',
         'en-GB',
         'en-US',
+        'el-GR',
         'es-CO',
         'es-ES',
         'fr-BE',
