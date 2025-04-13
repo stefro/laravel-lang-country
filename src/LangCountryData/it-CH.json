@@ -1,0 +1,19 @@
+{
+  "country": "CH",
+  "country_name": "Switzerland",
+  "country_name_local": "Svizzera",
+  "lang": "it",
+  "name": "Svizzera - Italia",
+  "date_numbers": "d.m.Y",
+  "date_numbers_full_capitals": "DD.MM.YYYY",
+  "date_words_without_day": "j F Y",
+  "date_words_with_day": "l j F Y",
+  "date_birthday": "j F",
+  "time_format": "H:i",
+  "emoji_flag": "🇨🇭",
+  "currency_code": "CHF",
+  "currency_symbol": "₣",
+  "currency_symbol_local": "S₣r",
+  "currency_name": "Swiss Franc",
+  "currency_name_local": "Franco Svizzero"
+}
