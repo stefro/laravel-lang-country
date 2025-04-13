@@ -5,6 +5,7 @@ return [
 
     'allowed' => [
         'bn-BD',
+        'bg-BG',
         'ca-ES',
         'da-DA',
         'de-AT',
