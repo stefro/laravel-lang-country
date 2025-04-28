@@ -1,0 +1,19 @@
+{
+    "country": "HU",
+    "country_name": "Hungary",
+    "country_name_local": "Magyarország",
+    "lang": "hu",
+    "name": "Hungarian",
+    "date_numbers": "Y.m.d.",
+    "date_numbers_full_capitals": "YYYY.MM.DD.",
+    "date_words_without_day": "Y. MMMM d.",
+    "date_words_with_day": "l, Y. MMMM d.",
+    "date_birthday": "MMMM d.",
+    "time_format": "H:i",
+    "emoji_flag": "🇭🇺",
+    "currency_code": "HUF",
+    "currency_symbol": "Ft",
+    "currency_symbol_local": "Ft",
+    "currency_name": "Hungarian Forint",
+    "currency_name_local": "Forint"
+}

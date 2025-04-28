@@ -23,6 +23,7 @@ return [
         'fr-CA',
         'fr-CH',
         'fr-FR',
+        'hu-HU',
         'id-ID',
         'it-CH',
         'it-IT',
