@@ -17,6 +17,7 @@ return [
         'en-GB',
         'en-US',
         'el-GR',
+        'es-CL',
         'es-CO',
         'es-ES',
         'fr-BE',
