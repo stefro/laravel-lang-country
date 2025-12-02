@@ -9,6 +9,9 @@ use Stefro\LaravelLangCountry\LaravelLangCountryServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
+    // Ensure the static exists so orchestra/testbench-core can set it
+    protected static $latestResponse;
+
     protected function setUp(): void
     {
         parent::setUp();
