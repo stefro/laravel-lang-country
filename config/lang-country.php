@@ -4,6 +4,7 @@ return [
     'fallback' => 'en-GB',
 
     'allowed' => [
+        'ar-SA',
         'bn-BD',
         'bg-BG',
         'ca-ES',
