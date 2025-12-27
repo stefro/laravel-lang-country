@@ -1,0 +1,19 @@
+{
+    "country": "SA",
+    "country_name": "Saudi Arabia",
+    "country_name_local": "السعودية",
+    "lang": "ar",
+    "name": "العربية",
+    "date_numbers": "Y-m-d",
+    "date_numbers_full_capitals": "YYYY-MM-DD",
+    "date_words_without_day": "j. F Y",
+    "date_words_with_day": "l d. F Y",
+    "date_birthday": "j. F",
+    "time_format": "H:i",
+    "emoji_flag": "🇸🇦",
+    "currency_code": "SAR",
+    "currency_symbol": "rs",
+    "currency_symbol_local": "﷼",
+    "currency_name": "Saudi Ryial",
+    "currency_name_local": "ريال سعودي"
+}
