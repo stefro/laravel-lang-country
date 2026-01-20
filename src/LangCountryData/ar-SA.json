@@ -3,7 +3,7 @@
     "country_name": "Saudi Arabia",
     "country_name_local": "السعودية",
     "lang": "ar",
-    "name": "العربية",
+    "name": "العربية - السعودية",
     "date_numbers": "Y-m-d",
     "date_numbers_full_capitals": "YYYY-MM-DD",
     "date_words_without_day": "j. F Y",
@@ -12,7 +12,7 @@
     "time_format": "H:i",
     "emoji_flag": "🇸🇦",
     "currency_code": "SAR",
-    "currency_symbol": "rs",
+    "currency_symbol": "r.s",
     "currency_symbol_local": "﷼",
     "currency_name": "Saudi Ryial",
     "currency_name_local": "ريال سعودي"
