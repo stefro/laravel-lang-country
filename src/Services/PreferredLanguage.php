@@ -30,10 +30,16 @@ class PreferredLanguage
      */
     public function clientPreferredLanguages(): Collection
     {
+        $preferredLanguages = trim(($this->preferred_languages ?? ''));
+
+        if ($preferredLanguages === '') {
+            return collect();
+        }
+
         // regex inspired from @GabrielAnderson on http://stackoverflow.com/questions/6038236/http-accept-language
         preg_match_all(
             '/([a-z]{1,8}(-[a-z]{1,8})*)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i',
-            $this->preferred_languages,
+            $preferredLanguages,
             $lang_parse
         );
 
