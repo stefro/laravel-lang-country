@@ -1,6 +1,7 @@
 build
 vendor
 coverage
+composer.lock
 .DS_store
 .idea/
 .phpunit.result.cache
